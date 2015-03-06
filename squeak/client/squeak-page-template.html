@@ -1,0 +1,19 @@
+<template name='squeakPage'>
+{{setTitle title}}
+<div id='squeak-page'>
+  {{#if _id}}
+    {{> squeakInfo}}
+    {{> squeakSubmissionMeta}}
+    <div id='squeak-comments' class='comments'>
+      {{#each comments}}
+        {{> _comment}}
+      {{/each}}
+      {{#if isEditable}}
+        {{> commentSubmit squeak=me}}
+      {{/if}}
+    </div>
+  {{else}}
+    {{> notFound}}
+  {{/if}}
+</div>
+</template>

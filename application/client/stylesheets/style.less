@@ -1,0 +1,574 @@
+@swurple: #B955D3;
+@dark-swurple: darken(@swurple, 20%);
+@white: #FFFFFF;
+@slate: #47515b;
+@footer-height: 40px;
+
+* {
+  font-family: Lucida Grande, Lucida Sans Unicode, Lucida Sans, Geneva, Verdana, sans-serif;
+}
+
+a { 
+  color: @swurple;
+
+  &:focus { 
+    background-color: @white;
+    color: @swurple;
+  }
+  
+  &:hover { 
+    color: @dark-swurple;
+    font-weight: bold;
+  }
+
+  &.disabled { 
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+.centered { 
+  text-align: center;
+}
+
+.dark-swurple-border {
+  border-style: solid;
+  border-width: 2px;
+  border-color: @dark-swurple;
+  border-radius: 5px;
+}
+
+.dark-swurple-thin-border { 
+  .dark-swurple-border;
+  border-width: 1px;
+}
+
+.swurple-infill { 
+  .dark-swurple-border;
+
+  padding: 10px;
+  background-color: @swurple;
+}
+
+.deemphasized-text { 
+  font-size: 85%;
+  font-weight: lighter;
+  opacity: .7;
+}
+
+.entry-content { 
+  .dark-swurple-thin-border;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+html { 
+  position: relative;
+  min-height: 100%; // Fill the whole page
+}
+
+body { 
+  background-image: svg-gradient(to bottom, @dark-swurple, @swurple);
+  background-repeat: no-repeat;
+  padding-top: 75px; // Navbar offset
+  background-size: cover; // Cover the whole page
+  min-height: 100%; // Fill the whole page
+  margin-bottom: @footer-height;
+}
+
+
+.navbar-sw { 
+  background-color: @white;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: @dark-swurple;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  
+  a { 
+    color: @slate;
+  } 
+  
+  li a:hover { 
+    background-color: @white;
+    color: @swurple;
+    font-weight: bold;
+  }
+
+  li a:focus { 
+    background-color: @white; // otherwise it becomes grey when clicked
+  }
+
+  .current-route { 
+    background-color: @white;
+    color: darken(@slate, 20%);
+    font-weight: bold;
+  }
+}
+
+.nav .open > a { // When opening a nav dropdown, maintain white background and swurpliness, regardless of hover or selected state.
+  background-color: @white;
+  color: @swurple;
+
+  &:focus { 
+    background-color: @white;
+    color: @swurple;
+  }
+
+  &:hover { 
+    background-color: @white;
+    color: @swurple;
+  }
+}
+
+.dropdown-menu { 
+  padding: 5px 5px 5px 5px;
+}
+
+.btn-swurple { 
+  .swurple-infill;
+  color: @white;
+  
+  &:hover { 
+    background-color: @dark-swurple;
+    .dark-swurple-border;
+    color: @white;
+  }
+
+  .disabled { 
+    .swurple-infill;
+    color: @white;
+  }
+}
+
+.footer { 
+  background-color: @white;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: @dark-swurple;
+  padding: 10px;
+  width: 100vw;
+  margin: 0px;
+  position: absolute;
+  bottom: 0;
+  height: @footer-height;
+  
+  .footer-link-entry { 
+    padding-left: 20px;
+    padding-right: 20px;
+    vertical-align: middle;
+  }
+
+  #footer-links-left { 
+    padding-left: 5vw;
+  }
+
+  #copyright-notice { 
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  #footer-links-right { 
+    padding-right: 5vw;
+  }
+}
+
+#main {
+  background-color: @white;
+  padding: 0px 10px 10px 10px;
+  .dark-swurple-border;
+}
+
+h3.welcome { 
+  .centered;
+  font-style: bold;
+}
+
+.account-create-wrapper { 
+  .dark-swurple-thin-border;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px; 
+  margin-bottom: 10px;
+  padding: 15px;
+}
+
+hr { 
+  border-color: @swurple;
+  opacity: .5;
+}
+
+.new-account-input { 
+  margin-left: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.submission-meta { 
+  .deemphasized-text;
+}
+
+.squeak-content { 
+  h3 { 
+    margin-bottom: 0px; // smoosh the metadata right up on that.
+  }
+
+  p { 
+    margin-top: 15px; // separate from metadata
+  }
+
+  .row { 
+    margin-left: 10px;
+    margin-right: 10px;  
+  }
+
+  .squeak-counts { //is there some way to bring this to the bottom?
+    .deemphasized-text;
+  }
+
+  .squeak-bottom { // tighten up the spacing a little bit
+    margin-top: -15px;
+  }
+}
+
+.load-more { 
+  .centered;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 125%;
+}
+
+.axle-content { 
+  h3 { 
+    padding-left: 5px; // unsmoosh a bit
+  }
+
+  .axle-description { 
+    .deemphasized-text;
+    padding-left: 15px;
+  }
+}
+
+#axle-list > h3 { 
+  .centered;
+  font-weight: bold;
+}
+
+textarea { 
+  max-width: 100%; // don't allow people to resize the textarea outside of its container.
+}
+
+#user-update-form { 
+  .input-group { 
+    padding-top: 5px;
+    padding-bottom: 15px; // group the labels a little bit better
+  }
+}
+
+#squeak-info { 
+  .dark-swurple-thin-border;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  .squeak-component { 
+    padding: 0px 10px 20px 25px; // indent the information, but keep it close to its parent label and distinct from the next label
+  }
+  .squeak-bottom { // tighten up the spacing a little bit
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .squeak-counts { 
+    .deemphasized-text;
+  }
+  .squeak-axle-list { 
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+.tag { // axle tags
+  background-color: @swurple;
+  border-radius: 5px;
+}
+
+.axle-element { 
+  background-color: @swurple;
+  color: @white;
+  font-size: 85%;
+  border-radius: 5px;
+  a { 
+    padding: 5px; // this effectively adds padding to the parent
+    color: @white;
+    &:hover {
+      background-color: @dark-swurple;
+      color: @white;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+    } 
+  } 
+
+  &:hover { 
+    background-color: @dark-swurple;
+  }
+}
+
+.comments { 
+  padding: 25px; // visually distinguish comments section from the rest of the page by effectively block-quoting it.
+}
+
+.comment-text { 
+  label { 
+    .deemphasized-text;
+  }
+}
+
+.input-error-message { 
+  color: red;
+  font-size: 85%;
+  margin-left: 10px; // indent this a bit
+}
+
+.badge { 
+  background-color: @swurple;
+}
+
+.activity-un-acknowledged { 
+  .dark-swurple-border; // boldenate the border of any new activity
+}
+
+.squeak-edit-input { 
+  margin-bottom: 15px; 
+}
+
+#delete-squeak-div { 
+  padding-bottom: 30px;
+}
+
+.edit-previous-value { 
+  opacity: .7;
+}
+
+.squeak-edited { 
+  .deemphasized-text;
+}
+
+.workflow-state { 
+  .deemphasized-text;
+  padding-right: 10px;
+}
+
+.workflow-menu { 
+  padding-top: 10px;
+  padding-right: 5px;
+  vertical-align: center;
+  font-size: 150%;
+}
+
+.state-change-option { 
+  li a:hover { 
+    background-color: @white;
+    color: @swurple;
+    font-weight: bold;
+  }
+
+  li a:focus { 
+    background-color: @white; // otherwise it becomes grey when clicked
+  }
+}
+
+#squeak-motions { 
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.motion-meta { 
+  .deemphasized-text;
+}
+
+.squeak-motion { 
+  margin-bottom: 10px;
+  padding-left: 15px;
+}
+
+.motion-rejected { 
+  opacity: .85;
+}
+
+.activity-state-change { 
+  font-weight: bold;
+}
+
+.spinner-row { 
+  padding: 30px;
+}
+
+#get-started { 
+  padding-left: 15px;
+}
+
+#welcome-page { 
+  padding-top: 35vh;
+}
+
+.section { 
+  min-height: 100vh;
+  padding-bottom: 60px; // otherwise it can look really weird against the footer
+
+  &.odd { // every other one should have the swurple background and white writing.  
+    color: @white;
+
+    small { 
+      color: @white;
+    }
+
+    a { 
+      color: @white;
+      text-decoration: underline;
+    }
+
+    .jumbo-lite { 
+      background-color: darken(@swurple, 6.5%) // equivalent to jumbotron vs. white
+    }
+  }
+
+  &.even { 
+    background-color: @white; // every other section should be "normal"
+    .jumbo-lite { 
+      background-color: darken(@white, 6.5%); // jumbotron color
+    }
+  }
+
+  .text { 
+    padding-left: 15px; // indent text a little bit
+  }
+  
+  .section-content { 
+    h2 { 
+      text-align: center;
+    }
+  }
+
+  .jumbo-lite { // non-jumbotron headers
+      padding: 60px;
+      h1 { 
+        font-size: 300%;
+      }
+      
+      .text { 
+        font-size: 125%;
+      }
+
+      border-radius: 5px;
+      margin-bottom: 30px;
+    }
+
+  .content-links { 
+    text-align: center;
+  }
+}
+
+#tutorial-page { 
+  #tutorial-nav { 
+    padding-top: 50px;
+
+    #tutorial-nav-divider { 
+      text-align: center;
+    }
+  }
+
+  #tutorial-header { 
+    padding-bottom: 50px;
+    .tutorial-sub-header { 
+      padding-left: 30px;
+    }
+  }
+  
+  #squeak-info { 
+    line-height: .8;
+    font-size: 70%;
+    .submission-meta { 
+      font-size: 60%;
+      padding-top: 3px;
+    }
+  }
+
+  .standalone-row { // Create a row that stands just a bit apart from others
+    padding-top: 15px;
+    padding-bottom: 15px; 
+  }
+
+  #tutorial-search-page { 
+    #search-view { 
+      font-size: 80%;
+      width: 80%;
+    }
+  }
+
+  #tutorial-example-list { 
+    font-size: 80%;
+    width: 80%;
+  }
+
+  #tutorial-comment-submit-example { 
+    width: 80%;
+  }
+
+  .tutorial-example-row { 
+    position: absolute;
+    z-index: 10;
+    background-image: svg-gradient(to bottom, @white, @white); // make these opaque and have them sit on top of the example if necessary
+  }
+
+  /**
+   * Individual positions for each of the tutorial boxes
+   */
+  #tutorial-squeak-title-box { 
+    top: 60px;
+  }
+  #tutorial-squeak-description-text-box { 
+    top: 170px;
+  }
+  #tutorial-squeak-re-creation-text-box { 
+    top: 230px;
+  }
+  #tutorial-squeak-target-text-box { 
+    top: 270px;
+  }
+  #tutorial-squeak-axle-box { 
+    top: 320px;
+  }
+  #tutorial-squeak-watch-box { 
+    top: 320px; 
+    left: 450px;
+    width: 200px;
+  }
+  #tutorial-squeak-workflow-state-box { 
+    top: 10px;
+  }
+  #tutorial-squeak-edit-box { 
+    top: 250px;
+  }
+  #tutorial-squeak-vote-box { 
+    top: 320px;
+  }
+  #tutorial-c-squeak-title-box { 
+    top: 120px;
+  }
+  #tutorial-c-squeak-description-box { 
+    top: 160px;
+  }
+  #tutorial-c-squeak-re-creation-box { 
+    top: 240px;
+  }
+  #tutorial-c-squeak-target-box { 
+    top: 310px;
+  }
+  #list-example-label { 
+    padding-top: 15px;
+    padding-bottom: 0px;
+    margin-bottom: -15px;
+  }
+
+}

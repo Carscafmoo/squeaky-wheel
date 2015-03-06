@@ -1,0 +1,42 @@
+<template name='squeakWorkflowDropdown'>
+  <span class='dropdown'>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id='workflow-restriction-dropdown'>{{current}}<b class="caret"></b></a>
+    <ul class="header-view dropdown-menu">
+      {{#if needToDisplay 'a'}}
+        <li>
+          <a href="#" id='view-any-resolution-squeaks' class='squeak-list-workflow-link'>
+            {{text 'a'}}
+          </a>
+        </li>
+      {{/if}}
+      {{#if needToDisplay 's'}}
+        <li>
+          <a href="#" id='view-squeaky-squeaks' class='squeak-list-workflow-link'>
+            {{text 's'}}
+          </a>
+        </li>
+      {{/if}}
+      {{#if needToDisplay 'sh'}}
+        <li>
+          <a href="#" id='view-shop-squeaks' class='squeak-list-workflow-link'>
+            {{text 'sh'}}
+          </a>
+        </li>
+      {{/if}}
+      {{#if needToDisplay 'i'}}
+        <li>
+          <a href="#" id='view-inspection-squeaks' class='squeak-list-workflow-link'>
+            {{text 'i'}}
+          </a>
+        </li>
+      {{/if}}
+      {{#if needToDisplay 'g'}}
+        <li>
+          <a href="#" id='view-greased-squeaks' class='squeak-list-workflow-link'>
+            {{text 'g'}}
+          </a>
+        </li>
+      {{/if}}
+    </ul>
+  </span>
+</template>

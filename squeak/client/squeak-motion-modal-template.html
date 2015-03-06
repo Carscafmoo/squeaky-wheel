@@ -1,0 +1,33 @@
+<template name='squeakMotionModal'>
+  <div class="modal fade" id="squeak-motion-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="squeak-motion-title">Propose New Status</h4>
+        </div>
+        <div class="modal-body">
+          <form id='squeak-motion-modal-form'>
+            <label for='squeak-motion-modal-select'>New Status</label>
+            <select id='squeak-motion-modal-select' class='form-control'>
+              {{#each possibleStates}}
+                <option value='{{state}}'>{{state}}</option>
+              {{/each}}
+            </select>
+            <label for='squeak-motion-comment'>Reason</label>
+            <div class="controls  {{errorClass 'squeakMotionSubmit'}}">
+            <textarea name="squeak-motion-comment" id="squeak-motion-comment" class="form-control" rows="3"></textarea>
+              <span class='input-error-message'>{{errorMessage 'squeakMotionSubmit'}}</span>
+            </div>
+          </form>
+        </div><!-- modal-body-->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id='cancel-squeak-motion-button'>Cancel</button>
+          <button type="button" class="btn btn-swurple {{submitButtonClass}}" id='submit-squeak-motion-button'>
+            Submit
+          </button>
+        </div><!-- /.modal-footer-->
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</template>

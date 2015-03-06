@@ -1,0 +1,49 @@
+<template name='tutorialCreateSqueakPage'>
+  <div id='tutorial-create-squeak-page' class='col-xs-10 col-xs-offset-2'>
+    <p>
+      To create a Squeak, click the <strong>"{{createSqueakText}}" link</strong> in the page header, which will direct you to the new Squeak form:
+    </p>
+    <div class='row'>
+      <div class='col-xs-6' id='tutorial-example-create-squeak-label-column'>
+        <div class='row tutorial-example-row'  id='tutorial-c-squeak-title-box'>
+          <div class='col-xs-12'>
+            <p>
+              The Squeak's <strong>title</strong> should be short but not vague.
+            </p>
+          </div>
+        </div><!--squeak-description-box-row-->
+        <div class='row tutorial-example-row'  id='tutorial-c-squeak-description-box'>
+          <div class='col-xs-12'>
+            <p>
+              The Squeak's <strong>description</strong> should go into detail about the problem at hand.<br/>
+              <small>Using key words and phrases in the description makes the Squeak more searchable.</small>
+            </p>
+          </div>
+        </div><!--squeak-description-box-row-->
+        <div class='row tutorial-example-row'  id='tutorial-c-squeak-re-creation-box'>
+          <div class='col-xs-12'>
+            <p>
+              A detailed <strong>re-creation</strong> of how and when the problem is encountered. <br/><small>Be specific! A well-described problem is much easier to solve.</small>
+            </p>
+          </div>
+        </div><!--squeak-description-box-row-->
+        <div class='row tutorial-example-row'  id='tutorial-c-squeak-target-box'>
+          <div class='col-xs-12'>
+            <p>
+              Who is the <strong>target</strong> audience? <br/><small>Identifying a key demographic may better motivate potential problem solvers.</small>
+            </p>
+          </div>
+        </div><!--squeak-description-box-row-->
+      </div>
+      <div class='col-xs-6' id='tutorial-example-create-squeak-column'>
+        {{> createSqueakPage}}
+      </div>
+    </div><!--row-->
+    <div class='row'><!--padding-->
+      <div class='col-xs-12'>&nbsp;</div>
+    </div>
+    <p>
+      Before creating a Squeak, it's important to search for your problem on the site.  There's a chance it's already been solved, but more importantly, you'll be competing for votes (and therefore volume!) with any similar Squeaks that already exist.
+    </p>
+  </div>
+</template>

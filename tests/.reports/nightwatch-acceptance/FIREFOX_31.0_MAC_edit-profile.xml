@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="edit-profile"
+             errors="0"
+             failures="0"
+             tests="26">
+  
+  <testsuite errors="0" failures="0" hostname="" id=""
+    name="Edit Profile Page" package="edit-profile" skipped="0"
+    tests="26" time="" timestamp="">
+    
+    
+      <testcase name="Element &lt;body&gt; was visible after 123 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.welcome&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 65 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#login-buttons-edit-profile&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;div.has-error&gt; was present after 14 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.has-error .input-error-message&gt; contains text: &quot;User not found&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-list&gt; was present after 1372 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#login-dropdown-toggle&gt; contains text: &quot;Testy McGhee&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-edit-profile&gt; was visible after 26 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#user-update-form&gt; was visible after 26 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if the URL contains &quot;edit_profile&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute placeholder of &lt;#input-user-name&gt; equals &quot;Test Name Change&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute placeholder of &lt;#input-user-email&gt; equals &quot;TestEmail@gmail.com&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-password&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-password&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-password&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-password&gt; does not have css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-password&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-password&gt; does not have css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 56 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;h3.welcome&gt; was visible after 67 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if the URL contains &quot;edit_profile&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#input-user-name&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#input-user-email&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 26 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#user-update-form&gt; was visible after 1149 milliseconds.">
+        
+        
+      </testcase>
+    
+    
+    </testsuite>
+  
+</testsuites>

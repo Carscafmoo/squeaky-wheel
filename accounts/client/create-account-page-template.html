@@ -1,0 +1,34 @@
+<template name="createAccount">
+  {{setTitle "Squeaky Wheel / Register"}}
+  <div class='create-account'>
+    <h3 class='welcome' id='welcome-to-sw'>Welcome to Squeaky Wheel!</h3>
+    <hr/>
+    <label for='new-user-form'>Tell us about yourself...</label>
+    <form id="new-user-form" class="form">
+      <div class='new-account-input {{errorClass "newUserName"}}'>
+        <input id="new-user-name" type="text" placeholder="Full name (e.g., Jane Smith)" class="form-control">
+        <span class="input-error-message">{{errorMessage 'newUserName'}}</span>
+      </div>
+      <div class='new-account-input {{errorClass "newUserEmail"}}'>
+        <input id="new-user-email" type="text" placeholder="Preferred email" class="form-control">
+        <span class="input-error-message">{{errorMessage 'newUserEmail'}}</span>
+      </div>
+      <div class='new-account-input {{errorClass "newUserUsername"}}'>
+        <input id='new-username' type="text" placeholder="Username" class="form-control">
+        <span class="input-error-message">{{errorMessage 'newUserUsername'}}</span>
+      </div>
+      <div class='new-account-input {{errorClass "newPassword"}}'>  
+        <input id='new-password' type="password" placeholder="Password" class="form-control">
+        <span class="input-error-message">{{errorMessage 'newPassword'}}</span>
+      </div>
+      <div class='new-account-input {{errorClass "confirmPassword"}}'>  
+        <input id='confirm-password' type="password" placeholder="Confirm password" class="form-control">
+        <span class="input-error-message">{{errorMessage 'confirmPassword'}}</span>
+      </div>
+      <div class='new-account-input {{errorClass "submitNewUser"}}'>  
+        <button id="submit-new-user" class="btn btn-swurple {{submitNewUserClass}}" type="button">Create {{getPotentialUser}}</button>
+        <span class="input-error-message">{{errorMessage 'submitNewUser'}}</span>
+      </div>
+    </form>
+  </div>
+</template>

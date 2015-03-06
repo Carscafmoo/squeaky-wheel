@@ -1,0 +1,19 @@
+<template name='_activity'>
+  <div class='entry'>
+    <div class='entry-content activity-entry {{ackClass}}'>
+      <label class='activity-label'>
+        {{performer}} {{action}} 
+        {{#if linkText}}
+          <a class='watched-link {{linkClass}}' href="{{pathFor linkPath _id=linkId}}">{{linkText}}</a>
+        {{/if}}
+        {{postLinkText}}
+      </label>
+      {{#if template}}
+        {{> UI.dynamic template=template data=templateData}}
+      {{/if}}
+      <div class='activity-meta'>
+        <span class='submission-meta'>{{dateFormat activity.created}}</span>
+      </div>
+    </div>
+  </div>
+</template>

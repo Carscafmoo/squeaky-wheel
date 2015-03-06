@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="axle-view"
+             errors="0"
+             failures="0"
+             tests="11">
+  
+  <testsuite errors="0" failures="0" hostname="" id=""
+    name="Axle View" package="axle-view" skipped="10"
+    tests="11" time="" timestamp="">
+    
+    
+      <testcase name="Assertion passed: undefined">
+        
+        
+      </testcase>
+    
+    
+      <system-err>
+        Cannot read property &#39;assert&#39; of undefined
+      </system-err>
+    
+    </testsuite>
+  
+</testsuites>

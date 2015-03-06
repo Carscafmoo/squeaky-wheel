@@ -1,0 +1,34 @@
+<template name="createSqueakPage">
+  {{setTitle "Squeaky Wheel / Squeak"}}
+  <div id='create-squeak-page'>
+  <h3 class="welcome">Squeak!</h3>
+  <hr/>
+  <label for='new-squeak-form'>I wish there were...</label>
+  <form class="main form" id="new-squeak-form">
+    <div class="form-group">
+      <div class="controls">
+          <input name="title" id="title" type="text" value="" placeholder="Complete the sentence!" class="form-control new-squeak-input"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="controls">
+          <textarea name="description" id="description" type="text" value="" placeholder="WHAT problem(s) would this solve?" class="form-control new-squeak-input"></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="controls">
+        <textarea name="re-creation" id="re-creation" type="text" value="" placeholder="WHERE and WHEN have you noticed this issue?" class="form-control new-squeak-input"></textarea>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="controls">
+        <textarea name="target" id="target" type="text" value="" placeholder="WHO benefits from a solution?" class="form-control new-squeak-input"></textarea>
+      </div>
+    </div>
+    <div class="test {{errorClass 'submitSqueak'}}">
+      <input type="submit" value="Squeak" class="btn btn-swurple {{submitSqueakClass}}" id="submit-new-squeak"/>
+      <span class='input-error-message'>{{errorMessage 'submitSqueak'}}</span>
+    </div>
+  </form>
+  </div>
+</template>

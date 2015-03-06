@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="random-page"
+             errors="0"
+             failures="0"
+             tests="6">
+  
+  <testsuite errors="0" failures="0" hostname="" id=""
+    name="Random Page" package="random-page" skipped="0"
+    tests="6" time="" timestamp="">
+    
+    
+      <testcase name="Element &lt;body&gt; was visible after 111 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 32 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 22 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was visible after 89 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if the URL contains &quot;/squeak/&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;h3.welcome&gt; contains text: &quot;Mechanism for regulating the flow of automobiles at intersections&quot;.">
+        
+        
+      </testcase>
+    
+    
+    </testsuite>
+  
+</testsuites>

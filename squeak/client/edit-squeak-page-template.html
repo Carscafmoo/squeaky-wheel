@@ -1,0 +1,60 @@
+<template name='editSqueakPage'>
+  <div id='edit-squeak-page'>
+  <h3 class="welcome"><a href='{{pathFor "squeakPage" this}}'>{{title}}</a></h3>
+  <hr/>
+  <form class="main form" id="edit-squeak-form">
+    <label for='title'>Title</label>
+    <div class="input-group squeak-edit-input  {{errorClass 'editSqueaktitle'}}">
+      <span class="input-group-btn">
+        <button class="btn btn-default submit-update" type="button" field='title'>Update</button>
+      </span>
+      <input name="title" id="title" type="text" value="{{title}}" placeholder="Complete the sentence 'I wish there were...'" 
+        class="form-control input-group-value"/>
+    </div>
+    <div class='input-group-message' field='title'>
+      <span class="input-error-message">{{errorMessage 'editSqueaktitle'}}</span>
+      <span id="new-title-confirmation" class="alert-fade success"></span>
+    </div>
+    <label for='title'>Description</label>
+    <div class="input-group squeak-edit-input {{errorClass 'editSqueakdescription'}}">
+      <span class="input-group-btn">
+        <button class="btn btn-default submit-update" type="button" field='description'>Update</button>
+      </span>
+      <textarea name="description" id="description" type="text" value="{{description}}" placeholder="What problems would this solve?" 
+        class="form-control input-group-value"></textarea><!--input-group-value is used in the JS to find the value of the input-->
+    </div>
+    <div class='input-group-message' field='description'>
+      <span class="input-error-message">{{errorMessage 'editSqueakdescription'}}</span>
+      <span id="new-description-confirmation" class="alert-fade success"></span>
+    </div>
+    <label for='re-creation'>Setting</label>
+    <div class="input-group squeak-edit-input {{errorClass 'editSqueakreCreation'}}">
+      <span class="input-group-btn">
+        <button class="btn btn-default submit-update" type="button" field='reCreation'>Update</button>
+      </span>
+      <textarea name="re-creation" id="re-creation" type="text" value="{{reCreation}}" 
+        placeholder="Where and how have you noticed this issue?" class="form-control input-group-value"></textarea>
+    </div>
+    <div class='input-group-message' field='reCreation'>
+      <span class="input-error-message">{{errorMessage 'editSqueakreCreation'}}</span>
+      <span id="new-reCreation-confirmation" class="alert-fade success"></span>
+    </div>
+    <label for='target'>Target</label>
+    <div class="input-group squeak-edit-input {{errorClass 'editSqueaktarget'}}">
+      <span class="input-group-btn">
+        <button class="btn btn-default submit-update" type="button" field='target'>Update</button>
+      </span>
+      <textarea name="target" id="target" type="text" value="{{target}}" 
+        placeholder="Whom would a solution to this problem benefit?" class="form-control input-group-value"></textarea>
+    </div>
+    <div class='input-group-message' field='target'>
+      <span class="input-error-message">{{errorMessage 'editSqueaktarget'}}</span>
+      <span id="new-target-confirmation" class="alert-fade success"></span>
+    </div>
+    <div id='delete-squeak-div'>
+      <!--pull to right so people don't sorta accidentally hit it during regular submission process-->
+      <button class='btn btn-danger delete-button pull-right'>Delete</button>
+    </div>
+  </form>
+  </div>
+</template>

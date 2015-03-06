@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="create-squeak-page"
+             errors="0"
+             failures="0"
+             tests="13">
+  
+  <testsuite errors="0" failures="0" hostname="" id=""
+    name="Squeak Creation" package="create-squeak-page" skipped="0"
+    tests="13" time="" timestamp="">
+    
+    
+      <testcase name="Element &lt;body&gt; was visible after 159 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 55 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 26 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#new-squeak-form&gt; was visible after 31 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if the URL contains &quot;/create_squeak&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-squeak&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if the URL contains &quot;/create_squeak&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-squeak&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-squeak&gt; does not have css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was visible after 27 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if the URL contains &quot;/squeak/&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.squeak-edit-input&gt; was visible after 34 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-list&gt; was visible after 299 milliseconds.">
+        
+        
+      </testcase>
+    
+    
+    </testsuite>
+  
+</testsuites>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="create-account-page"
+             errors="0"
+             failures="0"
+             tests="22">
+  
+  <testsuite errors="0" failures="0" hostname="" id=""
+    name="Create Account Page" package="create-account-page" skipped="0"
+    tests="22" time="" timestamp="">
+    
+    
+      <testcase name="Element &lt;body&gt; was visible after 2386 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.welcome&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.welcome a&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.welcome a&gt; contains text: &quot;create an account&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 118 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#login-other-options a&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#login-other-options&gt; contains text: &quot;Create account&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#new-username&gt; was visible after 38 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if the URL contains &quot;create_account&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-user&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-user&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;div.has-error&gt; was present after 28 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.has-error .input-error-message&gt; contains text: &quot;Password must be&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.has-error&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-user&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-user&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-user&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-user&gt; does not have css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-user&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-user&gt; does not have css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#tutorial-header&gt; was visible after 1188 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#login-dropdown-toggle&gt; contains text: &quot;Nightwatch Test User&quot;.">
+        
+        
+      </testcase>
+    
+    
+    </testsuite>
+  
+</testsuites>

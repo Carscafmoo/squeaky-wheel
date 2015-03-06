@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="axle-view"
+             errors="0"
+             failures="0"
+             tests="14">
+  
+  <testsuite errors="0" failures="0" hostname="" id=""
+    name="Axle View" package="axle-view" skipped="0"
+    tests="14" time="" timestamp="">
+    
+    
+      <testcase name="Element &lt;body&gt; was visible after 173 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 36 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-list&gt; was present after 4483 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#axle-list&gt; was visible after 363 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#axle-list div.axle-list:nth-child(3)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#axle-list div.axle-list:nth-child(12)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#axle-list div.axle-list:nth-child(13)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#axle-list div.axle-list:nth-child(13)&gt; was present after 213 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;div.squeak-list&gt; was present after 140 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;div.squeak-list div.squeak:nth-child(3)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;div.squeak-list div.squeak:nth-child(12)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;div.squeak-list div.squeak:nth-child(13)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;h3.welcome&gt; contains text: &quot;Test Axle&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;div.squeak-list div.squeak:nth-child(13)&gt; was present after 71 milliseconds.">
+        
+        
+      </testcase>
+    
+    
+    </testsuite>
+  
+</testsuites>

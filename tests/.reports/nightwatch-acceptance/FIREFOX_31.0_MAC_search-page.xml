@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="search-page"
+             errors="0"
+             failures="0"
+             tests="69">
+  
+  <testsuite errors="0" failures="0" hostname="" id=""
+    name="Search Page" package="search-page" skipped="0"
+    tests="69" time="" timestamp="">
+    
+    
+      <testcase name="Element &lt;body&gt; was visible after 123 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute disabled of &lt;#header-search-input&gt; equals &quot;true&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-header-search&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 38 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 46 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#new-squeak-form&gt; was visible after 27 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 33 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 29 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 29 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 23 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-header-search&gt; does not have css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Assertion passed: undefined">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was present after 56 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 39 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 45 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 42 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 20 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was present after 15 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.easy-search&gt; was visible after 27 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute disabled of &lt;#header-search-input&gt; equals &quot;true&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-header-search&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if value of &lt;.easy-search&gt; equals: &quot;e&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if value of &lt;#submit-header-search&gt; equals: &quot;&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.squeak-content&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view div.squeak-entry:nth-child(4)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view div.squeak-entry:nth-child(14)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.load-more&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.load-more&gt; contains text: &quot;(11 -&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.load-more&gt; contains text: &quot; of &quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view div.squeak-entry:nth-child(15)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute checked of &lt;.search-option-checkbox[option=Titles]&gt; equals &quot;true&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute checked of &lt;.search-option-checkbox[option=Descriptions]&gt; equals &quot;true&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute checked of &lt;.search-option-checkbox[option=Comments]&gt; equals &quot;true&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute checked of &lt;.search-option-checkbox[option=People]&gt; equals &quot;true&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view div.squeak-entry:nth-child(15)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view div.squeak-entry:nth-child(15)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.input-error-message&gt; contains text: &quot;at least one field&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view div.squeak-entry:nth-child(15)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view div.squeak-entry:nth-child(15)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.load-more&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view div.squeak-entry:nth-child(5)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.none-found&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.none-found&gt; contains text: &quot;No results&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view div.squeak-entry:nth-child(4)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view div.squeak-entry:nth-child(4) h3&gt; contains text: &quot;Nightwatch&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view div.squeak-entry:nth-child(5)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view div.squeak-entry:nth-child(4)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view div.squeak-entry:nth-child(4)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view div.squeak-entry:nth-child(4) h3&gt; contains text: &quot;Nightwatch&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view div.squeak-entry:nth-child(4)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view div.squeak-entry:nth-child(4) h3&gt; contains text: &quot;Nightwatch&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view div.squeak-entry:nth-child(4)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view div.squeak-entry:nth-child(4) h3&gt; contains text: &quot;Nightwatch&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view&gt; contains text: &quot;Nightwatch Test Squeak&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was visible after 59 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Assertion passed: undefined">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-header-search&gt; does not have css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#search-view&gt; was visible after 31 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Assertion passed: undefined">
+        
+        
+      </testcase>
+    
+      <testcase name="Assertion passed: undefined">
+        
+        
+      </testcase>
+    
+      <testcase name="Assertion passed: undefined">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute checked of &lt;.search-option-checkbox[option=People]&gt; equals &quot;true&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 28 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 29 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 27 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 12 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was present after 17 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.squeak-edit-input&gt; was visible after 26 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-list&gt; was visible after 386 milliseconds.">
+        
+        
+      </testcase>
+    
+    
+    </testsuite>
+  
+</testsuites>

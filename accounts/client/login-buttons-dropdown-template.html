@@ -1,0 +1,15 @@
+<template name="loginButtonsDropdown">
+  <li id="login-buttons-dropdown" class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" id="login-dropdown-toggle">
+      {{loginButtonText}}
+      <b class="caret"></b>
+    </a>
+    <div class="dropdown-menu">
+    {{#if currentUser}}
+      {{> logoutButtons}}
+    {{else}}
+      {{> loginButtons}}
+    {{/if}}
+    </div>
+  </li>
+</template>

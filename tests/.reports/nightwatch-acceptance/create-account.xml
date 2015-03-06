@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="create-account"
+             errors="0"
+             failures="0"
+             tests="31">
+  
+  <testsuite errors="0" failures="0" hostname="" id=""
+    name="Create Account Page" package="create-account" skipped="31"
+    tests="31" time="" timestamp="">
+    
+    
+    
+      <system-err>
+        pause is not defined
+      </system-err>
+    
+    </testsuite>
+  
+</testsuites>

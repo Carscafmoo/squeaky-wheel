@@ -1,0 +1,15 @@
+<template name='tutorialCompletePage'>
+  <div id='tutorial-complete' class='col-xs-10 col-xs-offset-2'>
+    <h2>Congratulations!</h2>
+    <p>
+      You're now an expert in Squeaks, Axles, and the other important elements of Squeaky Wheel.  Remember that you can revisit this tutorial at any time clicking the "{{tutorialLink}}" link at the bottom of the page.
+    </p>
+    <p>
+      {{#if currentUser}}
+        Let's <a href="{{pathFor 'home'}}">get started</a>!
+      {{else}}
+        To get started, log in or <a href="{{pathFor 'createAccount'}}">create an account</a>.
+      {{/if}}
+    </p>
+  </div>
+</template>

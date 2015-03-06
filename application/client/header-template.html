@@ -1,0 +1,74 @@
+<head><!--icon info-->
+  <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+<template name="header">
+  <nav class="navbar navbar-sw navbar-fixed-top" role="navigation" id='header-navbar'>
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{{pathFor 'home'}}" id="header-logo">
+          <img src='/img/logo.svg' height='300%' alt='Squeaky Wheel'>
+        </a>
+      </div>
+      <div class="collapse navbar-collapse" id="navigation">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="{{pathFor 'createSqueakPage'}}" id='new-squeak' class="{{activeRouteClass 'createSqueakpage'}}">
+              Squeak!<br><small>Be Heard</small>
+            </a>
+          </li>
+          <li>
+            <a href="{{pathFor 'squeakList'}}" class="{{activeRouteClass 'squeakList' 'home'}}" id='view-squeaks'>Squeaks</a>
+          </li>
+          <li>
+            <a href="{{pathFor 'axleList'}}" id="view-axles" class="{{activeRouteClass 'axleList'}}">Axles</a>
+          </li>
+          <li>
+            <a href="{{pathFor 'randomView'}}" id="view-random" class="{{activeRouteClass 'randomView'}}">Random</a>
+          </li>
+          <li>
+            <a href="{{pathFor 'activityList'}}" id="view-activity" class="{{activeRouteClass 'activityList'}}">
+              Activity {{> notificationBadge}}
+            </a>
+          </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <form class="navbar-form navbar-left" role="search" id='header-search-form'>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default {{searchDisabled}}" id="submit-header-search">
+                      <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                  </span>
+                  <input type="text" class="form-control" placeholder="search..." id="header-search-input" {{searchDisabled}}>
+                </div>
+              </div>
+            </form>
+          {{> loginButtonsDropdown}}
+        </ul>
+      </div>
+    </div>
+  </nav>
+</template>

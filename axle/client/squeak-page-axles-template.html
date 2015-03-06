@@ -1,0 +1,9 @@
+<template name="squeakPageAxles">
+  {{#if isTaggable}}
+    <input id="axle-input" type="text" value="{{getAxlesForTags}}" data-role="tagsinput" class="axlestag typeahead" squeak="{{_id}}" data-source="axles">
+  {{else}}
+    {{#each getAxles}}
+      <span class='axle-element'><a href="{{pathFor 'squeakList'}}">{{name}}</a></span>
+    {{/each}}
+  {{/if}}
+</template>

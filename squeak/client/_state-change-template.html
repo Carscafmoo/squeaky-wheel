@@ -1,0 +1,16 @@
+<template name='_stateChange'>
+  from 
+  <span class='activity-state-change'>'{{previousState}}'</span> 
+  to 
+  <span class='activity-state-change'>'{{newState}}'</span>
+  {{#if extras.reason}}
+    with reason 
+    <span class='activity-state-change'>'{{extras.reason}}'</span>
+  {{/if}}
+  {{#if extras.solution}}
+    with proposed solution...
+    <div class='state-change-proposed-solution well'>
+      {{extras.solution}}
+    </div>
+  {{/if}}  
+</template>

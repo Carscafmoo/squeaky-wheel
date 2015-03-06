@@ -1,0 +1,17 @@
+<template name='sortSqueaksDropdown'>
+  <span class='dropdown'>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id='sort-squeaks-dropdown'>{{current}}<b class="caret"></b></a>
+    <ul class="dropdown-menu">
+    {{#if needToDisplay 'n'}}
+      <li>
+        <a href="#" id='view-newest-squeaks' class="squeak-list-sorting-link">{{text 'n'}}</a>
+      </li>
+    {{/if}}
+    {{#if needToDisplay 'v'}}
+      <li>
+        <a href="#" id='view-loudest-squeaks' class="squeak-list-sorting-link">{{text 'v'}}</a>
+      </li>
+    {{/if}}
+    </ul>
+  </span>
+</template>

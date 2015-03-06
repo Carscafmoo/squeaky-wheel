@@ -1,0 +1,12 @@
+<template name='commentSubmit'>
+  <form name="comment" class="comment-form form">
+    <div class="form-group">
+        <div class="controls  {{errorClass errorType}}">
+            <label for="{{type}}-comment-submit-input">Comment on this {{whatami}}</label>
+            <textarea name="body" id="{{type}}-comment-submit-input" class="form-control comment-submit-input" rows="3"></textarea>
+            <span class='input-error-message'>{{errorMessage errorType}}</span>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-swurple {{commentSubmitClass}}" id="{{type}}-submit-comment">Add Comment</button>
+  </form>
+</template>

@@ -1,0 +1,51 @@
+<template name='tutorialCommentsPage'>
+  <div id='tutorial-comments-page' class='col-xs-10 col-xs-offset-2'>
+    <p>
+      <strong>Discussion</strong> is an essential component in moving a Squeak through its life cycle from Squeaky to Greased.  Any member can weigh in on the Squeak by using the <strong>comment form</strong> found on the Squeak page:
+    </p>
+    <div class='container' id='tutorial-comment-submit-example'>
+      <div class='row'>
+        <div class='col-xs-10 col-xs-offset-2'>
+          {{> commentSubmit}}
+        </div>
+      </div>
+    </div><!--comment example-->
+    <div class='row standalone-row'>
+      <div class='col-xs-12'>
+        <p><strong>Comments</strong> can be used to ask for or provide clarification:</p>
+      </div>
+    </div>
+    <div class='row tutorial-comment-row' id='tutorial-clarification-question-comment'>
+      <div class='col-xs-10 col-xs-offset-2'>
+        {{> _comment clarificationQuestionExample}}
+      </div>
+    </div>
+    <div class='row tutorial-comment-row' id='tutorial-clarification-answer-comment'>
+      <div class='col-xs-10 col-xs-offset-2'>
+        {{> _comment clarificationAnswerExample}}
+      </div>
+    </div>
+    <div class='row standalone-row'>
+      <div class='col-xs-12'>
+        <p>They can also be used to move or vote for a change in <strong>workflow state:</strong></p>
+      </div>
+    </div>
+    <div class='row tutorial-comment-row' id='tutorial-workflow-request-comment'>
+      <div class='col-xs-10 col-xs-offset-2'>
+        {{> _comment workflowRequestExample}}
+      </div>
+    </div>
+    <div class='row tutorial-comment-row' id='tutorial-workflow-response-comment'>
+      <div class='col-xs-10 col-xs-offset-2'>
+        {{> _comment workflowResponseExample}}
+      </div>
+    </div>
+    <div class='row standalone-row'>
+      <div class='col-xs-12'>
+        <p>
+          Remember that the <a href="{{pathFor 'communityGuidelinesPage'}}">Community Guidelines</a> apply to all aspects of Squeaky Wheel, including discussions.
+        </p>
+      </div>
+    </div>
+  </div>
+</template>

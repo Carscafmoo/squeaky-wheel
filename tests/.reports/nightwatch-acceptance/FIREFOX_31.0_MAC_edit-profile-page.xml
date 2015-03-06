@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="edit-profile-page"
+             errors="0"
+             failures="0"
+             tests="28">
+  
+  <testsuite errors="0" failures="0" hostname="" id=""
+    name="Edit Profile Page" package="edit-profile-page" skipped="0"
+    tests="28" time="" timestamp="">
+    
+    
+      <testcase name="Element &lt;body&gt; was visible after 126 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.welcome&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 33 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#login-buttons-edit-profile&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;div.has-error&gt; was present after 1105 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.has-error .input-error-message&gt; contains text: &quot;User not found&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-list&gt; was present after 1214 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#login-dropdown-toggle&gt; contains text: &quot;John Doe&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-edit-profile&gt; was visible after 33 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#user-update-form&gt; was visible after 42 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if the URL contains &quot;edit_profile&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute placeholder of &lt;#input-user-name&gt; equals &quot;Test Name Change&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute placeholder of &lt;#input-user-email&gt; equals &quot;TestEmail@gmail.com&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-password&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-password&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-password&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-password&gt; does not have css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-password&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-new-password&gt; does not have css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 32 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 33 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if the URL contains &quot;welcome&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#input-user-name&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#input-user-email&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 31 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-edit-profile&gt; was visible after 60 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#user-update-form&gt; was visible after 31 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if the URL contains &quot;edit_profile&quot;.">
+        
+        
+      </testcase>
+    
+    
+    </testsuite>
+  
+</testsuites>

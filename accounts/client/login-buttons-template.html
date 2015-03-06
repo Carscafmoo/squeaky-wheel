@@ -1,0 +1,15 @@
+<template name="loginButtons">
+  <form id="login-form" class="form">
+    <input id="login-username" type="text" placeholder="Username" class="form-control">
+    <input id="login-password" type="password" placeholder="Password" class="form-control">
+    <div class="{{errorClass 'loginButtonsPassword'}}">
+      <button class="btn btn-swurple col-xs-12 col-sm-12" id="login-buttons-password" type="button">
+        Sign in
+      </button>
+      <span class="input-error-message">{{errorMessage 'loginButtonsPassword'}}</span>
+    </div>
+  </form>
+  <div id="login-other-options">
+    <a id="signup-link" class="pull-right" href="{{pathFor 'createAccount'}}">Create account</a>
+  </div>  
+</template>

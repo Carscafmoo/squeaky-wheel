@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="edit-profile"
+             errors="0"
+             failures="0"
+             tests="35">
+  
+  <testsuite errors="0" failures="0" hostname="" id=""
+    name="Edit Profile Page" package="edit-profile" skipped="35"
+    tests="35" time="" timestamp="">
+    
+    
+    
+      <system-err>
+        Object #&lt;Object&gt; has no method &#39;clck&#39;
+      </system-err>
+    
+    </testsuite>
+  
+</testsuites>

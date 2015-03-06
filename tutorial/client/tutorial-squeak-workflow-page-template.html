@@ -1,0 +1,38 @@
+<template name='tutorialSqueakWorkflowPage'>
+  <div id='tutorial-squeak-resolution-page' class='col-xs-10 col-xs-offset-2'>
+    <p>
+      There are four <strong>workflow states</strong> for a Squeak:
+    </p>
+      <dl class='dl-horizontal'>
+        {{#each workflowExplanations}}
+          <dt>{{state}}</dt>
+          <dd>{{explanation}}</dd>
+        {{/each}}
+      </dl>
+      <div class='row standalone-row'>
+        <div class='col-xs-9'>
+          <p>
+            Users can move a Squeak from one state to another by clicking on the workflow state dropdown:
+          </p>
+      </div>
+      <div class='col-xs-3'>
+      {{> workflowMenu exampleSqueak}}
+      </div>
+    </div><!--row-->
+    <p>
+      Any community member can become the <strong>Mechanic</strong> working on the Squeak by <strong>taking the Squeak to the shop</strong>.  Once there, only the Mechanic can remove the Squeak from the shop by <strong>giving up</strong> or <strong>proposing a solution</strong>.  The Squeak's original author can <strong>accept</strong> or <strong>reject</strong> the Mechanic's solution once the Mechanic has proposed one.  
+    </p>
+    <p>
+      The Squeak can be moved into the <strong>greased</strong> state for one of a number of reasons:
+    </p>
+      <dl class='dl-horizontal'>
+        {{#each greasedExplanations}}
+          <dt>{{reason}}</dt>
+          <dd>{{explanation}}</dd>
+        {{/each}}
+      </dl>
+    <p>
+      Once the Squeak has been greased, the Squeak is no longer editable, and <strong>discussion</strong> ends.
+    </p>
+  </div>
+</template>

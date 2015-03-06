@@ -1,0 +1,22 @@
+<template name='whichSqueaksDropdown'>
+  <span class='dropdown'>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id='which-squeaks-dropdown'>{{current}}<b class="caret"></b></a>
+    <ul class="dropdown-menu">
+    {{#if needToDisplay 'a'}}
+      <li>
+        <a href="#" id='view-all-squeaks' class="squeak-list-which-link">{{text 'a'}}</a>
+      </li>
+    {{/if}}
+    {{#if needToDisplay 'm'}}
+      <li>
+        <a href="#" id='view-my-squeaks' class="squeak-list-which-link">{{text 'm'}}</a>
+      </li>
+    {{/if}}
+    {{#if needToDisplay 'w'}}
+      <li>
+        <a href="#" id='view-watched-squeaks' class="squeak-list-which-link">{{text 'w'}}</a>
+      </li>
+    {{/if}}
+    </ul>
+  </span>
+</template>

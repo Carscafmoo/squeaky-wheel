@@ -1,0 +1,35 @@
+<template name='tutorialPage'>
+  <div class='section even' id='tutorial-page'>
+    <div class='container tutorial-grid'>
+      <div class='row'>
+        <div class='col-xs-12' id='tutorial-header'>
+          <h1>Tutorial:<br/><small><span id='tutorial-sub-header' class='tutorial-sub-header'>{{headerText}}</span></small></h1>
+        </div><!--tutorial-header-->
+      </div><!--row-->
+      <div class='row'>
+        {{> Template.dynamic template=hashTemplate}}
+      </div><!--row-->
+      <div class='row' id='tutorial-nav'>
+        <div class='col-xs-5 tutorial-page-nav' id='tutorial-previous-page-div'>
+          {{#if hasPrevious}}
+            <a href='#{{previousHash}}' class='pull-right tutorial-nav-link' id='tutorial-previous-page'>
+              <button class='btn btn-default'><span class='glyphicon glyphicon-chevron-left'></span></button>
+              Previous: {{previousPage}}
+            </a>
+          {{/if}}
+        </div><!--previous page-->
+        <div class='col-xs-2' id='tutorial-nav-divider'>
+          <!--Filler-->
+        </div>
+        <div class='col-xs-5 tutorial-page-nav' id='tutorial-next-page-div'>
+          {{#if hasNext}}
+            <a href="#{{nextHash}}" class='tutorial-nav-link' id='tutorial-next-page'>
+              <button class='btn btn-default'><span class='glyphicon glyphicon-chevron-right'></span></button>
+              Next: {{nextPage}}
+            </a>
+          {{/if}}
+        </div><!--next button-->
+      </div><!--row-->
+    </div><!--container-->
+  </div><!--tutorial-page-->
+</template>

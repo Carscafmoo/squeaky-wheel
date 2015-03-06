@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="squeak-list"
+             errors="0"
+             failures="0"
+             tests="84">
+  
+  <testsuite errors="0" failures="0" hostname="" id=""
+    name="Squeak List Views" package="squeak-list" skipped="0"
+    tests="84" time="" timestamp="">
+    
+    
+      <testcase name="Element &lt;body&gt; was visible after 197 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.welcome&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 45 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 64 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-list&gt; was present after 4237 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.squeak-list&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;h3.welcome&gt; contains text: &quot;Viewing all&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;h3.welcome&gt; contains text: &quot;sorted by volume&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;h3.welcome&gt; contains text: &quot;in any state&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if value of &lt;#axle-restriction-input&gt; equals: &quot;&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(3)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(3) .workflow-state&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(3) .workflow-state&gt; contains text: &quot;Greased&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(12)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(13)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-list div.squeak-entry:nth-child(13)&gt; was present after 2727 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if the URL contains &quot;/20&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(3)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#view-newest-squeaks&gt; was visible after 84 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#view-loudest-squeaks&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#view-loudest-squeaks&gt; was visible after 32 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#view-newest-squeaks&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;h3.welcome&gt; contains text: &quot;recency&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(3) h3&gt; contains text: &quot;Make everything better&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(13) h3&gt; contains text: &quot;Faster production&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(13) h3&gt; contains text: &quot;Faster production&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(3) h3&gt; contains text: &quot;Faster production&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;h3.welcome&gt; contains text: &quot;volume&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(3) h3&gt; contains text: &quot;Faster production&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(3) h3&gt; contains text: &quot;Make everything better&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(12) h3&gt; contains text: &quot;Preventing humans&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#view-all-squeaks&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;h3.welcome&gt; contains text: &quot;watched&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(3) h3&gt; contains text: &quot;Reducing your mother&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(4)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#view-all-squeaks&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#view-watched-squeaks&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.squeak-entry&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(3)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(5)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;h3.welcome&gt; contains text: &quot;my&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(3) h3&gt; contains text: &quot;Reducing your mother&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(4)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 38 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 66 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 39 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 88 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-list&gt; was visible after 1754 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(3)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 73 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 61 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 99 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 72 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#new-squeak-form&gt; was visible after 35 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 49 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 150 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 34 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 45 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;h3.welcome&gt; contains text: &quot;Viewing all&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;h3.welcome&gt; contains text: &quot;sorted by volume&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;h3.welcome&gt; contains text: &quot;in any state&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#view-any-resolution-squeaks&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(3) h3&gt; contains text: &quot;Nightwatch Test&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was present after 15 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#submit-state-change-button&gt; was visible after 551 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(3)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#view-squeaky-squeaks&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#view-any-resolution-squeaks&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(3) h3&gt; contains text: &quot;Nightwatch Test Squeak&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(5)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was visible after 37 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#submit-state-change-button&gt; was visible after 552 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(4)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(3) h3&gt; contains text: &quot;Repository&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#view-shop-squeaks&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.squeak-content&gt; was visible after 59 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(3)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(4)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was visible after 38 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#submit-state-change-button&gt; was visible after 569 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(3)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#view-inspection-squeaks&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.squeak-content&gt; was visible after 74 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div.squeak-entry:nth-child(3)&gt; is present.">
+        
+        
+      </testcase>
+    
+    
+    </testsuite>
+  
+</testsuites>

@@ -1,0 +1,27 @@
+<template name="axleList">
+  {{setTitle "Squeaky Wheel / Axles"}}
+  <div id='axle-list'>
+    <h3 class='welcome'>
+      <form class='form-inline' id='axle-search-form'><!--Make this be in-line rather than taking up a whole row-->
+        Viewing {{> esInput index=searchIndex placeholder="all" class="easy-search form-control" allDocsOnEmpty=true}} Axles
+        sorted by {{> sortAxlesDropdown}}
+      </form>
+    </h3>
+    <hr>
+    {{#ifEsIsSearching index=searchIndex}}
+      <div class='spinner-row'><!-- Stretch this a bit to actually put the spinner inside the container -->
+        {{> spinner}}
+      </div>
+    {{else}}
+      {{#ifEsHasNoResults index=searchIndex}}
+        <h3 class="none-found">No results found.</h3>
+      {{/ifEsHasNoResults}}
+      {{#esEach index=searchIndex}}
+        {{> _axle}}
+      {{/esEach}}
+      {{#if hasMore}}
+        <div class='row load-more'><a href="#">{{loadMoreText}}</a></div>
+      {{/if}}
+    {{/ifEsIsSearching}}
+  </div>
+</template>

@@ -1,0 +1,40 @@
+<template name='tutorialActivityListPage'>
+  <div id='tutorial-activity-list' class='col-xs-10 col-xs-offset-2'>
+    <p>
+      <strong>Notifications</strong> are generated whenever anyone performs an action on a Squeak or Axle you're <strong>watching</strong>.  When you have unread notifications, the <strong>notification badge {{> notificationBadge}}</strong> will display the number of unread notifications you have.
+    </p>
+    <p>
+      You can view your notifications by clicking the <strong>"Activity" link</strong> in the page header.
+    </p>
+    <div class='container'>
+      <div class='row'>
+         <div id='tutorial-example-list' class='col-xs-12'>
+          {{> activityList data=exampleData}}
+        </div>
+      </div><!--row-->
+    </div>
+    <div class='row'>
+      <div class='col-xs-12'>&nbsp;</div>
+    </div><!--filler-->
+    <div class='row'>
+      <p>
+        You can sign up to receive notifications about Squeaks or Axles.  Look for the 
+          <button class='btn btn-default disabled'><span class='glyphicon glyphicon-eye-open'></span></button> button to start watching.
+      </p>
+      <p>
+        Watching an Axle will trigger notifications if a Squeak is added to or removed from that Axle, and watching a Squeak will trigger notifications if the Squeak is edited, a user discusses that Squeak, or if its <strong>workflow state</strong> changes.
+      </p>
+    </div>
+  </div>
+</template>
+<!--I'm breaking with tradition here to have these two templates be defined in this file since it's the only place they're used-->
+<template name='tutorial-activity-example-ack'>
+  <div class='tutorial-activity-example-ack well'>
+    <p>This notification has already been read</p>
+  </div>
+</template>
+<template name='tutorial-activity-example-unack'>
+  <div class='tutorial-activity-example-unack well'>
+    <p>This notification has not yet been read</p>
+  </div>
+</template>

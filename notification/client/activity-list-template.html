@@ -1,0 +1,17 @@
+<template name="activityList">
+  {{setTitle 'Squeaky Wheel / Activity'}}
+  <div id='activity-list'>
+    <h3 class='welcome'>Recent Activity</h3>
+    <hr>
+    {{#if data.length}}
+      {{#each data}}
+        {{> _activity}}
+      {{/each}}
+      {{#if nextPath}}
+        {{> loadMoreLink}}
+      {{/if}}
+    {{else}}
+      <h3 class='none-found'>No recent activity.</h3>
+    {{/if}}
+  </div>
+</template>

@@ -1,0 +1,20 @@
+<template name='squeakMotionDiscussionModal'>
+<div class="modal fade" id="squeak-motion-discussion-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="squeak-motion-discussion-title">{{getTitle}}</h4>
+      </div>
+      <div class="modal-body">
+        {{#each comments}}
+          {{> _comment}}
+        {{/each}}
+        {{#if isCommentable}}
+          {{> commentSubmit motion=me}}
+        {{/if}}
+      </div><!-- modal-body-->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</template>

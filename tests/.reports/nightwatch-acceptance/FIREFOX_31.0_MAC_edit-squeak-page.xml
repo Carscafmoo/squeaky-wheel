@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="edit-squeak-page"
+             errors="0"
+             failures="0"
+             tests="60">
+  
+  <testsuite errors="0" failures="0" hostname="" id=""
+    name="Edit Squeak Page" package="edit-squeak-page" skipped="0"
+    tests="60" time="" timestamp="">
+    
+    
+      <testcase name="Element &lt;body&gt; was visible after 115 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 34 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 35 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#new-squeak-form&gt; was visible after 32 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 38 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 120 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 29 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 19 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was present after 19 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 50 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 46 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 42 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 33 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was present after 27 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was visible after 30 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.squeak-edit-input&gt; was visible after 28 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.input-group-message[field=title] span.input-error-message&gt; contains text: &quot;cannot be empty&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.input-group-message[field=description] span.input-error-message&gt; contains text: &quot;cannot be empty&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.input-group-message[field=reCreation] span.input-error-message&gt; contains text: &quot;cannot be empty&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.input-group-message[field=target] span.input-error-message&gt; contains text: &quot;cannot be empty&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-page&gt; was visible after 27 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-page&gt; contains text: &quot;Test new description&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-page&gt; contains text: &quot;Test new re-creation&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-page&gt; contains text: &quot;Test new target&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#description-edited&gt; contains text: &quot;Edited&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#target-edited&gt; contains text: &quot;Edited&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#re-creation-edited&gt; contains text: &quot;Edited&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;h3.welcome&gt; contains text: &quot;Edited Nightwatch Test Squeak&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#activity-list&gt; was visible after 45 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(3) .activity-label&gt; contains text: &quot;You changed the target&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(3) .edit-new-value&gt; contains text: &quot;Test new target&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(3) .edit-previous-value&gt; contains text: &quot;The developers&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(4) .activity-label&gt; contains text: &quot;You changed the reCreation&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(4) .edit-new-value&gt; contains text: &quot;Test new re-creation&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(4) .edit-previous-value&gt; contains text: &quot;this test&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(5) .activity-label&gt; contains text: &quot;You changed the description&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(5) .edit-new-value&gt; contains text: &quot;Test new description&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(5) .edit-previous-value&gt; contains text: &quot;Nightwatch testing&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(6) .activity-label&gt; contains text: &quot;You changed the title&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(6) .edit-new-value&gt; contains text: &quot;Edited Nightwatch Test Squeak&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(6) .edit-previous-value&gt; contains text: &quot;Nightwatch Test Squeak&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 148 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 31 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 32 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 28 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#activity-list&gt; was visible after 28 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(3) .activity-label&gt; contains text: &quot;John Doe changed the target&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(4) .activity-label&gt; contains text: &quot;John Doe changed the reCreation&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(5) .activity-label&gt; contains text: &quot;John Doe changed the description&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(6) .activity-label&gt; contains text: &quot;John Doe changed the title&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 27 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 29 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 32 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 25 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-list&gt; was visible after 107 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-page&gt; was visible after 53 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.squeak-edit-input&gt; was visible after 84 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if the URL contains &quot;edit_squeak/&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-list&gt; was visible after 555 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list div:nth-child(1) h3&gt; contains text: &quot;Make everything better&quot;.">
+        
+        
+      </testcase>
+    
+    
+    </testsuite>
+  
+</testsuites>

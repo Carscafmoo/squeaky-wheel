@@ -1,0 +1,75 @@
+<template name='squeakInfo'>
+  <div id='squeak-info'>
+    <div class='row'>
+      <div class='col-xs-12'>
+        <span class='pull-right workflow-menu'>
+          {{> workflowMenu}}
+        </span>
+      </div><!--col containing workflow info-->
+    </div><!-- workflow row-->
+    <div class='row'>
+      <div class='col-xs-12'>
+        <h3 class='welcome'>
+          {{title}}
+        </h3>
+      </div>
+    </div><!-- end title row -->
+    <hr>
+    <label>Description</label><span class='squeak-edited pull-right' id='description-edited'>{{squeakEdited 'description'}}</span>
+    <div class='row squeak-component'>
+      {{description}}
+    </div>
+    <label>This occurs when...</label><span class='squeak-edited pull-right' id='re-creation-edited'>{{squeakEdited 'reCreation'}}</span>
+    <div class='row squeak-component'>
+      {{reCreation}}
+    </div>
+    <label>A solution would benefit...</label><span class='squeak-edited pull-right' id='target-edited'>{{squeakEdited 'target'}}</span>
+    <div class='row squeak-component'>
+      {{target}}
+    </div>
+    <div class='row squeak-axle-list'>
+      {{> squeakPageAxles}}
+      {{#if isAuthor}}
+        {{#if isEditable}}
+          <button class='btn btn-default pull-right' id='edit-squeak-button'>
+            <span class='glyphicon glyphicon-edit'></span>
+          </button>
+        {{/if}}
+      {{/if}}
+    </div>
+    {{> squeakBottom}}
+    <hr>
+    <div>
+    <label>Status Proposals</label>
+    {{#if canProposeNewMotion}}
+        <span class='pull-right'>
+          <a href='#' id='propose-workflow-motion' data-toggle='modal' data-target='#squeak-motion-modal'>Propose New Status</a>
+        </span>
+        {{> squeakMotionModal possibleStates=possibleStates _id=_id}}
+    {{/if}}    
+    </div>
+    {{#if motions.length}}
+      <div id='squeak-motions' class='motions'>
+        {{#each openMotions}}
+          {{> _squeakMotion}}
+        {{/each}}
+        {{#if isResolved}}
+          {{> _squeakMotion resolution}}
+        {{/if}}
+        {{#if hasMotionHistory}}
+        <div class='row load-more'>
+          <a href='#' id='show-all-motions'>Show history</a>
+        </div>
+        <div id='rejected-motions' style='display: none;'><!--This always starts off hidden-->
+          {{#each motionHistory}}
+            {{> _squeakMotion}}
+          {{/each}}
+        </div>
+        {{/if}}
+      </div>
+      {{> squeakMotionDiscussionModal getDiscussionMotion}}
+    {{else}}
+      <div>(None)</div>
+    {{/if}}
+  </div><!--squeak-info-->
+</template>

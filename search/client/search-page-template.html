@@ -1,0 +1,43 @@
+<template name='searchPage'>
+  <div id='search-view'>
+    <h3 class='welcome'>
+      <form class='form-inline' id='site-search-form'><!--Make this be in-line rather than taking up a whole row-->
+        <div class="input-group">
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-search"></span>
+          </span>
+          {{> esInput index="squeaks" placeholder="search..." class="easy-search form-control"}}
+          <div class="input-group-btn dropdown" id="search-option-dropdown">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              In... <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              {{#each fields}}
+                {{> _searchField}}
+              {{/each}}
+            </ul>
+          </div><!-- /btn-group -->
+        </div><!-- div input-group-->
+      </form>
+    </h3>
+    <div class='centered'>
+      <span class="input-error-message">{{errorMessage 'searchFieldOptions'}}</span>
+    </div>
+    <hr>
+    {{#ifEsIsSearching index="squeaks"}}
+      <div class='spinner-row'><!-- Stretch this a bit to actually put the spinner inside the container -->
+        {{> spinner}}
+      </div>
+    {{else}}
+      {{#ifEsHasNoResults index="squeaks"}}
+        <h3 class="none-found">No results found.</h3>
+      {{/ifEsHasNoResults}}
+      {{#esEach index="squeaks"}}
+        {{> _squeak}}
+      {{/esEach}}
+      {{#if hasMore}}
+        <div class='row load-more'><a href="#">{{loadMoreText}}</a></div>
+      {{/if}}
+    {{/ifEsIsSearching}}
+  </div>
+</template>

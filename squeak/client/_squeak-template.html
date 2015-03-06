@@ -1,0 +1,16 @@
+<template name="_squeak">
+  <div class="entry squeak-entry">
+    <div class="entry-content squeak-content">
+      <h3>
+        <a href="{{pathFor 'squeakPage'}}">{{title}}</a>
+        <span class='workflow-state pull-right' title="{{workflowTitle}}">{{state}}</span>
+      </h3>
+      {{> squeakSubmissionMeta}}
+      <div class='row'>
+        <p>{{description}}</p>
+      </div>
+      <hr>
+      {{> squeakBottom}}
+    </div>
+  </div>
+</template>

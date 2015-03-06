@@ -1,0 +1,14 @@
+<template name="welcomePage">
+  <div id='welcome-page' class='logged-out hero-unit section odd'>
+    <div class='container'>
+      <h1 class='welcome' id='welcome-text'>
+        Welcome to Squeaky Wheel!
+          <br/>
+          <small id='get-started'>
+            To get started, log in or <a href="{{pathFor 'createAccount'}}">create an account</a>.
+          </small>
+      </h1>
+    </div>
+  </div>
+  {{> aboutPage}}
+</template>

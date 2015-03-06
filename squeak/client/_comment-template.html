@@ -1,0 +1,8 @@
+<template name='_comment'>
+  <div class='comment-text'>
+    <label>Submitted by {{> authorSpan getAuthor}} {{dateFormat createdAt}}:</label>
+    <div class="comment well">
+      {{comment}}
+    </div>
+  </div>
+</template>

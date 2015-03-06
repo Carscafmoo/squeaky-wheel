@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="activity-list"
+             errors="1"
+             failures="0"
+             tests="63">
+  
+  <testsuite errors="1" failures="0" hostname="" id=""
+    name="Activity Page" package="activity-list" skipped="0"
+    tests="63" time="" timestamp="">
+    
+    
+      <testcase name="Element &lt;body&gt; was visible after 134 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.welcome&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 35 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 67 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#new-squeak-form&gt; was visible after 28 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 35 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 34 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 30 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 26 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was present after 22 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.axle-content&gt; was visible after 75 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 28 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 28 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 28 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 14 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-list&gt; was visible after 29 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#notification-badge&gt; contains text: &quot;13&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#activity-list&gt; was visible after 58 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(3)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(3) div.activity-entry&gt; has css class: &quot;activity-un-acknowledged&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(12)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(12) div.activity-entry&gt; has css class: &quot;activity-un-acknowledged&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(13)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(3)&gt; contains text: &quot;m&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(12)&gt; contains text: &quot;d&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.load-more&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#activity-list div.entry:nth-child(13)&gt; was present after 18 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(15)&gt; contains text: &quot;a&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(15) div.activity-entry&gt; has css class: &quot;activity-un-acknowledged&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if the URL contains &quot;/20&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#axle-list&gt; was present after 13 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#notification-badge&gt; contains text: &quot;&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#activity-list&gt; was visible after 32 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(3)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(3) div.activity-entry&gt; does not have css class: &quot;activity-un-acknowledged&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 27 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 65 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 32 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 15 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#activity-list&gt; was visible after 27 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(3)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(3) label&gt; contains text: &quot;John Doe tagged the following squeak to watched axle&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(4)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(4) label&gt; contains text: &quot;John Doe removed the following squeak from watched axle&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 26 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 30 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 27 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 12 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#activity-list&gt; was visible after 30 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was visible after 278 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.squeak-edit-input&gt; was visible after 33 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-list&gt; was visible after 351 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#activity-list&gt; was visible after 23 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(3) label&gt; contains text: &quot;You deleted watched squeak&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-lst div.entry:nth-child(4)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 25 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 54 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 29 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 22 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#activity-list&gt; was visible after 44 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(3) label&gt; contains text: &quot;John Doe deleted squeak&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(4)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.axle-content&gt; was visible after 29 milliseconds.">
+        
+        
+      </testcase>
+    
+    
+      <system-err>
+        Unable to locate element: &quot;#axle-list div.axle-entry:nth-child(3) .watch-axle-button&quot; using: css selector
+      </system-err>
+    
+    </testsuite>
+  
+</testsuites>

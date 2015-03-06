@@ -1,0 +1,19 @@
+<template name="squeakList">
+  {{setTitle 'Squeaky Wheel / Squeaks'}}
+  <div class='squeak-list' id='squeak-list'>
+    <h3 class='welcome'>
+      Viewing {{> whichSqueaksDropdown}} Squeaks sorted by {{> sortSqueaksDropdown}} that are {{> squeakWorkflowDropdown}} attached to {{> axleInput}}
+    </h3>
+    <hr>
+    {{#if data.count}}
+      {{#each data}}
+        {{> _squeak}}
+      {{/each}}
+      {{#if nextPath}}
+        {{> loadMoreLink}}
+      {{/if}}
+    {{else}}
+      <h3 class="none-found">No squeaks found.</h3>
+    {{/if}}
+  </div>  
+</template>

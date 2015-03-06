@@ -1,0 +1,17 @@
+<template name='sortAxlesDropdown'>
+  <span class='dropdown'>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id='sort-axles-dropdown'>{{current}}<b class="caret"></b></a>
+    <ul class="dropdown-menu">
+    {{#if needToDisplay 'p'}}
+      <li>
+        <a href="#" id='view-popular-axles' class="axle-list-sorting-link" key="p">{{text 'p'}}</a>
+      </li>
+    {{/if}}
+    {{#if needToDisplay 'n'}}
+      <li>
+        <a href="#" id='view-axle-name' class="axle-list-sorting-link" key="n">{{text 'n'}}</a>
+      </li>
+    {{/if}}
+    </ul>
+  </span>
+</template>

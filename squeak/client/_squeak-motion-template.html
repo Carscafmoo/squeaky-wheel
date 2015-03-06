@@ -1,0 +1,70 @@
+<template name='_squeakMotion'>
+  <div class='squeak-motion'>
+    <div class='squeak-motion-resolution-meta row'>
+      <div class='col-xs-6'>
+        <h3><strong>
+        {{#if isAccepted}}<span class='glyphicon glyphicon-ok motion-score-positive'></span>{{/if}}
+        {{#if isRejected}}<span class='glyphicon glyphicon-remove motion-score-negative'></span>{{/if}}
+        {{motionType}}</strong></h3>
+      </div>
+      <div class='col-xs-6'>
+        <div class='row'>
+          <div class='col-xs-12'>
+            <span class='pull-right'><h3>
+              {{state}}
+              {{#if isOpen}}
+                <small><span class='motion-score {{scoreClass}}'>({{reportScore}})</span></small>
+              {{/if}}
+            </h3></span>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-xs-12'>
+            <span class='pull-right'>
+              {{#if isResolved}}
+                <span class='motion-meta'>
+                  {{resolutionStatus}} {{dateFormat resolved}}
+                </span>
+              {{/if}}
+              {{#if canReject}}
+                <button class='btn btn-danger btn-sm reject-motion-button'>
+                  <span class='glyphicon glyphicon-remove'></span><br/>
+                  <small><span class='centered'>{{rejectionButtonText}}</span></small>
+                </button>
+              {{/if}}
+              {{#if canVote}}
+                <button class='btn btn-default btn-sm downvote-motion-button'>
+                  <span class='glyphicon glyphicon-arrow-down motion-score-negative'></span><br/>
+                  <small><span class='centered'>-{{vr}}</span></small>
+                </button>
+                <button class='btn btn-default btn-sm upvote-motion-button'>
+                  <span class='glyphicon glyphicon-arrow-up motion-score-positive'></span><br/>
+                  <small><span class='centered'>+{{vr}}</span></small>
+                </button>
+              {{/if}}
+              {{#if canAccept}}
+                <button class='btn btn-success btn-sm accept-motion-button'>
+                  <span class='glyphicon glyphicon-ok'></span><br/>
+                  <small><span class='centered'>Accept</span></small>
+                </button>
+              {{/if}}
+            </span><!-- pull right-->
+          </div><!--col-xs-12-->
+        </div><!--row-within-a-row-->
+      </div><!--col-xs-6-->
+    </div><!--row-->
+    <div class='squeak-motion well'>
+      {{comment}}
+    </div>
+    <div class='row'>
+      <div class='col-xs-12 squeak-motion-meta motion-meta'>
+        {{> authorSpan getUser}} {{dateFormat created}}
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-xs-12 centered'>
+        <a href='#' class='squeak-motion-discussion-toggle' data-toggle='modal' data-target='#squeak-motion-discussion-modal' _id="{{_id}}">View Discussion ({{commentLength}})</a>
+      </div>
+    </div>
+  </div>
+</template>

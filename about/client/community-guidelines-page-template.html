@@ -1,0 +1,150 @@
+<template name='communityGuidelinesPage'>
+  <div class='section odd' id='guidelines-landing-section'>
+    <div class='container'>
+      <div class='section-header jumbo-lite' id='guidelines-header'>
+        <h1>Community Guidelines</h1>
+        <p>A brief, non-exhaustive guide to participating in the Squeaky Wheel community</p>
+      </div>
+      <div id='guidelines-contents' class='section-content'>
+        <ul>
+        {{#each contents}}
+          <li><a href='#{{anchorName}}' class='guidelines-content-link' id='go-to-{{anchorName}}'>{{anchorText}}</a></li>
+        {{/each}}
+        </ul>
+      </div><!--guidelines-contents-->
+    </div><!--container-->
+  </div><!--guidelines landing-->
+  <div class='section even' id='guidelines-before-squeaking'>
+    <div class='container'>
+      <div class='section-header jumbo-lite' id='guidelines-before-squeaking-header'>
+        <h1 id="guidelines-before-squeaking-anchor" class='guidelines-content-anchor'>Before Squeaking</h1>
+        <p>Before creating a new Squeak...</p>
+      </div>
+      <div class='section-content' id='guidelines-before-squeaking-content'>
+        <ul>
+          <li>
+            <strong>Gauge the Problem:</strong>
+            Is the problem faced by the public at large? How many people are affected? How feasible is it? If it only applies to you, or the magnitude is such that it can never truly be solved, it probably won't be productive.
+          </li>
+          <li>
+            <strong>Search:</strong> 
+            Conduct a rigorous search of the Squeaky Wheel database for any key words or phrases before Squeaking. Creating a duplicate Squeak negatively impacts both your Squeak and the existing Squeak, since they will now be competiting for votes. If you find the Squeak you're looking for, vote for it!
+          </li>
+          <li>
+            <strong>Research:</strong>
+            Search the Internet for possible solutions to your problem. If you find one, it may still be OK to Squeak so that others can see the solution, but make sure you propose a solution and declare the Squeak to be greased right after you submit it.
+          </li>
+          <li>
+            <strong>Consider the Audience:</strong>
+            Remember that this is a public forum; if you have a private concern, or a problem you want to solve yourself for profit, this may not be the place for it.
+          </li>
+          <li>
+            <strong>Read the Community Guidelines:</strong>
+            Make sure that your Squeak conforms to these community guidelines!
+          </li>
+          <li><strong>Don't...</strong>
+            <ul>
+              <li>Submit offensive material</li>
+              <li>Use Squeaky Wheel to vent about personal issues</li>
+              <li>Submit duplicate Squeaks</li>
+            </ul>
+          </li>
+        </ul>
+      </div><!--before squeaking content-->
+    </div><!--container-->
+  </div><!--guidelines-before-squeaking-->
+  <div class='section odd' id='guidelines-while-squeaking'>
+    <div class='container'>
+      <div class='section-header jumbo-lite' id='guidelines-while-squeaking-header'>
+        <h1 id="guidelines-while-squeaking-anchor" class='guidelines-content-anchor'>While Squeaking</h1>
+        <p>While creating a new Squeak...</p>
+      </div>
+      <div class='section-content' id='guidelines-while-squeaking-content'>
+        <ul>
+          <li>
+            <strong>Choose a Good Title:</strong>
+            The Squeak title will be displayed when people search for your Squeak. Picking a good title is essential to cluing in both Pioneers and Mechanics to what your problem is and whether they face it too or can help alleviate it.
+          </li>
+          <li>
+            <strong>Give Detail:</strong>
+            Give the who, what, when, and where in a way that people know exactly what problem you're trying to solve. This will make it easier for them to either solve it or vote for it and increase its volume!
+          </li>
+          <li>
+            <strong>Use Keywords:</strong>
+            Use key words and phrases that relate to your problem. This will help others find it when searching.
+          </li>
+          <li><strong>Don't...</strong>
+            <ul>
+              <li>Submit vague Squeaks</li>
+              <li>Submit hard to find Squeaks</li>
+            </ul>
+          </li>
+        </ul>
+      </div><!--while squeaking content-->
+    </div><!--container-->
+  </div><!--while-squeaking div-->
+  <div class='section even' id='guidelines-after-squeaking'>
+    <div class='container'>
+      <div class='section-header jumbo-lite' id='guidelines-after-squeaking-header'>
+        <h1 id="guidelines-after-squeaking-anchor" class='guidelines-content-anchor'>After Squeaking</h1>
+        <p>After creating a new Squeak...</p>
+      </div>
+      <div class='section-content' id='guidelines-after-squeaking-content'>
+        <ul>
+          <li>
+            <strong>Tag to Axles:</strong>
+            People monitor Axles so they know when a Squeak has been tagged to it. Tagging your Squeak to an Axle may get it to the attention of someone who can help.
+          </li>
+          <li>
+            <strong>Monitor your Squeaks:</strong>
+            Actively discuss the Squeak in the comments and keep track of its workflow. You're the only one who can accept or reject a solution!
+          </li>
+          <li>
+            <strong>Provide reasons for workflow status changes:</strong>
+            It's always a good idea to leave a comment when changing the workflow status; this is especially important when proposing, rejecting, or accepting a Mechanic's solution. Be courteous and provide constructive feedback, especially when rejecting a solution.
+          </li>
+          <li>
+            <strong>Continue searching for duplicates:</strong>
+            Periodically search for new Squeaks that may be similar to your own. You may be able to direct discussion and voting to your Squeak instead, increasing the chances something will be done about it.
+          </li>
+          <li><strong>Don't...</strong>
+            <ul>
+              <li>Neglect or ignore your Squeaks</li>
+            </ul>
+          </li>
+        </ul>
+      </div><!--after squeaking content-->
+    </div><!--container-->
+  </div><!--after-squeaking div-->
+  <div class='section odd' id='guidelines-all-times'>
+    <div class='container'>
+      <div class='section-header jumbo-lite' id='guidelines-all-times-header'>
+        <h1 id="guidelines-all-times-anchor" class='guidelines-content-anchor'>At All Times</h1>
+        <p>Community members should...</p>
+      </div>
+      <div class='section-content' id='guidelines-while-squeaking-content'>
+        <ul>
+          <li>
+            <strong>Be respectful and courteous:</strong>
+            Squeaky Wheel relies on its member community to generate, moderate, and resolve Squeaks. To that end, it is essential to maintain a welcoming community. 
+          </li>
+          <li>
+            <strong>Be active:</strong>
+            Vote for Squeaks that you'd like to see greased, and join the discussion for any that are particularly important or that you might have ideas about. Watch Axles where you may be able to offer assistance or lead discussion.
+          </li>
+          <li>
+            <strong>Be productive:</strong>
+            Squeaky Wheel is not a message board. Keep discussion restricted to the issue at hand, and steer discussion back if it begins to wander.
+          </li>
+          <li><strong>Don't...</strong>
+            <ul>
+              <li>Use hurtful, obscene, or profane language</li>
+              <li>Attack another user personally</li>
+              <li>Post off-topic digressions</li>
+            </ul>
+          </li>
+        </ul>
+      </div><!--while squeaking content-->
+    </div><!--container-->
+  </div><!--while-squeaking div-->
+</template>

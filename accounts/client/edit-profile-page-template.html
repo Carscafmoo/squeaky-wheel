@@ -1,0 +1,48 @@
+<template name="editProfilePage">
+  {{setTitle "Squeaky Wheel / Profile"}}
+  <h3 class='welcome'>Edit Profile</h3>
+  <hr>
+  <div id="user-update-form">
+    <label for="input-user-name">Name</label>
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" id="submit-name-update">Update</button>
+      </span>
+      <input type="text" class="form-control" placeholder="{{currentUser.name}}" id='input-user-name'>
+    </div>
+    <label for="input-user-email">Email</label>
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button" id="submit-email-update">Update</button>
+      </span>
+      <input type="text" class="form-control" placeholder="{{currentUser.email}}" id='input-user-email'>
+    </div>
+  </div>
+<hr>
+<label for="form-change-password">Change Password</label>
+<form id="form-change-password" class="change-password form">
+  <div class="form-group">
+    <div class="controls {{errorClass 'currentPassword'}}">
+      <input type="password" class="form-control" placeholder="Current password" id='input-old-password'>
+      <span class="input-error-message">{{errorMessage 'currentPassword'}}</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="controls {{errorClass 'newPassword'}}">
+      <input type="password" class="form-control" placeholder="New password" id='input-new-password'>
+      <span class="input-error-message">{{errorMessage 'newPassword'}}</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="controls {{errorClass 'confirmPassword'}}">
+      <input type="password" class="form-control" placeholder="Confirm new password" id='confirm-new-password'>
+      <span class="input-error-message">{{errorMessage 'confirmPassword'}}</span>
+    </div>
+  </div>  
+  <div class="{{errorClass submitNewPassword}}">
+    <button id="submit-new-password" class="btn btn-swurple {{newPasswordClass}}">Change Password</button>
+    <span class="input-error-message">{{errorMessage 'submitNewPassword'}}</span>
+    <span id="new-password-confirmation" class="alert-fade success"></span>
+  </div>
+</form>
+</template>

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="squeak-page"
+             errors="0"
+             failures="0"
+             tests="50">
+  
+  <testsuite errors="0" failures="0" hostname="" id=""
+    name="Squeak Page" package="squeak-page" skipped="0"
+    tests="50" time="" timestamp="">
+    
+    
+      <testcase name="Element &lt;body&gt; was visible after 106 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 30 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 38 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#new-squeak-form&gt; was visible after 37 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 32 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 32 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 29 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 37 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was present after 20 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was visible after 48 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if the URL contains &quot;/squeak/&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.unwatch-squeak-button&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;div.comment&gt; was visible after 78 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;div.comment&gt; contains text: &quot;Nightwatch is automatically commenting on this Squeak&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.squeak-counts&gt; contains text: &quot;1 comment&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#body&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-comment&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#axle-input&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.bootstrap-tagsinput span&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.bootstrap-tagsinput span&gt; has css class: &quot;tag&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;button.vote-button&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;button.vote-button&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.squeak-counts&gt; contains text: &quot;0; 1 comments&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 48 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 117 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.bootstrap-tagsinput&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 27 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 17 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was present after 13 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;div.comment&gt; contains text: &quot;Nightwatch is automatically commenting on this Squeak&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.axle-element&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.axle-element&gt; contains text: &quot;Test Axle&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-comment&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-comment&gt; does not have css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.unwatch-squeak-button&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.watch-squeak-button&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.unwatch-squeak-button&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;button.vote-button&gt; does not have css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.squeak-counts&gt; contains text: &quot;1; 1 comments&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;button.vote-button&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.squeak-counts&gt; contains text: &quot;1; 1 comments&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#edit-squeak-button&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if value of &lt;#axle-restriction-input&gt; equals: &quot;Test Axle&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 33 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 36 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 27 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 24 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was present after 13 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.squeak-edit-input&gt; was visible after 31 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-list&gt; was visible after 388 milliseconds.">
+        
+        
+      </testcase>
+    
+    
+    </testsuite>
+  
+</testsuites>

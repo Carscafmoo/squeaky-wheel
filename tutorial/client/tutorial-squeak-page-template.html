@@ -1,0 +1,81 @@
+<template name='tutorialSqueakPage'>
+  <div id='tutorial-squeak-page' class='col-xs-11 col-xs-offset-1'>
+    <p>
+      The Squeaky Wheel gets the grease!  At Squeaky Wheel, we represent the problems that people like you face every day as <strong>Squeaks</strong>, which include a brief description of what, who, where, and when the problem occurs:
+    </p>
+  </div>
+  <div id='example-squeak' class='container'>
+    <div class='row'>
+      <div class='col-xs-3' id='example-squeak-label-left-div'>
+        <div class='row tutorial-example-row' id='tutorial-squeak-title-box'>
+          <div class='col-xs-12'>
+            <p>The Squeak's <strong>title</strong> is a <em>brief</em>, but <em>clear</em>, description of the problem at hand.</p>
+          </div>
+        </div><!--squeak-title-box-row-->
+        <div class='row tutorial-example-row' id='tutorial-squeak-description-text-box'>
+          <div class='col-xs-12'>
+            <p>
+              <strong>What</strong> the problem is
+            </p>
+          </div>
+        </div><!--squeak-text-box-row-->
+        <div class='row tutorial-example-row' id='tutorial-squeak-re-creation-text-box'>
+          <div class='col-xs-12'>
+            <p>
+              <strong>When</strong> and <strong>where</strong> the problem occurs
+            </p>
+          </div>
+        </div><!--squeak-text-box-row-->
+        <div class='row tutorial-example-row' id='tutorial-squeak-target-text-box'>
+          <div class='col-xs-12'>
+            <p>
+              <strong>Whom</strong> the problem affects
+            </p>
+          </div>
+        </div><!--squeak-text-box-row-->
+        <div class='row tutorial-example-row' id='tutorial-squeak-axle-box'>
+          <div class='col-xs-12'>
+            <p>
+              <strong>Axles</strong> are searchable tags.<br/>
+              <small>Tagging to an Axle generates a notification to anyone watching that Axle that the Squeak may be relevant to them.</small>
+            </p>
+          </div>
+        </div><!--squeak-text-box-row-->
+        <div class='row tutorial-example-row' id='tutorial-squeak-watch-box'>
+          <div class='col-xs-12'>
+            <p>
+              <strong>Watch</strong> the Squeak to receive notifications from comments, workflow changes, and more.
+            </p>
+          </div>
+        </div><!--squeak-text-box-row-->
+      </div><!--example-squeak-label-left-->
+      <div class='col-xs-6' id='example-squeak-column'>
+        {{> squeakInfo exampleSqueak}}
+      </div><!--example-squeak-->
+      <div class='col-xs-3' id='example-squeak-label-right-div'>
+        <div class='row tutorial-example-row' id='tutorial-squeak-workflow-state-box'>
+          <div class='col-xs-12'>
+            <p>
+              <strong>Workflow state</strong> tells whether the problem still exists, is being worked on, or has a solution.
+            </p>
+          </div>
+        </div><!--squeak-text-box-row-->
+        <div class='row tutorial-example-row' id='tutorial-squeak-edit-box'>
+          <div class='col-xs-12'>
+            <p>
+              The original Squeak author can <strong>edit</strong> the Squeak to provide additional clarification to text fields.
+            </p>
+          </div>
+        </div><!--squeak-text-box-row-->
+        <div class='row tutorial-example-row' id='tutorial-squeak-vote-box'>
+          <div class='col-xs-12'>
+            <p>
+              <strong>Vote</strong> for the Squeak to lend your support and increase its <strong>volume</strong>.<br/>
+              <small>The Squeaky wheel gets the grease, but the loudest squeaks get greased first!</small>
+            </p>
+          </div>
+        </div><!--squeak-text-box-row-->
+      </div><!--example-squeak-label-right-->
+    </div><!--row-->
+  </div>
+</template>
