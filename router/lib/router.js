@@ -100,6 +100,9 @@ var requireLogin = function requireLogin() {
       this.render(this.loadingTemplate);
     } else { 
       Router.go('welcomePage'); // redirect all non-logged-in users to the login page.
+      if (Meteor.isClient) { 
+        $('html, body').scrollTop(0); // and scroll to the top of the page
+      }
     }
   } else { 
     this.next();
@@ -376,8 +379,8 @@ SqueakListController = PaginatedController.extend({
       which.state = 'Squeaky'; 
     } else if (res === 'g') { 
       which.state = 'Greased'; 
-    } else if (res === 'sh') { 
-      which.state = 'In the shop'; 
+    } else if (res === 'r') { 
+      which.state = 'Rejected'; 
     } else if (res === 'i') { 
       which.state = 'Under inspection'; 
     }

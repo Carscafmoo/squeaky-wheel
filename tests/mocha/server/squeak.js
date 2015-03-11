@@ -655,6 +655,11 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(activity.users).to.have.length(1); // should only be watchers
         expect(activity.users[0].userId).to.equal(getTestUserId());
         expect(activity.watched._id).to.equal(getTestSqueakId());
+
+        logout();
+        loginTestUser();
+        deleteSqueak(squeak._id);
+        expect(Activities.findOne({type: 'workflowMotionInitiated'})).to.be.undefined;
       });
 
       // I only broke this out so I didn't have to re-use the beforeEach code.
@@ -896,6 +901,10 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         var activity = Activities.findOne({type: 'workflowMotionResolved'});
         expect(activity.action._id).to.equal(motion._id);
         expect(activity.watched._id).to.equal(squeak._id);
+
+        Squeaks.update({_id: squeak._id}, {$set: {state: 'Squeaky'}});
+        deleteSqueak(squeak._id);
+        expect(Activities.findOne({type: 'workflowMotionResolved'})).to.be.undefined;
       });
 
       it("Should resolve a motion to close favorably if the motion's score goes above 1000, change Squeak state, add activities, and award necessary VE", function() { 
@@ -1269,8 +1278,8 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(comment.author).to.equal(getOtherUserId());
         expect(comment.comment).to.equal('Test comment');
 
-        expect(Activities.find({type: 'squeakMotionComment'}).count()).to.equal(1);
-        activity = Activities.findOne({type: 'squeakMotionComment'});
+        expect(Activities.find({type: 'workflowMotionComment'}).count()).to.equal(1);
+        activity = Activities.findOne({type: 'workflowMotionComment'});
         expect(activity.action._id).to.equal(comment._id);
         expect(activity.action.motionId).to.equal(motion._id);
         expect(activity.watched._id).to.equal(squeak._id);
@@ -1278,6 +1287,11 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         ve = getOtherUser().viscosityEvents;
         expect(ve).to.have.length(1);
         expect(ve[0].type).to.equal('commentOnSqueak');
+
+        logout();
+        loginTestUser();
+        deleteSqueak(squeak._id);
+        expect(Activities.findOne({type: 'workflowMotionComment'})).to.be.undefined;
       });      
     });
   }); // end testOnly

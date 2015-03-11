@@ -1,7 +1,7 @@
 <template name='_squeakMotion'>
   <div class='squeak-motion'>
     <div class='squeak-motion-resolution-meta row'>
-      <div class='col-xs-6'>
+      <div class='col-xs-6 squeak-motion-title'>
         <h3><strong>
         {{#if isAccepted}}<span class='glyphicon glyphicon-ok motion-score-positive'></span>{{/if}}
         {{#if isRejected}}<span class='glyphicon glyphicon-remove motion-score-negative'></span>{{/if}}
@@ -61,10 +61,11 @@
         {{> authorSpan getUser}} {{dateFormat created}}
       </div>
     </div>
-    <div class='row'>
-      <div class='col-xs-12 centered'>
-        <a href='#' class='squeak-motion-discussion-toggle' data-toggle='modal' data-target='#squeak-motion-discussion-modal' _id="{{_id}}">View Discussion ({{commentLength}})</a>
+      {{> squeakMotionDiscussionModal getDiscussionMotion}}
+      <div class='row'>
+        <div class='col-xs-12 centered'>
+          <a href='#' class='squeak-motion-discussion-toggle' data-toggle='modal' data-target='#squeak-motion-discussion-modal' data-id="{{_id}}">View Discussion ({{commentLength}})</a>
+        </div>
       </div>
-    </div>
   </div>
 </template>

@@ -3,7 +3,7 @@
     <div class='row'>
       <div class='col-xs-12'>
         <span class='pull-right workflow-menu'>
-          {{> workflowMenu}}
+          {{> workflowState}}
         </span>
       </div><!--col containing workflow info-->
     </div><!-- workflow row-->
@@ -39,7 +39,7 @@
     </div>
     {{> squeakBottom}}
     <hr>
-    <div>
+    <div id='squeak-motion-header'>
     <label>Status Proposals</label>
     {{#if canProposeNewMotion}}
         <span class='pull-right'>
@@ -67,9 +67,8 @@
         </div>
         {{/if}}
       </div>
-      {{> squeakMotionDiscussionModal getDiscussionMotion}}
     {{else}}
-      <div>(None)</div>
+      <div id='lack-of-squeak-motions'>(None)</div>
     {{/if}}
   </div><!--squeak-info-->
 </template>

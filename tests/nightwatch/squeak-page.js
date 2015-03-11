@@ -16,13 +16,13 @@ module.exports = {
       .assert.elementPresent('.unwatch-squeak-button')
 
       // Try to comment on Squeak:
-      .setValue('#body', 'Nightwatch is automatically commenting on this Squeak')
-      .click('#submit-comment')
+      .setValue('#squeak-comment-submit-input', 'Nightwatch is automatically commenting on this Squeak')
+      .click('#squeak-submit-comment')
       .waitForElementVisible('div.comment', 1000)
       .assert.containsText('div.comment', 'Nightwatch is automatically commenting on this Squeak')
       .assert.containsText('.squeak-counts', '1 comment')
-      .assert.elementPresent('#body') // The form is still there
-      .assert.elementPresent('#submit-comment')
+      .assert.elementPresent('#squeak-comment-submit-input') // The form is still there
+      .assert.elementPresent('#squeak-submit-comment')
       
       // Try to tag a Squeak to an Axle:
       .assert.elementPresent('#axle-input')
@@ -67,9 +67,9 @@ module.exports = {
       .assert.containsText('.axle-element', 'Test Axle')
 
       // And he can comment on stuff:
-      .assert.cssClassPresent('#submit-comment', 'disabled')
-      .setValue("#body", "anything")
-      .assert.cssClassNotPresent("#submit-comment", 'disabled') 
+      .assert.cssClassPresent('#squeak-submit-comment', 'disabled')
+      .setValue("#squeak-comment-submit-input", "anything")
+      .assert.cssClassNotPresent("#squeak-submit-comment", 'disabled') 
 
       // And he can watch and unwatch:
       .assert.elementNotPresent('.unwatch-squeak-button')

@@ -114,7 +114,7 @@ module.exports = {
       .click('#view-activity')
       .waitForElementVisible('#activity-list', 3000)
       .assert.containsText('#activity-list div.entry:nth-child(3) label', 'John Doe deleted squeak')
-      .assert.elementNotPresent('#activity-list div.entry:nth-child(4)') // the other notifications should be gone once it's deleted.
+      .assert.elementNotPresent('#activity-list div.entry:nth-child(5)') // the other notifications should be gone once it's deleted.
 
       // navigate back and stop watching that axle...
       .click('#view-axles') // navigate to axle view to unwatch that

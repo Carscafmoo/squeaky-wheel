@@ -8,8 +8,8 @@ module.exports.command = function(comment, callback) {
   var self = this;
   
   self
-      .setValue('#body', comment)
-      .click('#submit-comment')
+      .setValue('#squeak-comment-submit-input', comment)
+      .click('#squeak-submit-comment')
       .pause(100); // wait for the comment to register and the body to come back
   
   return this; // allows the command to be chained.

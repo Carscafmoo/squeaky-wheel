@@ -19,7 +19,7 @@ var dictionary = {
   g: 'greased',
   i: 'under inspection',
   s: 'currently squeaking',
-  sh: 'in the shop'
+  r: 'rejected'
 };
 /**
  * Reverse dictionary, for looking up the key given the text

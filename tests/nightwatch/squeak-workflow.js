@@ -1,184 +1,262 @@
+/**
+ * To reset:
+ * db.users.update({username: 'wd_0'}, {$set: {viscosityEvents: [], viscosityAdmin: false}})
+ * db.activities.remove()
+ * db.squeaks.remove({title: {$regex: 'Nightwatch Test.*'}});
+ * 
+ */
 module.exports = {
   'Squeak Workflow' : function (client) {
     client
       .load()
-
-      // Create the standard test squeak
       .createTestSqueak()
+      
+      // --------- Proposing ---------
+      .loginViscosityUser('low')
+      .navigateToNewestSqueak()
 
-      // create test squeak logs out so log back in...
+      //  Test that status proposals show up as none
+      .assert.containsText('#lack-of-squeak-motions', 'None')
+      .assert.elementNotPresent('#squeak-motions')
+      
+      // Test that anyone regardless of viscosity can propose a solution
+      .assert.containsText('#propose-workflow-motion', 'Propose New Status')
+      .click('#propose-workflow-motion')
+      .waitForElementPresent('#squeak-motion-modal-select', 1000)
+      .assert.elementPresent('#squeak-motion-modal-select option[value=Greased]')
+      .assert.elementNotPresent('#squeak-motion-modal-select option[value=Withdrawn]')
+
+      // Test that the submit button is disabled and enabled appropriately on the propose new status form
+      .assert.cssClassPresent('#submit-squeak-motion-button', 'disabled')
+      .setValue('#squeak-motion-comment', 'test')
+      .assert.cssClassNotPresent('#submit-squeak-motion-button', 'disabled')
+      .clearValue('#squeak-motion-comment')
+      .keys(client.Keys.ENTER) // hits enter
+      .assert.cssClassPresent('#submit-squeak-motion-button', 'disabled')
+
+      .setValue('#squeak-motion-comment', 'Test resolution')
+      .click('#submit-squeak-motion-button')
+      .waitForElementPresent("#squeak-motions .squeak-motion:nth-child(1)", 1000)
+      .pause(300) // sometimes we hit a snag here
+      .assert.containsText('#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-resolution-meta h3', 'Solution')
+      .assert.containsText('#squeak-motions .squeak-motion:nth-child(1) .squeak-motion.well', 'Test resolution')
+
+      // Test that only one solution can be proposed at a time
+      .assert.elementNotPresent('#propose-workflow-motion')
+
+      // Test that only the author can withdraw
+      .assert.elementPresent('#squeak-motions .squeak-motion:nth-child(1) .reject-motion-button') 
+      
+      .logout()
+      .loginViscosityUser('med')
+      .navigateToNewestSqueak()
+      .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(1) .reject-motion-button')
+
+      // Test that an appropriate user can reject as "X"
+      .assert.elementPresent('#propose-workflow-motion')
+      .click('#propose-workflow-motion')
+      .waitForElementPresent('#squeak-motion-modal-select', 1000)
+      .assert.elementNotPresent('#squeak-motion-modal-select option[value=Greased]')
+      .assert.elementNotPresent('#squeak-motion-modal-select option[value=Withdrawn]')
+      .assert.elementPresent('#squeak-motion-modal-select option[value=Offensive]')
+      .assert.elementPresent('#squeak-motion-modal-select option[value=Unproductive]')
+      .assert.elementPresent('#squeak-motion-modal-select option[value=Duplicate]')
+
+      // Test that only one rejection proposal can exist at a time
+      .setValue('#squeak-motion-comment', 'Test rejection')
+      .click('#squeak-motion-modal-select')
+      .click('#squeak-motion-modal-select option[value=Duplicate]')
+      .click('#submit-squeak-motion-button')
+      .waitForElementPresent('#squeak-motions .squeak-motion:nth-child(2)', 1000)
+
+      // Test that proposals are displayed as appropriate, with author, timestamp, and comment, in the right order
+      .assert.containsText('#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-resolution-meta h3', 'Solution') // these should not have changed
+      .assert.containsText('#squeak-motions .squeak-motion:nth-child(1) .squeak-motion.well', 'Test resolution')
+      .assert.containsText('#squeak-motions .squeak-motion:nth-child(2) .squeak-motion-resolution-meta h3', 'duplicate')// these should have been added
+      .assert.containsText('#squeak-motions .squeak-motion:nth-child(2) .squeak-motion.well', 'Test rejection')
+
+      // And we shouldn't yet have the "show history" button:
+      .assert.elementNotPresent('#show-all-motions')
+
+      // ----------- Discussion ----------
+      // Test that it shows the discussion points
+      .assert.containsText('#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-discussion-toggle', '(0)')
+      .assert.containsText('#squeak-motions .squeak-motion:nth-child(2) .squeak-motion-discussion-toggle', '(0)')
+
+      // Test that the discussion modal pops up with the correct title, etc.
+      .click('#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-discussion-toggle')
+      .waitForElementVisible('#squeak-motion-discussion-modal', 2000)
+      .assert.elementPresent('#proposal-comment-submit-input') // we should be able to comment
+      .assert.containsText('#squeak-motion-discussion-title', 'Solution from')
+
+      // Test that comments post and the discussion stays on the screen
+      .setValue('#proposal-comment-submit-input', 'Test comment on solution')
+      .click('#proposal-submit-comment')
+      .waitForElementPresent('.modal-body .comment-text:nth-child(1)', 1000)
+      .assert.containsText('.modal-body .comment-text:nth-child(1)', 'Test comment on solution')
+      .click('.modal-header .close')
+      .pause(300) // gah
+
+      // Test that it works even if two separate proposals are open
+      .click('#squeak-motions .squeak-motion:nth-child(2) .squeak-motion-discussion-toggle')
+      .waitForElementVisible('#squeak-motion-discussion-modal', 2000)
+      .assert.elementPresent('#proposal-comment-submit-input') // we should be able to comment
+      .assert.containsText('#squeak-motion-discussion-title', 'Proposal to close as duplicate')
+      .assert.elementNotPresent('.modal-body .comment-text:nth-child(1)') // this shouldn't be here -- we haven't commented on this propo
+      .setValue('#proposal-comment-submit-input', 'Test comment on rejection')
+      .click('#proposal-submit-comment')
+      .waitForElementPresent('.modal-body .comment-text:nth-child(1)', 1000)
+      .assert.containsText('.modal-body .comment-text:nth-child(1)', 'Test comment on rejection')
+      .click('.modal-header .close')
+      .pause(300) // gah
+
+      // Test that all users can comment
+      .logout()
+      .loginViscosityUser('low')
+      .navigateToNewestSqueak()
+      .assert.containsText('#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-discussion-toggle', '(1)')
+      .assert.containsText('#squeak-motions .squeak-motion:nth-child(2) .squeak-motion-discussion-toggle', '(1)')
+      .click('#squeak-motions .squeak-motion:nth-child(2) .squeak-motion-discussion-toggle')
+      .pause(300) // gah
+      .waitForElementVisible('#squeak-motion-discussion-modal', 2000)
+      .assert.elementPresent('#proposal-comment-submit-input') // we should be able to comment
+      .assert.elementPresent('.modal-body .comment-text:nth-child(1)') // now we've done it
+      .setValue('#proposal-comment-submit-input', 'Test comment on rejection part 2')
+      .click('#proposal-submit-comment')
+      .click('.modal-header .close')
+      .pause(1000) // wait for everything to take hold I guess
+      .assert.containsText('#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-discussion-toggle', '(1)')
+      .assert.containsText('#squeak-motions .squeak-motion:nth-child(2) .squeak-motion-discussion-toggle', '(2)') // updates the right one
+      
+
+      // ---------- Voting and Resolution --------
+      // Test that the voting icon shows for everyone and displays the vote score
+      // For low V user, it should be there for two but not for one.
+      .assert.elementPresent('#squeak-motions .squeak-motion:nth-child(2) .downvote-motion-button')
+      .assert.elementPresent('#squeak-motions .squeak-motion:nth-child(2) .upvote-motion-button')
+      .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(1) .downvote-motion-button')
+      .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(1) .upvote-motion-button')
+      .getText('#squeak-motions .squeak-motion:nth-child(2) .downvote-motion-button', function(result) { 
+            this.assert.equal(new RegExp(/-[0-9]+/).test(result.value), true);
+      })
+      .getText('#squeak-motions .squeak-motion:nth-child(2) .upvote-motion-button', function(result) { 
+            this.assert.equal(new RegExp(/\+[0-9]+/).test(result.value), true);
+      })
+      
+      // Test that the accept / reject proposal button show up for ...
+            // Rejection for resolution proposer for the resolution but not for the proposal to reject:
+            .assert.elementPresent('#squeak-motions .squeak-motion:nth-child(1) .reject-motion-button')
+            .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(1) .accept-motion-button')
+            .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(2) .reject-motion-button')
+            .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(2) .accept-motion-button')
+
+
+            // Squeak author for the proposal to resolve, but not proposal to Reject
+            .logout()
+            .loginTestUser()
+            .navigateToNewestSqueak()
+            .assert.elementPresent('#squeak-motions .squeak-motion:nth-child(1) .reject-motion-button')
+            .assert.elementPresent('#squeak-motions .squeak-motion:nth-child(1) .accept-motion-button')
+            .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(2) .reject-motion-button')
+            .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(2) .accept-motion-button')
+            
+            // rejection author for proposal to reject, but not proposal to resolve
+            .logout()
+            .loginViscosityUser('med')
+            .navigateToNewestSqueak()
+            .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(1) .reject-motion-button')
+            .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(1) .accept-motion-button')
+            .assert.elementPresent('#squeak-motions .squeak-motion:nth-child(2) .reject-motion-button')
+            .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(2) .accept-motion-button')
+      
+      // Test that the reject proposal button works for author of proposal to reject and successfully closes resolution
+      .click('#squeak-motions .squeak-motion:nth-child(2) .reject-motion-button')
+      .waitForElementVisible('#show-all-motions', 1000) // wait for stuff to take effect
+      .assert.elementPresent('#rejected-motions .squeak-motion:nth-child(1)')
+      .assert.hidden('#rejected-motions .squeak-motion:nth-child(1)')
+
+      // Test that rejected motions can be shown and hidden
+      .click('#show-all-motions')
+      .waitForElementVisible('#rejected-motions', 1000)
+      .assert.elementPresent('#rejected-motions .squeak-motion:nth-child(1)')
+      .assert.containsText('#rejected-motions .squeak-motion:nth-child(1) .squeak-motion-title', 'Proposal to close as duplicate')
+      .assert.elementPresent('#rejected-motions .squeak-motion:nth-child(1) .squeak-motion-title .glyphicon-remove')
+
+      // Test that the rejected resolution can no longer be comented on
+      .click('#rejected-motions .squeak-motion:nth-child(1) .squeak-motion-discussion-toggle')
+      .waitForElementVisible('#squeak-motion-discussion-modal', 2000)
+      .assert.elementNotPresent('#proposal-comment-submit-input') // we should not be able to comment
+      
+      // Test that the "Accept" button works for the Squeak author
+      .logout()
       .loginTestUser()
       .navigateToNewestSqueak()
-      
-      // Test to see that user can change the Squeak workflow:
-      .assert.visible("#workflow-transition-dropdown-button")
-      .assert.containsText('#workflow-transition-dropdown-button', 'Squeaky')
-      .assert.containsText('#workflow-meta', 'Created by') // should not indicate a state change
+      .assert.elementPresent('#edit-squeak-button')
+      .click('#squeak-motions .squeak-motion:nth-child(1) .accept-motion-button')
+      .waitForElementPresent('#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-title .glyphicon-ok', 1000)
+      .assert.elementNotPresent('#edit-squeak-button') // Shouldn't be able to edit something that's not open.
 
-      // The author can now resolve to all states:
-      .click("#workflow-transition-dropdown-button")
-      .waitForElementVisible(".state-change-option li a[action=takeSqueakToShop]", 1000)
-      .assert.visible(".state-change-option li a[action=proposeSqueakSolution]")
-      .assert.visible(".state-change-option li a[action=declareSqueakGreased]")
-
-      // Check and see what options are available for closure -- we shouldn't be able to accept a solution
-      .click('.state-change-option li a[action=declareSqueakGreased]')
-      .waitForElementVisible('#state-change-modal-form', 1000)
-      .assert.elementPresent('#reason-select option[value=Withdrawn]')
-      .assert.elementPresent('#reason-select option[value=Unproductive]')
-      .assert.elementPresent('#reason-select option[value=Offensive]')
-      .assert.elementNotPresent('#reason-select option[value="Passed inspection"]')
-      .click('#cancel-state-change-button')
-      .pause(1000) // wait for everything to clear up
-      
-      // Now logout and log in as the other user. he should have fewer options in terms of what he can do:
+      // Test that a Squeak can be re-opened (probably by a God user)
       .logout()
-      .loginOtherUser()
+      .loginViscosityUser('high')
       .navigateToNewestSqueak()
-      .click("#workflow-transition-dropdown-button")
-      .waitForElementVisible(".state-change-option li a[action=takeSqueakToShop]", 1000)
-      .assert.visible(".state-change-option li a[action=proposeSqueakSolution]")
-      .assert.elementNotPresent(".state-change-option li a[action=declareSqueakGreased]")
+      .assert.elementPresent('#propose-workflow-motion')
+      .click('#propose-workflow-motion')
+      .waitForElementPresent('#squeak-motion-modal-select', 1000)
+      .assert.elementNotPresent('#squeak-motion-modal-select option[value=Greased]')
+      .assert.elementNotPresent('#squeak-motion-modal-select option[value=Withdrawn]')
+      .assert.elementPresent('#squeak-motion-modal-select option[value=Squeaky]')
 
-      // Have him propose a solution
-      .click(".state-change-option li a[action=proposeSqueakSolution]")
-      .waitForElementVisible('#state-change-modal-form', 1000)
-      .assert.elementNotPresent('#reason-select')
-      .assert.cssClassPresent('#submit-state-change-button', 'disabled') // should be disabled to begin with, since it's required
+      // Test that the submit button is disabled and enabled appropriately on the propose new status form
+      .setValue('#squeak-motion-comment', 'test re-open')
+      .click('#submit-squeak-motion-button')
+      .pause(1000) // wait for stuff to take effect
+      .assert.hidden('#rejected-motions .squeak-motion:nth-child(1)') // should have auto-accepted (rejected-motions is a bad name)
+      .click('#show-all-motions')
+      .pause(300) // wait to show
+      .assert.containsText('#rejected-motions .squeak-motion:nth-child(1) .squeak-motion-title', 'Proposal to re-open')
+      .assert.elementPresent('#rejected-motions .squeak-motion:nth-child(1) .squeak-motion-title .glyphicon-ok')
       
-      // Go ahead and test that the enabling and disabling works
-      .setValue('#state-change-comment', 'a')
-      .assert.cssClassNotPresent('#submit-state-change-button', 'disabled')
-      .clearValue('#state-change-comment') // I can't get it to trigger keyup, so I've gotten rid of the next line lines
-      // .assert.cssClassPresent('#submit-state-change-button', 'disabled') // should be disabled to begin with, since it's required
-      .setValue('#state-change-comment', 'Nightwatch may actually be able to take care of this issue for us')
-      .click('#submit-state-change-button')
-      .pause(1000) // let that go through I guess
-      
-      // Test that the page updated appropriately
-      .assert.elementNotPresent('#workflow-transition-dropdown-button') // should now just be text, other user can't do anything
-      .assert.containsText('#workflow-state', 'Under inspection') // should display the correct text
-      .assert.containsText('#workflow-meta', 'completed work') // should now mention the work being completed at a certain time
-      .assert.elementPresent('.squeak-resolution') // Should have popped up under resolutions
-      .assert.elementPresent('.resolution-active') // Should be active
-      .assert.containsText('.resolution-active', 'Nightwatch may actually be') // Should tell us what the proposal is
-      .assert.containsText('#squeak-resolutions span.resolution-meta:nth-child(1)', 'proposed the following') // Should have the meta info
-
-      // There should not be a load-more button yet
-      .assert.elementNotPresent('#show-all-resolutions')
-
-      // logout and log back in as the test user to reject this 
+      //--------- ACTIVITIES -------------
       .logout()
       .loginTestUser()
-      .navigateToNewestSqueak()
-      .assert.elementPresent('#workflow-transition-dropdown-button') // this should be a button for the author
-      .click('#workflow-transition-dropdown-button')
-      .waitForElementVisible(".state-change-option li a[action=takeSqueakToShop]", 1000)
-      .assert.visible(".state-change-option li a[action=declareSqueakSqueaky]") // all three options should still be available
-      .assert.visible(".state-change-option li a[action=declareSqueakGreased]")
-      .click('.state-change-option li a[action=takeSqueakToShop]') // reject his solution
-      .waitForElementVisible('#state-change-modal-form', 1000)
-      .assert.elementNotPresent('#reason-select') // reason doesn't apply here
-      .assert.cssClassNotPresent('#submit-state-change-button', 'disabled') // should be able to submit w/o a comment
-      .setValue('#state-change-comment', 'Back to the drawing board') // make sure the comment gets posted
-      .click('#submit-state-change-button')
-      .pause(1000) // wait for everything to come up
-
-      // Test that everything posted correctly:
-      .assert.elementNotPresent('#workflow-transition-dropdown-button') // should now just be text, author can't do anything if in shop
-      .assert.containsText('#workflow-state', 'In the shop') // should display the correct text
-      .assert.containsText('#workflow-meta', 'is applying grease') // should now mention the worker working on this
-      .assert.elementNotPresent('.resolution-active') // Should be no active solutions
-      .assert.elementPresent('#show-all-resolutions') // The button should be there now
-      .assert.hidden("#rejected-resolutions") // should not be displayed
-      .click('#show-all-resolutions')
-      .pause(500) // wait for that to take effect
-      .assert.visible('.resolution-rejected')
-      .assert.containsText('#rejected-resolutions span.resolution-meta:nth-child(1)', 'proposed the following') // should be labeled
-      .assert.containsText('.resolution-rejected', 'Nightwatch') // should contain the text of the rejected resolution
-
-      // Hiding works:
-      .click("#hide-all-resolutions")
-      .assert.hidden("#rejected-resolutions") // should not be displayed anymore
-
-      // The comment should also have been posted correctly:
-      .assert.visible('.comment')
-      .assert.containsText('.comment', 'Back to the drawing board')
-
-      // Now logout and log back in as the other user
-      .logout()
-      .loginOtherUser()
-      .navigateToNewestSqueak()
-
-      // Should have options in the mechanic role
-      .assert.elementPresent('#workflow-transition-dropdown-button') // this should be a button for the author
-      .click('#workflow-transition-dropdown-button')
-      .waitForElementVisible(".state-change-option li a[action=declareSqueakSqueaky]", 1000)
-      .assert.visible(".state-change-option li a[action=proposeSqueakSolution]") // Should have only two options
-      .assert.elementNotPresent(".state-change-option li a[action=declareSqueakGreased]") // Should not be able to close
-      .click('.state-change-option li a[action=proposeSqueakSolution]') // Submit another proposal
-      .waitForElementVisible('#state-change-modal-form', 1000)
-      .assert.elementNotPresent('#reason-select') // reason doesn't apply here
-      .setValue('#state-change-comment', 'This time I believe we will pass') 
-      .click('#submit-state-change-button')
-      .pause(1000) // wait for everything to come up
-
-      // We should see this in the active list
-      .assert.visible('.resolution-active')
-
-      // Now logout, log back in, and let's resolve this bad boy:
-      .logout()
-      .loginTestUser()
-      .navigateToNewestSqueak()
-
-      // We've already been in this state so *probably* no need to test all that stuff
-      .click("#workflow-transition-dropdown-button")
-      .waitForElementVisible(".state-change-option li a[action=declareSqueakGreased]", 1000)
-      .click(".state-change-option li a[action=declareSqueakGreased]")
-      .waitForElementVisible('#state-change-modal-form', 1000)
-      .assert.elementPresent('#reason-select')
-      .assert.elementPresent('#reason-select option[value=Withdrawn]') // all options should now be available
-      .assert.elementPresent('#reason-select option[value=Unproductive]')
-      .assert.elementPresent('#reason-select option[value=Offensive]')
-      .assert.elementPresent('#reason-select option[value="Passed inspection"]')
-
-      // Go ahead and select 'Passed inspection'
-      .click('#reason-select')
-      .click('#reason-select option[value="Passed inspection"]')
-      .click('#submit-state-change-button')
-      .pause(1000) // wait for stuff to come up I guess...
-
-      .assert.elementNotPresent('#workflow-transition-dropdown-button') // no one should be able to change this now
-      .assert.containsText('#workflow-state', 'Greased')
-      .assert.containsText('#workflow-meta', 'accepted')
-
-      // All editing functionality should no longer be available:
-      .assert.elementNotPresent('#body') // the comment submit form shouldn't be there
-      .assert.elementNotPresent('#submit-comment') // nor should the button
-      .assert.elementNotPresent('#edit-squeak-button') // Can't edit a closed Squeak
-      .assert.cssClassPresent('.vote-button', 'disabled') // Can't vote for a closed Squeak
-      .assert.elementNotPresent('#axle-input') // Can't tag a closed Squeak to axles
-
-      // And the solution is now accepted:
-      .assert.elementPresent('.resolution-accepted')
-      .assert.containsText('.resolution-accepted', 'This time I believe')
-      .assert.cssClassPresent('.resolution-accepted span', 'glyphicon-ok') // and it has the little glyph
-
-      // Now check notifications
       .click('#view-activity')
-      .waitForElementVisible('.activity-entry', 1000) // wait for stuff to load
+      .waitForElementPresent('#activity-list .entry:nth-child(3)', 1000)
+      
+      // Should be an activity for resolved motions
+      .assert.containsText('#activity-list .entry:nth-child(3) .activity-label', 'from Greased to Squeaky was accepted') 
+      .assert.containsText('#activity-list .entry:nth-child(3) .activity-label', 'Nightwatch Test Squeak')
+      .assert.elementPresent('#activity-list .entry:nth-child(3) .squeak-motion')
+      .assert.containsText('#activity-list .entry:nth-child(3) .squeak-motion .squeak-motion-title', 'Proposal to re-open')
+      
+      // Also for new motions
+      .assert.elementPresent('#activity-list .entry:nth-child(4)')
+      .assert.containsText('#activity-list .entry:nth-child(4) .activity-label', 'from Greased to Squeaky') 
+      .assert.containsText('#activity-list .entry:nth-child(4) .activity-label', 'Nightwatch Test Squeak')
+      .assert.containsText('#activity-list .entry:nth-child(4) .activity-label', 'proposed change of workflow state')
+      .assert.elementPresent('#activity-list .entry:nth-child(4) .squeak-motion')
+      .assert.containsText('#activity-list .entry:nth-child(4) .squeak-motion .squeak-motion-title', 'Proposal to re-open')
 
-      // Expect to see at least activities for resolution, under inspection, your comment
-      .assert.containsText('#activity-list div.entry:nth-child(3)', 
-            'from \'Under inspection\' to \'Greased\' with reason \'Passed inspection\'')
-      .assert.containsText('#activity-list div.entry:nth-child(4)', 
-            'from \'In the shop\' to \'Under inspection\' with proposed solution')
-      .assert.containsText('#activity-list div.entry:nth-child(4) div.state-change-proposed-solution', 
-            'This time I believe')
-      .assert.containsText('#activity-list div.entry:nth-child(5)', 'You commented on')
+      // Also for motion comments
+      .assert.elementPresent('#activity-list .entry:nth-child(7)')
+      .assert.containsText('#activity-list .entry:nth-child(7) .activity-label', 'to Rejected') 
+      .assert.containsText('#activity-list .entry:nth-child(7) .activity-label', 'Nightwatch Test Squeak')
+      .assert.containsText('#activity-list .entry:nth-child(7) .activity-label', 'commented on')
+      .assert.containsText('#activity-list .entry:nth-child(7) .activity-label', 'proposal to change')      
+      .assert.elementPresent('#activity-list .entry:nth-child(7) .comment-text')
+      .assert.containsText('#activity-list .entry:nth-child(7) .comment-text .comment', 'Test comment')
 
-      // Unfortunately, we can't delete this Squeak...
-           
+      // And finally should be able to view -- but not comment on -- discussion:
+      .click('#activity-list .entry:nth-child(6) .squeak-motion .squeak-motion-discussion-toggle')
+      .waitForElementVisible('#squeak-motion-discussion-modal', 1000)
+      .assert.visible('#squeak-motion-discussion-modal .comment-text:nth-child(1)')
+      .assert.containsText('#squeak-motion-discussion-modal .comment-text:nth-child(1) .comment', 'Test comment')
+      .assert.elementNotPresent('#proposal-comment-submit-input')
+      
+      // Delete Squeak
+      .navigateToNewestSqueak()
+      .deleteSqueak()
+
       .end();
   }
 }

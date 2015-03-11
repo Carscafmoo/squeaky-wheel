@@ -110,6 +110,7 @@ module.exports = {
       .waitForElementVisible('#squeak-info', 1000) // wait for page to load
       .assert.containsText('.bootstrap-tagsinput .label-info:nth-child(1)', 'Nightwatch') // don't asplode it if it's the wrong one
       .click('.bootstrap-tagsinput .label-info:nth-child(1) span[data-role=remove]') 
+      .deleteSqueak()
 
       .end();
   }

@@ -42,7 +42,7 @@ module.exports = {
       .assert.containsText('h3.welcome', 'recency') // should update the text at the top of the page
       
       // Note that we should still have /20 in our URL
-      .assert.containsText("#squeak-list div.squeak-entry:nth-child(3) h3", "Make everything better")
+      .assert.containsText("#squeak-list div.squeak-entry:nth-child(3) h3", "Reducing your mother")
       .assert.containsText("#squeak-list div.squeak-entry:nth-child(13) h3", "Faster production") // These two should be in this order according to fixtures
       
       // vote, and check that it's still in that order
@@ -65,7 +65,7 @@ module.exports = {
       .click('#sort-squeaks-dropdown')
       .click('#view-newest-squeaks')
       .pause(1000) // wait for page load
-      .assert.containsText("#squeak-list div.squeak-entry:nth-child(3) h3", "Make everything better") // These two should be in this order according to fixtures
+      .assert.containsText("#squeak-list div.squeak-entry:nth-child(3) h3", "Reducing your mother") // These two should be in this order according to fixtures
       .assert.containsText("#squeak-list div.squeak-entry:nth-child(12) h3", "Preventing humans") // This guy wouldn't be here otherwise.
       
       // Test out looking at watched Squeaks:
@@ -75,27 +75,15 @@ module.exports = {
       .pause(1000) // page load
       .assert.containsText("h3.welcome", "watched")
       .assert.containsText("#squeak-list div.squeak-entry:nth-child(3) h3", "Reducing your mother")
-      .assert.elementNotPresent("#squeak-list div.squeak-entry:nth-child(4)") // test_user1 is only watching the Squeak she created
+      .assert.containsText("#squeak-list div.squeak-entry:nth-child(4) h3", "Make everything better")
+      .assert.elementNotPresent("#squeak-list div.squeak-entry:nth-child(5)") // test_user1 is only watching those two according to fixtures
 
       // Navigate back to the newest Squeak list, watch a Squeak, and come back -- note, we're already sorting by newest
       .click('#which-squeaks-dropdown')
       .assert.elementPresent('#view-all-squeaks') // he should be there now
       .assert.elementNotPresent('#view-watched-squeaks') // now this d00d shouldn't be there
-      .click('#view-all-squeaks')
-      .pause(1000)
-      .click("#squeak-list div.squeak-entry:nth-child(3) .watch-squeak-button") // watch the Squeak
-      .click('#which-squeaks-dropdown')
-      .click("#view-watched-squeaks")
-      .pause(1000)
-      .assert.elementPresent(".squeak-entry")
-      .assert.elementPresent("#squeak-list div.squeak-entry:nth-child(3)")
-      .assert.elementNotPresent("#squeak-list div.squeak-entry:nth-child(5)")
-
-      // aaaand unwatch:
-      .click("#squeak-list div.squeak-entry:nth-child(3) .unwatch-squeak-button") // unwatch the Squeak
       
       // Test out looking at "my" Squeaks
-      .click("#which-squeaks-dropdown")
       .click("#view-my-squeaks") // navigate to my squeaks and test that only the one shows up
       .pause(1000) // wait for page load I guess...
       .assert.containsText("h3.welcome", "my")
@@ -131,50 +119,26 @@ module.exports = {
       .click('#squeak-list div.squeak-entry:nth-child(3) h3 a')
       .waitForElementPresent('#squeak-info', 1000)
 
-      // Now test in the shop squeaks
-      .click('#workflow-transition-dropdown-button')
-      .click('.state-change-option a[action=takeSqueakToShop]')
-      .waitForElementVisible('#submit-state-change-button', 1000)
-      .click('#submit-state-change-button')
-      .click('#view-squeaks')
-      .assert.elementNotPresent('#squeak-list div.squeak-entry:nth-child(3)') // shouldn't be anything here.
-
-      // Move over to In the shop Squeaks:
-      .click('#workflow-restriction-dropdown')
-      .assert.elementNotPresent('#view-squeaky-squeaks') // we're there now
-      .assert.elementPresent('#view-any-resolution-squeaks') // but our friend should be back
-      .click('#view-shop-squeaks')
-      .pause(1000) // wait for page load
-      .assert.containsText('#squeak-list div.squeak-entry:nth-child(3) h3', 'Nightwatch Test Squeak')
-      .assert.elementNotPresent('#squeak-list div.squeak-entry:nth-child(5)') // there shouldn't be more than one open Squeak
-
       // Now go to that Squeak, change his workflow to proposed, and come back:
-      .click('#squeak-list div.squeak-entry:nth-child(3) h3 a')
-      .waitForElementVisible('#squeak-info', 3000)
-      .click('#workflow-transition-dropdown-button')
-      .click('.state-change-option a[action=proposeSqueakSolution]')
-      .waitForElementVisible('#submit-state-change-button', 1000)
-      .setValue('#state-change-comment', 'Testing state changes on the Squeak list')
-      .click('#submit-state-change-button')
+      .click('#propose-workflow-motion')
+      .waitForElementVisible('#squeak-motion-modal-form', 1000)
+      .setValue("#squeak-motion-comment", 'test')
+      .click('#submit-squeak-motion-button')
       .click('#view-squeaks')
-      .assert.elementNotPresent('#squeak-list div.squeak-entry:nth-child(4)') // only one Squeak in that state
-      .assert.containsText('#squeak-list div.squeak-entry:nth-child(3) h3', 'Repository')
-
+      .assert.elementNotPresent('#squeak-list div.squeak-entry:nth-child(3)') // no Squeaks in that state
+      
       .click('#workflow-restriction-dropdown')
-      .assert.elementNotPresent('#view-shop-squeaks') // you get the picture
+      .assert.elementNotPresent('#view-squeaky-squeaks') // you get the picture
       .click('#view-inspection-squeaks')
       .waitForElementVisible('.squeak-content', 1000) // page load
 
       .assert.elementPresent('#squeak-list div.squeak-entry:nth-child(3)')
       .assert.elementNotPresent('#squeak-list div.squeak-entry:nth-child(4)') // shouldn't be thurr
 
-      // Finally let's wrap this guy up:
+      // Let's get rid of this guy; we have fixture data in other states.
       .click('#squeak-list div.squeak-entry:nth-child(3) h3 a')
       .waitForElementVisible('#squeak-info', 3000)
-      .click('#workflow-transition-dropdown-button')
-      .click('.state-change-option a[action=declareSqueakGreased]')
-      .waitForElementVisible('#submit-state-change-button', 1000)
-      .click('#submit-state-change-button')
+      .deleteSqueak()
       .click('#view-squeaks')
       .assert.elementNotPresent('#squeak-list div.squeak-entry:nth-child(3)') // no more Squeaks in that state
 
@@ -184,7 +148,18 @@ module.exports = {
       .waitForElementVisible('.squeak-content', 1000) // page load
 
       .assert.elementPresent('#squeak-list div.squeak-entry:nth-child(3)')
-      
+      .assert.containsText('#squeak-list div.squeak-entry:nth-child(3)', 'Transistor')
+
+      .click('#workflow-restriction-dropdown')
+      .assert.elementNotPresent('#view-greased-squeaks') // you get the picture
+      .click('#view-rejected-squeaks')
+      .pause(1000) // wait for page load
+
+      .assert.elementPresent('#squeak-list div.squeak-entry:nth-child(3)')
+      .assert.elementPresent('#squeak-list div.squeak-entry:nth-child(5)') // there should only be three
+      .assert.elementNotPresent('#squeak-list div.squeak-entry:nth-child(6)') // there should only be three
+      .assert.containsText('#squeak-list div.squeak-entry:nth-child(3) h3', "Reducing your mother")
+
       .end();
   }
 };

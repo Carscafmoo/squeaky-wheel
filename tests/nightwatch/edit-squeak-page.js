@@ -126,7 +126,7 @@ module.exports = {
       .acceptAlert()
       .pause(100) // gah
       .waitForElementVisible('#squeak-list', 1000)
-      .assert.containsText('#squeak-list div:nth-child(1) h3', 'Make everything better') // that means this d00d is gone.
+      .assert.containsText('#squeak-list div:nth-child(1) h3', 'Reducing your mother') // that means this d00d is gone.
 
       .end();
   }

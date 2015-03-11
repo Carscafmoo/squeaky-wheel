@@ -140,11 +140,11 @@ WorkflowMotionInitiatedActivity = function WorkflowMotionInitiatedActivity(activ
   var motion;
   if (squeak) { 
     motion = _.findWhere(squeak.motions, {_id: activity.action._id});
-    this.action = "proposed change of workflow state of '";
+    this.action = "proposed change of workflow state of ";
     this.linkText = squeak.title;
     this.linkId = squeak._id;
     this.linkPath = "squeakPage";
-    this.postLinkText = "' from " + motion.previousState + " to " + motion.proposedState;
+    this.postLinkText = " from " + motion.previousState + " to " + motion.proposedState;
     this.performer = this.getUserName(motion.user);
     this.template = "_squeakMotion";
     this.templateData = motion;
@@ -160,12 +160,12 @@ WorkflowMotionResolvedActivity = function WorkflowMotionResolvedActivity(activit
   var motion;
   if (squeak) { 
     motion = _.findWhere(squeak.motions, {_id: activity.action._id});
-    this.action = "'s proposal to change '";
+    this.action = "'s proposal to change ";
     this.performer = getUserName(motion.user);
     this.linkText = squeak.title;
     this.linkId = squeak._id;
     this.linkPath = "squeakPage";
-    this.postLinkText = "' from " + motion.previousState + " to " + motion.proposedState + " was " + motion.state.toLowerCase();
+    this.postLinkText = " from " + motion.previousState + " to " + motion.proposedState + " was " + motion.state.toLowerCase();
     this.template = "_squeakMotion"; // debug -- fix
     this.templateData = motion;
   }
@@ -182,8 +182,14 @@ WorkflowMotionCommentActivity = function WorkflowMotionCommentActivity(activity)
   if (squeak) { 
     motion = _.findWhere(squeak.motions, {_id: activity.action.motionId});
     comment = _.findWhere(motion.comments, {_id: activity.action._id});
-    this.action = "commented on " + getUserName(motion.user) + "'s proposal."; // cheap -- we'll need to fix this.
+    this.action = "commented on " + getUserName(motion.user) + "'s proposal to change "; // cheap -- we'll need to fix this.
+    this.linkText = squeak.title;
+    this.linkPath = "squeakPage";
+    this.linkId = squeak._id;
     this.performer = this.getUserName(comment.author);
+    this.postLinkText = " from " + motion.previousState + " to " + motion.proposedState;
+    this.template = '_comment';
+    this.templateData = comment;
   }
 }
 /**

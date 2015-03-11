@@ -33,6 +33,17 @@ Template._squeakMotion.helpers({
     return this.comments.length; 
   },
   /**
+   * Return the motion whose discussion to display
+   * @return {SqueakMotion} 
+   */
+  getDiscussionMotion: function() { 
+    var moId = Session.get('discussionMotion');
+    var squeak = Squeaks.findOne({'motions._id': moId});
+    if (squeak) { return _.findWhere(squeak.motions, {_id: moId}); }
+
+    return {};
+  },
+  /**
    * Get the user object of the user who created this Motion
    * @return {User} 
    */
@@ -79,10 +90,11 @@ Template._squeakMotion.helpers({
    */
   motionType: function() { 
     if (this.proposedState === 'Greased') { return "Solution"; }
+    if (this.proposedState === 'Squeaky') { return "Proposal to re-open"; }
     if (this.reason === 'Withdrawn') { return "Withdrawn"; }
-    if (this.reason === 'Unproductive') { return "Motion to close as unproductive"; }
-    if (this.reason === 'Offensive') { return "Motion to close as offensive"; }
-    if (this.reason === 'Duplicate') { return "Motion to close as duplicate"; }
+    if (this.reason === 'Unproductive') { return "Proposal to close as unproductive"; }
+    if (this.reason === 'Offensive') { return "Proposal to close as offensive"; }
+    if (this.reason === 'Duplicate') { return "Proposal to close as duplicate"; }
   },
   /**
    * Text for the rejection button -- namely, whether you are explicitly rejecting or withdrawing the motion
@@ -129,6 +141,14 @@ Template._squeakMotion.helpers({
  * event handlers for squeak motions
  */
 Template._squeakMotion.events({
+  /**
+   * Set the variable regarding which discussion we're actually looking at.
+   * Note that this element is actually a part of the _squeak-motion template
+   */
+  'click .squeak-motion-discussion-toggle': function(event) { 
+    event.preventDefault();
+    Session.set('discussionMotion', this._id);
+  },
   /**
    * Reject the motion outright if the reject motion button is clicked
    */

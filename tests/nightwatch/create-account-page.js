@@ -50,7 +50,10 @@ module.exports = {
       .click("#submit-new-user")
       .waitForElementVisible("#tutorial-header", 5000)
       .assert.containsText('#login-dropdown-toggle', 'Nightwatch Test User')
-      
+      .click('#view-activity')
+      .waitForElementVisible("#activity-list", 3000)
+      .assert.containsText('.entry-content label', 'You joined')
+
       .end();
   }
 }

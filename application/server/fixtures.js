@@ -26,6 +26,39 @@ if (Squeaks.find().count() === 0) {
     name: 'Jimmy Doe'
   }); // we need a third user to test some of the resolution stuff
 
+  // We have a few users around that we can control their viscosity a little more tightly for E2E testing
+  var lowViscosityUser = Accounts.createUser({username: 'wd_0', 
+    email: 'wd40@squeaky-wheel.com',
+    password: 'easygreasy0', 
+    name: 'Low Viscosity'
+  });
+
+  // We have a few users around that we can control their viscosity a little more tightly for E2E testing
+  var medViscosityUser = Accounts.createUser({username: 'wd_500',  // I obviously have no idea how viscosity grades work
+    email: 'wd400@squeaky-wheel.com',
+    password: 'easygreasy500', 
+    name: 'Medium Viscosity'
+  });
+
+  Meteor.users.update({_id: medViscosityUser}, {$set: {viscosityEvents: [{
+        type: 'test', 
+        score: 500,
+        timestamp: new Date(),
+        decays: false}]}});
+
+  // We have a few users around that we can control their viscosity a little more tightly for E2E testing
+  var highViscosityUser = Accounts.createUser({username: 'wd_5000', 
+    email: 'wd5000@squeaky-wheel.com',
+    password: 'easygreasy5000', 
+    name: 'High Viscosity'
+  });
+
+  Meteor.users.update({_id: highViscosityUser}, {$set: {viscosityEvents: [{
+        type: 'test', 
+        score: 5000,
+        timestamp: new Date(),
+        decays: false}]}});
+
   // Create a set of example axles; we want > 10 to test pagination -- probably 15.
   axles = ['Squeaky Wheel Examples', 
           'Planes', 
@@ -179,7 +212,7 @@ if (Squeaks.find().count() === 0) {
         created: new Date('1953-03-02 GMT-0500'), // tanenbaum supposedly made one in jan '54, according to http://spectrum.ieee.org/biomedical/devices/the-lost-history-of-the-transistor
         resolved: new Date('1953-03-02 12:00:00 GMT-0500'), 
         comment: 'This might be a duplicate of the Squeak entitled \'Transistor capable of withstanding high temperature.\'',
-        state: 'Rejected',
+        state: 'Accepted',
         score: 100,
         comments: [],
         voters: [{userId: usArmyId, isFor: true}] // initial submission

@@ -12,20 +12,15 @@ Template.commentSubmit.created = function() {
 }
 /**
  * Is the form complete?
+ * @param {jQuery} $target the form element whose completeness is questionable
  * @return {Boolean}   True if the form is submittable.
  */
-var isComplete = function isComplete() { return !!$('#' + type + '-comment-submit-input').val(); }
+var isComplete = function isComplete($target) { return !!$target.val(); }
 /**
  * Helpers
  * @author  moore
  */
 Template.commentSubmit.helpers({
-  /**
-   * The button should be disabled if the form is empty
-   */
-  commentSubmitClass: function() { 
-    return (isComplete() ? '' : 'disabled');
-  },
   /**
    * What input error type are we looking for with this guy
    * @return {String}
@@ -64,7 +59,7 @@ Template.commentSubmit.events({
     var dataId;
     var method;
     
-    if (type === 'squeak') { 
+    if (template.data.squeak) { 
       dataId = template.data.squeak._id;
       method = "commentOnSqueak";
     } else { 
@@ -87,11 +82,12 @@ Template.commentSubmit.events({
    * Evaluate whether the comment form is complete or not on every keystroke:
    */
   'keyup .comment-submit-input': function(event) { 
-    if (isComplete()) { 
-      $('#' + type + '-submit-comment').removeClass('disabled'); 
+    var $target = $(event.currentTarget);
+    if (isComplete($target)) { 
+      $target.closest('form').find('.comment-submit-button').removeClass('disabled'); 
       clearInputError(type + 'SubmitComment');
     } else { 
-      $('#' + type + '-submit-comment').addClass('disabled'); 
+      $target.closest(form).find('.comment-submit-button').addClass('disabled'); 
     }
   }
 });

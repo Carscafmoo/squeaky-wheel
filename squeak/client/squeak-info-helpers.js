@@ -25,11 +25,13 @@ var getClosedMotions = function getClosedMotions(squeak) {
  * @return {Motion}        
  */
 var getResolution = function getResolution(squeak) { 
+  if (squeak.state === 'Squeaky') { return null; } // If the Squeak is Squeaky, we certainly don't have a resolution
+
   var motions = getClosedMotions(squeak);
   var openMotions;
   if (motions.length) { // if not, return undefined
     openMotions = getOpenMotions(squeak);
-    // We have a resolution if and only if there are no open motions or the only open motion is to re-open
+    // We have a resolution if and only if there are no open motions or the only open motion is to re-open 
     if (!openMotions.length || !_.reject(openMotions, function(mo) { return mo.proposedState === 'Squeaky'}).length) { 
       // If that's the case, we need to find the last _accepted_ motion:
       return _.where(motions, {state: 'Accepted'}).pop(); // It has to be the last one by the sorting.  Returns undefined if no such motions exist
@@ -89,19 +91,6 @@ var possibleStates = function possibleStates(squeak) {
   return possibleStates;
 }
 /**
- * Fill in all the Workflow motion stuff so you only have to traverse the array the one time.  We'll update these through session variables
- * as things change.
- */
-Template.squeakInfo.created = function() { 
-  Session.set('discussionMotion', null); // reset the discussion motion
-}
-/**
- * Clean up after ourselves w.r.t. our seshvars
- */
-Template.squeakInfo.destroyed = function() { 
-  Session.set('discussionMotion', null);
-}
-/**
  * Helpers for squeak-info
  * @author moore
  */
@@ -112,16 +101,6 @@ Template.squeakInfo.helpers({
    */
   canProposeNewMotion: function() { 
     return !!possibleStates(this).length;
-  },
-  /**
-   * Return the motion whose discussion to display
-   * @return {SqueakMotion} 
-   */
-  getDiscussionMotion: function() { 
-    var dm = Session.get('discussionMotion');
-
-    if (dm) { return _.findWhere(this.motions, {_id: dm}); }
-    else { return {}; }
   },
   /**
    * Determine if the current user is the author of the Squeak in question
@@ -222,13 +201,5 @@ Template.squeakInfo.events({
     $('#rejected-motions').hide();
     $button.attr('id', 'show-all-motions');
     $button.text('Show history');
-  },
-  /**
-   * Set the variable regarding which discussion we're actually looking at.
-   * Note that this element is actually a part of the _squeak-motion template
-   */
-  'click .squeak-motion-discussion-toggle': function(event) { 
-    event.preventDefault();
-    Session.set('discussionMotion', $(event.currentTarget).attr('_id'));
   }
 });

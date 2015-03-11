@@ -16,13 +16,6 @@
           </a>
         </li>
       {{/if}}
-      {{#if needToDisplay 'sh'}}
-        <li>
-          <a href="#" id='view-shop-squeaks' class='squeak-list-workflow-link'>
-            {{text 'sh'}}
-          </a>
-        </li>
-      {{/if}}
       {{#if needToDisplay 'i'}}
         <li>
           <a href="#" id='view-inspection-squeaks' class='squeak-list-workflow-link'>
@@ -37,6 +30,14 @@
           </a>
         </li>
       {{/if}}
+      {{#if needToDisplay 'r'}}
+        <li>
+          <a href="#" id='view-rejected-squeaks' class='squeak-list-workflow-link'>
+            {{text 'r'}}
+          </a>
+        </li>
+      {{/if}}
+      
     </ul>
   </span>
 </template>

@@ -231,6 +231,8 @@ updateUserProfile = function updateUserProfile(field, value, env) {
  * @return {Integer}      The user's current viscosity rating.
  */
 calculateViscosityRating = function calculateViscosityRating(user) { 
+  if (!user) { return 0; }
+  
   var rating = Math.round(_.reduce(user.viscosityEvents, function(accum, event) {
     var decay_factor = event.decays ? (new Date() - event.timestamp) / 1000 / 3600 / 24 / 365 : 0;
     var contrib = event.score * (1 - (decay_factor > 1 ? 1 : decay_factor));

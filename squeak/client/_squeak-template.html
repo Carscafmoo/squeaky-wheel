@@ -3,7 +3,7 @@
     <div class="entry-content squeak-content">
       <h3>
         <a href="{{pathFor 'squeakPage'}}">{{title}}</a>
-        <span class='workflow-state pull-right' title="{{workflowTitle}}">{{state}}</span>
+        {{> workflowState}}
       </h3>
       {{> squeakSubmissionMeta}}
       <div class='row'>

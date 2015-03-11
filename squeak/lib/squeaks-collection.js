@@ -90,7 +90,7 @@ var searchOpts = {
     } // end if userFields
 
     query.$or = newOr;
-    console.log(query.$or);
+    
     return query;
   },
   sort: function() { 
@@ -543,7 +543,7 @@ initiateSqueakMotion = function initiateSqueakMotion(squeakId, proposal, env) {
 
   createActivity({type: 'workflowMotionInitiated',
                   action: {_id: motion._id},
-                  watched: {type: 'Squeak', _id: squeak._id},
+                  watched: {type: 'squeak', _id: squeak._id},
                   users: squeak.watchers}, 
                   env);
 
@@ -660,7 +660,7 @@ resolveMotion = function resolveMotion(motionId, isPass, env) {
     update["motions." + mo.index + ".resolved"] = timestamp;
     createActivity({type: 'workflowMotionResolved',
                   action: {_id: mo._id},
-                  watched: {type: 'Squeak', _id: squeak._id},
+                  watched: {type: 'squeak', _id: squeak._id},
                   users: squeak.watchers}, env);
   });
 
@@ -748,6 +748,8 @@ workflowExplanation = function workflowExplanation(state) {
     return "A problem with a potential solution.  Go weigh in!";
   } else if (state === "Greased") { 
     return "This problem's solved!";
+  } else if (state === "Rejected") { 
+    return "This problem wasn't a valid candidate for Squeaky Wheel."
   }
 }
 /**
