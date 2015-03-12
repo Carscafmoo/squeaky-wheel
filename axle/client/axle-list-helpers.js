@@ -21,6 +21,9 @@ Template.axleList.created = function() {
  */
 Template.axleList.rendered = function() { 
   if (Session.equals('isTutorial', true)) { 
+    $('.easy-search').val('Automobiles');
+    axleSearch.search('Automobiles');
+    
     $('.easy-search').attr('disabled', true); 
     $('.axle-list-sorting-link').addClass('disabled');
   }

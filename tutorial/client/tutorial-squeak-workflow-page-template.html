@@ -1,38 +1,51 @@
 <template name='tutorialSqueakWorkflowPage'>
-  <div id='tutorial-squeak-resolution-page' class='col-xs-10 col-xs-offset-2'>
+  <div id='tutorial-squeak-workflow-page' class='col-xs-10 col-xs-offset-2'>
     <p>
       There are four <strong>workflow states</strong> for a Squeak:
     </p>
-      <dl class='dl-horizontal'>
-        {{#each workflowExplanations}}
-          <dt>{{state}}</dt>
-          <dd>{{explanation}}</dd>
-        {{/each}}
-      </dl>
-      <div class='row standalone-row'>
-        <div class='col-xs-9'>
-          <p>
-            Users can move a Squeak from one state to another by clicking on the workflow state dropdown:
-          </p>
+    <dl class='dl-horizontal'>
+      {{#each workflowExplanations}}
+        <dt>{{state}}</dt>
+        <dd>{{explanation}}</dd>
+      {{/each}}
+    </dl>
+    <p>
+      A Squeak might be <strong>rejected</strong> by the community for one of the following reasons:
+    </p>
+    <dl class='dl-horizontal'>
+      {{#each rejectionReasons}}
+        <dt>{{reason}}</dt>
+        <dd>{{explanation}}</dd>
+      {{/each}}
+    </dl>
+    <div class='row standalone-row'>
+      <div class='col-xs-3' id='squeak-workflow-example-left'>
+        <div class='row tutorial-example-row' id='tutorial-proposal-type-row'>
+          <div class='col-xs-12'>
+            <p>Proposals can be made to <strong>solve</strong>, <strong>reject</strong>, or <strong>re-open</strong> a Squeak.</p>
+          </div>
+        </div><!--tutorial-example-row-->
+        <div class='row tutorial-example-row' id='tutorial-proposal-discussion-row'>
+          <div class='col-xs-12'>
+            <p>Users are encouraged to <strong>discuss</strong> the proposal in addition to voting.</p>
+          </div>
+        </div><!--tutorial-example-row-->
       </div>
-      <div class='col-xs-3'>
-      {{> workflowMenu exampleSqueak}}
+      <div class='col-xs-6' id='squeak-workflow-example'>
+        {{> squeakWorkflowMotions exampleSqueak}}
+      </div>
+      <div class='col-xs-3' id='squeak-workflow-example-right'>
+        <div class='row tutorial-example-row' id='tutorial-proposal-state-row'>
+          <div class='col-xs-12'>
+            <p>The proposal is <strong>voted</strong> on by the community.
+            <br/>
+            <small>
+              Users contribute their <strong>viscosity rating</strong> to their votes. A score of 1000 <strong>accepts</strong> the proposal; a score of -1000 <strong>rejects</strong> it. The original Squeak author may accept or reject a solution outright.
+            </small>
+            </p>
+          </div>
+        </div><!--tutorial-example-row-->
       </div>
     </div><!--row-->
-    <p>
-      Any community member can become the <strong>Mechanic</strong> working on the Squeak by <strong>taking the Squeak to the shop</strong>.  Once there, only the Mechanic can remove the Squeak from the shop by <strong>giving up</strong> or <strong>proposing a solution</strong>.  The Squeak's original author can <strong>accept</strong> or <strong>reject</strong> the Mechanic's solution once the Mechanic has proposed one.  
-    </p>
-    <p>
-      The Squeak can be moved into the <strong>greased</strong> state for one of a number of reasons:
-    </p>
-      <dl class='dl-horizontal'>
-        {{#each greasedExplanations}}
-          <dt>{{reason}}</dt>
-          <dd>{{explanation}}</dd>
-        {{/each}}
-      </dl>
-    <p>
-      Once the Squeak has been greased, the Squeak is no longer editable, and <strong>discussion</strong> ends.
-    </p>
   </div>
 </template>

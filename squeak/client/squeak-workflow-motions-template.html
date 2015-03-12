@@ -1,0 +1,33 @@
+<template name='squeakWorkflowMotions'>
+  <div id='squeak-motion-header'>
+  <label>Status Proposals</label>
+  {{#if canProposeNewMotion}}
+      <span class='pull-right'>
+        <a href='#' id='propose-workflow-motion' data-toggle='modal' data-target='#squeak-motion-modal'>Propose New Status</a>
+      </span>
+      {{> squeakMotionModal possibleStates=possibleStates _id=_id}}
+  {{/if}}    
+  </div>
+  {{#if motions.length}}
+    <div id='squeak-motions' class='motions'>
+      {{#each openMotions}}
+        {{> _squeakMotion}}
+      {{/each}}
+      {{#if isResolved}}
+        {{> _squeakMotion resolution}}
+      {{/if}}
+      {{#if hasMotionHistory}}
+      <div class='row load-more'>
+        <a href='#' id='show-all-motions'>Show history</a>
+      </div>
+      <div id='rejected-motions' style='display: none;'><!--This always starts off hidden-->
+        {{#each motionHistory}}
+          {{> _squeakMotion}}
+        {{/each}}
+      </div>
+      {{/if}}
+    </div>
+  {{else}}
+    <div id='lack-of-squeak-motions'>(None)</div>
+  {{/if}}
+</template>

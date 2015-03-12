@@ -1,13 +1,10 @@
 <template name='tutorialAxleListPage'>
   <div id='tutorial-axle-list-page' class='col-xs-10 col-xs-offset-2'>
     <p>
-      <strong>Axles</strong> are groups of Squeaks related to a central theme or concept.  Think of them as the tags that most major blogging sites have.  
+      It's also a good idea to check related <strong>Axles</strong> for your problem before Squeaking.  Axles are tags grouping Squeaks related to a central theme or concept.  
     </p>
     <p>
-      You can browse a list of all Axles by clicking on the <strong>"Axles" link</strong> in the header.
-    </p>
-    <p>
-      In this view you can...
+      You can browse a list of all Axles by clicking on the <strong>"Axles" link</strong> in the header.  In this view, you can...
     </p>
     <div class='row' id='list-example-label'>
       <div class='col-xs-2 col-xs-offset-4' id='list-relevance-label'>
@@ -17,15 +14,21 @@
         <p>Sort by # of Squeaks on that Axle or alphabetically</p>
       </div>
     </div>
-    <div id='tutorial-example-list' class='container'>
+    <div class='tutorial-example-list container'>
       {{> axleList}}
     </div>
-    <div class='row'>
-      <div class='col-xs-12'>&nbsp;</div>
-    </div><!--filler-->
-    <div class='row'>
+    <div class='row standalone-row'>
       <p>
-        You can also sign up to receive notifications when Squeaks are added to an Axle, so that you can stay up to date with the topics you care about.  If you're an expert in a given topic, it's a good idea to <strong>watch</strong> that Axle so you can help grease as many Squeaks as possible!
+        Clicking on an Axle will bring you to a list of all Squeaks in that Axle:
+      </p>
+    </div>
+    <div class='tutorial-example-list container'>
+      {{> squeakList data=getSqueaks}}
+    </div>
+    
+    <div class='row standalone-row'>
+      <p>
+        You can sign up to receive notifications when Squeaks are added to an Axle, so you can stay abreast of the topics you care about.  If you're an expert in something, you should <strong>watch</strong> related Axles so you can help grease any Squeaks that pop up!
       </p>
     </div>
   </div>

@@ -2,7 +2,9 @@
  * On render, disable all of the workflow transition menu stuff
  */
 Template.tutorialSqueakWorkflowPage.rendered = function() { 
-  $.each($('.state-change-option a'), function() { $(this).addClass('disabled'); });
+  $('#squeak-workflow-example a').addClass('disabled');
+  $('#squeak-workflow-example button').addClass('disabled');
+  $('#squeak-workflow-example button').attr('disabled', true);
 }
 /**
  * Helpers for the squeak workflow template
@@ -13,20 +15,17 @@ Template.tutorialSqueakWorkflowPage.helpers({
    * @type {Object}
    */
   exampleSqueak: function() { 
-    var user = Meteor.userId();
-    return {state: 'Squeaky', author: (user ? user : ''), mechanic: null}; 
+    return Squeaks.findOne();
   }, 
-  /** 
-   * Greased reason explanations
-   * @return {[Object]} in format { reason: (grease reason), explanation: String }
+  /**
+   * reasons a Squeak might be rejected
+   * @return {[Object]}
    */
-  greasedExplanations: function() { 
-    return [
-      {reason: "Withdrawn", explanation: "The author has determined that this is not truly a problem." },
-      {reason: "Offensive", explanation: "The subject matter of the Squeak did not conform to community standards."},
-      {reason: "Unproductive", explanation: "The discussion on the Squeak or the Squeak itself was not productive; no solution was possible."},
-      {reason: "Passed inspection", explanation: "The original Squeak author has accepted a solution to his or her problem." }
-    ];
+  rejectionReasons: function() { 
+    return [{reason: "Withdrawn", explanation: "The author has determined that this is not truly a problem." },
+          {reason: "Duplicate", explanation: "This Squeak is similar or identical to another, existing Squeak." },
+          {reason: "Unproductive", explanation: "The discussion on the Squeak or the Squeak itself was not productive; no solution is possible."},
+          {reason: "Offensive", explanation: "The subject matter of the Squeak did not conform to community standards."}]
   },
   /** 
    * Workflow explanations
@@ -34,11 +33,14 @@ Template.tutorialSqueakWorkflowPage.helpers({
    */
   workflowExplanations: function() { 
     return [
-      { state: "Squeaky", explanation: "A problem that has been reported and is still active.  No one has stepped up to solve it yet." },
-      { state: "In the shop", explanation: "A Mechanic has volunteered to try to solve this problem and is actively working on it." },
+      { state: "Squeaky", 
+        explanation: "This problem is still active.  No one has stepped up to solve it yet." },
       { state: "Under inspection", 
-        explanation: "The work done by the Mechanic is being inspected; this problem may be solved, but the original author needs to accept the solution." },
-      { state: "Greased", explanation: "This problem has been solved!" }
+        explanation: "This Squeak is undergoing Squeaky Wheel's 1000-point inspection: there is an open proposal to change its workflow state." },
+      { state: "Greased", 
+        explanation: "This problem has been solved!" },
+      { state: "Rejected", 
+        explanation: "This problem does not conform to the community's standards." }
     ]
   }
 });

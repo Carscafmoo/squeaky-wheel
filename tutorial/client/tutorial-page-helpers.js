@@ -5,11 +5,11 @@ var templateDictionary = [
     {name: 'Welcome', template: 'tutorialWelcomePage' },
     {name: 'Squeaks', template: 'tutorialSqueakPage' }, // First cover what a Squeak is
     {name: 'Squeaking', template: 'tutorialCreateSqueakPage' }, // transition to how to create one
-    {name: 'Finding Squeaks Part 1: Search Page', template: 'tutorialSearchPage' }, // Don't forget to search before you create...
-    {name: 'Finding Squeaks Part 2: Squeak List', template: 'tutorialSqueakListPage' }, // Here's another great way to search...
-    {name: 'Axles', template: 'tutorialAxleListPage' }, // Restricting to Axles and watching Axles
+    {name: 'Finding Squeaks: Search Page', template: 'tutorialSearchPage' }, // Don't forget to search before you create...
+    {name: 'Axles', template: 'tutorialAxleListPage' }, // Also, check out relevant axles...
     {name: 'Watching and Notifications', template: 'tutorialActivityListPage' }, // What watching means 
     {name: 'Squeak Workflow', template: 'tutorialSqueakWorkflowPage' }, // How to manage Squeaks 
+    {name: 'Viscosity Rating', template: 'tutorialViscosityRatingPage'},
     {name: 'Discussion', template: 'tutorialCommentsPage' }, // Discussion drives Squeaks through the workflow states
     {name: 'Start Squeaking', template: 'tutorialCompletePage' } // Annnnd we're done
   ];
@@ -67,6 +67,13 @@ Template.tutorialPage.helpers({
     return templateDictionary[currentHash()].name;
   },
   /**
+   * How many tutorial pages are there?
+   * @return {Integer}
+   */
+  howMany: function() { 
+    return templateDictionary.length;
+  },
+  /**
    * Get the hash # of the next page
    * @return {Integer}
    */
@@ -93,6 +100,13 @@ Template.tutorialPage.helpers({
    */
   previousPage: function() { 
     return templateDictionary[currentHash() - 1].name; 
+  },
+  /**
+   * Which of the pages are you on?
+   * @return {Integer}
+   */
+  whichAmI: function() { 
+    return currentHash() + 1;
   }
 });
 /**

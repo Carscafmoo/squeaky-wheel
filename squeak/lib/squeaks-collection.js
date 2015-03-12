@@ -142,7 +142,7 @@ if ( Meteor.isServer ) { // Should we split this into its own file?
   });
 
   Meteor.publish('exampleSqueak', function() { 
-    return Squeaks.find({title: 'Repository for global problems and issues that people face'});
+    return Squeaks.find({title: 'Mechanism for regulating the flow of automobiles at intersections'});
   })
 }
 /**

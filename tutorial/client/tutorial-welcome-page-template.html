@@ -1,11 +1,17 @@
 <template name='tutorialWelcomePage'>
-  <div id='tutorialWelcomePage' class='col-xs-10 col-xs-offset-2'>
+  <div id='tutorial-welcome-page' class='col-xs-10 col-xs-offset-2'>
     <h2>Welcome to Squeaky Wheel!</h2>
     <p>
-      We're glad you joined! Before you get started, let's go over the basics. Click Next to begin.
+      {{#if currentUser}}
+        We're glad you joined! Before you get started, let's go over the basics. Click Next to begin.
+      {{else}}
+        Let's take a look around.  Click Next to begin.
+      {{/if}}
     </p>
     <p>
-      Of course, if you want to skip this tutorial, feel free to <a href="{{pathFor 'home'}}">explore on your own.</a>  You can always come back by clicking on the "{{tutorialLink}}" link at the bottom of the page.
+      {{#if currentUser}}
+        Of course, if you want to skip this tutorial, feel free to <a href="{{pathFor 'home'}}">explore on your own.</a>  You can always come back by clicking on the "{{tutorialLink}}" link at the bottom of the page.
+      {{/if}}
     </p>
   </div>
 </template>

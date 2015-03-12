@@ -123,9 +123,10 @@ if (Squeaks.find().count() === 0) {
   var gmId = Meteor.users.insert({name: 'Garrett Morgan', username: 'CaptainInvento', viscosityEvents: [], viscosityAdmin: false}); // get it?  Captain Morgan?
 
   var squeak = Squeaks.insert({title: 'Mechanism for regulating the flow of automobiles at intersections', 
-    description: "I have recently witnessed a collision of automobiles as they both attempted to traverse the intersection at the same time." + 
-      " Surely there must be some mechanism telling which to proceed and which should halt, allowing the other to proceed first?", 
-    reCreation: "Two automobiles approaching an intersection of roads orthogonally",
+    description: "I have recently witnessed a collision of automobiles as they both attempted to orthogonally traverse an intersection concurrently." + 
+      " Surely there must be some mechanism by which we can determine which should proceed and which should halt, allowing the other to proceed first?", 
+    descriptionEdit: new Date('1922-01-01 GMT-0500'),
+    reCreation: "Two automobiles approaching an intersection of roads",
     target: "Conductors and passengers of automobiles",
     author: gmId,
     state: "Greased",
@@ -140,13 +141,25 @@ if (Squeaks.find().count() === 0) {
           " of the imminent changing of the light from green to red.",
         state: 'Accepted',
         score: 1000,
-        comments: [],
+        comments: [{_id: new Mongo.Collection.ObjectID().valueOf(), 
+                author: johnDoeId,
+                comment: "I'm all for this! In particular, the inclusion of yellow light is quite ingenious!",
+                createdAt: new Date('1922-06-15 10:00:00 GMT-0500')}
+                ],
         voters: [{userId: gmId, isFor: true}]
       }],
     createdAt: new Date('1922-01-01 GMT-0500'), 
     votes: 0,
     voters: [],
-    comments: [],
+    comments: [{_id: new Mongo.Collection.ObjectID().valueOf(), 
+                author: johnDoeId,
+                comment: "Do you mean approaching an intersection traveling in opposite directions?",
+                createdAt: new Date('1922-01-31 GMT-0500')},
+              {_id: new Mongo.Collection.ObjectID().valueOf(),
+                author: gmId,
+                comment: "Excellent point.  Edited above to include 'orthogonally.'",
+                createdAt: new Date('1922-02-01 GMT-0500')
+              }],
     axles: [axle, Axles.findOne({name: 'Automobiles'})._id],
     watchers: [johnDoeId, gmId]
   });

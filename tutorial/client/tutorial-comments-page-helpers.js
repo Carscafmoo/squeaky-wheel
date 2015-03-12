@@ -2,7 +2,7 @@
  * When rendered, disable all inputs
  */
 Template.tutorialCommentsPage.rendered = function() { 
-  $('#body').attr('disabled', true);
+  $('#proposal-comment-submit-input').attr('disabled', true);
 }
 /**
  * Helpers for the comment page
@@ -26,12 +26,6 @@ Template.tutorialCommentsPage.helpers({
    * @return {comment} 
    */
   workflowRequestExample: function() { 
-    return Squeaks.findOne().comments[2];
-  },
-  /**
-   * Civil discourse
-   */
-   workflowResponseExample: function() { 
-    return Squeaks.findOne().comments[3];
-   }
+    return Squeaks.findOne().motions[0].comments[0];
+  }
 });

@@ -1,14 +1,29 @@
 <template name='tutorialActivityListPage'>
-  <div id='tutorial-activity-list' class='col-xs-10 col-xs-offset-2'>
+  <div id='tutorial-activity-list-page' class='col-xs-10 col-xs-offset-2'>
     <p>
-      <strong>Notifications</strong> are generated whenever anyone performs an action on a Squeak or Axle you're <strong>watching</strong>.  When you have unread notifications, the <strong>notification badge {{> notificationBadge}}</strong> will display the number of unread notifications you have.
-    </p>
+      <strong>Activities</strong> are generated whenever anyone performs the following actions:
+    </p> 
+    <ul>
+      <li>A Squeak you <strong>watch</strong>...
+        <ul>
+          <li>is <strong>edited</strong></li>
+          <li>is <strong>discussed</strong></li>
+          <li>has its <strong>workflow state</strong> changed</li>
+        </ul>
+      </li>
+      <li>An Axle you <strong>watch</strong>...
+        <ul>
+          <li>has a Squeak attached</li>
+          <li>has a Squeak removed</li>
+        </ul>
+      </li>
+    </ul>
     <p>
-      You can view your notifications by clicking the <strong>"Activity" link</strong> in the page header.
+      You can view your activities by clicking the <strong>"Activity" link</strong> in the page header.
     </p>
     <div class='container'>
       <div class='row'>
-         <div id='tutorial-example-list' class='col-xs-12'>
+         <div class='tutorial-example-list col-xs-12'>
           {{> activityList data=exampleData}}
         </div>
       </div><!--row-->
@@ -19,10 +34,12 @@
     <div class='row'>
       <p>
         You can sign up to receive notifications about Squeaks or Axles.  Look for the 
-          <button class='btn btn-default disabled'><span class='glyphicon glyphicon-eye-open'></span></button> button to start watching.
+          <button class='btn btn-default disabled' id='example-watch-button'>
+            <span class='glyphicon glyphicon-eye-open'></span>
+          </button> button to start watching.
       </p>
       <p>
-        Watching an Axle will trigger notifications if a Squeak is added to or removed from that Axle, and watching a Squeak will trigger notifications if the Squeak is edited, a user discusses that Squeak, or if its <strong>workflow state</strong> changes.
+        Pay particular attention to notifications about <strong>workflow state</strong> changes, since your opinion may be particularly valuable.
       </p>
     </div>
   </div>

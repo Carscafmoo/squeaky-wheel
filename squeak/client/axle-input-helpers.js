@@ -2,7 +2,10 @@
  * If we're in tutorial mode, kill this input
  */
 Template.axleInput.rendered = function() { 
-  if (Session.equals('isTutorial', true)) { $('#axle-restriction-input').attr('disabled', true); }
+  if (Session.equals('isTutorial', true)) { 
+    Session.set('squeakListAxle', 'Automobiles');
+    $('#axle-restriction-input').attr('disabled', true); 
+  }
   // Set up autocomplete on this bad boy
   $('#axle-restriction-input').typeahead({
     /**
@@ -30,6 +33,9 @@ Template.axleInput.rendered = function() {
       if (item) { $('#axle-restriction-form').submit(); }
     }
   });
+}
+Template.axleInput.destroyed = function() { 
+  if (Session.equals('isTutorial', true) ) { Session.set('squeakListAxle', null); }
 }
 /**
  * Helpers for the whichSqueaks template
