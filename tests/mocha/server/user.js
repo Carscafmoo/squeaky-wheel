@@ -47,7 +47,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
     /**
      * Assumes no user is logged in and all users have no viscosity rating
      */
-    describe("User viscosity rating calculation", function() { 
+    describe('User viscosity rating calculation', function() { 
       var now = new Date();
       var sixMonths = new Date(now - 1000 * 3600 * 24 * 30 * 6); // should have decayed to roughly 1/2
       var oneYear = new Date(now - 1000 * 3600 * 24 * 365); // should have decayed to ~0
@@ -66,32 +66,32 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         Meteor.users.update({username: testUser}, {$set: {viscosityEvents: [], viscosityAdmin: false}});
       });
 
-      it("Should calculate viscosity correctly for non-decaying viscosities", function() {
-        Meteor.users.update({username: testUser}, {$set: {viscosityEvents: [{ type: "Test", score: 30, timestamp: twoYears, decays: false}]}});
+      it('Should calculate viscosity correctly for non-decaying viscosities', function() {
+        Meteor.users.update({username: testUser}, {$set: {viscosityEvents: [{ type: 'Test', score: 30, timestamp: twoYears, decays: false}]}});
         testUserViscosity().should.equal(30);
       });
 
-      it("Should calculate viscosity correctly for decaying viscosities", function() {
+      it('Should calculate viscosity correctly for decaying viscosities', function() {
         var visc;
-        Meteor.users.update({username: testUser}, {$set: {viscosityEvents: [{ type: "Test", score: 100, timestamp: sixMonths, decays: true}]}});
+        Meteor.users.update({username: testUser}, {$set: {viscosityEvents: [{ type: 'Test', score: 100, timestamp: sixMonths, decays: true}]}});
         visc = testUserViscosity();
         visc.should.be.greaterThan(40)
         visc.should.be.lessThan(60);
 
-        Meteor.users.update({username: testUser}, {$set: {viscosityEvents: [{ type: "Test", score: 100, timestamp: oneYear, decays: true}]}});
+        Meteor.users.update({username: testUser}, {$set: {viscosityEvents: [{ type: 'Test', score: 100, timestamp: oneYear, decays: true}]}});
         visc = testUserViscosity()
         visc.should.equal(0);
 
-        Meteor.users.update({username: testUser}, {$set: {viscosityEvents: [{ type: "Test", score: 100, timestamp: twoYears, decays: true}]}});
+        Meteor.users.update({username: testUser}, {$set: {viscosityEvents: [{ type: 'Test', score: 100, timestamp: twoYears, decays: true}]}});
         testUserViscosity().should.equal(0); // Shouldn't drop below 0
       });      
 
-      it("Should calculate viscosity correctly across multiple viscosity events", function() { 
+      it('Should calculate viscosity correctly across multiple viscosity events', function() { 
         var visc;
         Meteor.users.update({username: testUser}, {$set: {viscosityEvents: [
-          { type: "Test", score: 100, timestamp: sixMonths, decays: false}, 
-          { type: "Test", score: 100, timestamp: sixMonths, decays: true},
-          { type: "Test", score: 100, timestamp: twoYears, decays: true}, 
+          { type: 'Test', score: 100, timestamp: sixMonths, decays: false}, 
+          { type: 'Test', score: 100, timestamp: sixMonths, decays: true},
+          { type: 'Test', score: 100, timestamp: twoYears, decays: true}, 
           ]}});
         
         visc = testUserViscosity()
@@ -99,9 +99,9 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         visc.should.be.lessThan(160);
       });
 
-      it("Should correctly floor viscosity for users who have achieved adminship", function() { 
+      it('Should correctly floor viscosity for users who have achieved adminship', function() { 
         Meteor.users.update({username: testUser}, {$set: {viscosityEvents: [
-          { type: "Test", score: 100, timestamp: twoYears, decays: true}, 
+          { type: 'Test', score: 100, timestamp: twoYears, decays: true}, 
           ], viscosityAdmin: true}});
         
         testUserViscosity().should.equal(100);
@@ -110,7 +110,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
     /**
      * Assumes that the test user has no viscosity rating
      */
-    describe("Adding viscosity events", function() { 
+    describe('Adding viscosity events', function() { 
       var now = new Date();
       var fiveMin = new Date(now - 1000 * 60 * 5);
       var twoDays = new Date(now - 1000 * 3600 * 24 * 2);
@@ -130,17 +130,17 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         clearTestViscosity();
       });
 
-      it("Should reject bogus users", function() { 
+      it('Should reject bogus users', function() { 
         var test = function() { addViscosityEvent([getTestUser()._id, 'totallymadeupuserid'], 'insertSqueak'); }
-        expect(test).to.throw("Found 1 of requested 2");
+        expect(test).to.throw('Found 1 of requested 2');
       });
 
-      it("Should reject bogus types", function() { 
+      it('Should reject bogus types', function() { 
         var test = function() { addViscosityEvent([getTestUser()._id], 'totallymadeuptype'); }
-        expect(test).to.throw("Unknown viscosity event type");
+        expect(test).to.throw('Unknown viscosity event type');
       });
 
-      it("Should cap certain types after 5 have been achieved in one day", function() { 
+      it('Should cap certain types after 5 have been achieved in one day', function() { 
         var capTypes = ['insertSqueak', 'voteForSqueak', 'commentOnSqueak', 'proposeSqueakSolution', 'moveToClose', 'voteOnMotion'];
         _.each(capTypes, function(type) { 
           var user;
@@ -159,7 +159,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         });
       });
 
-      it("Should not cap the other types even if 5 have been achieved in one day", function() { 
+      it('Should not cap the other types even if 5 have been achieved in one day', function() { 
         var notCapTypes = ['votedCorrectly', 'votedIncorrectly', 'motionPassed', 'motionRejected', 'resolutionPassed', 'resolutionRejected', 
           'squeakResolved', 'squeakRejected'];
         _.each(notCapTypes, function(type) { 
@@ -179,7 +179,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         });
       });
 
-      it("Should not cap if there are > 5 events, but they are not within the last day", function() { 
+      it('Should not cap if there are > 5 events, but they are not within the last day', function() { 
         var capTypes = ['insertSqueak', 'voteForSqueak', 'commentOnSqueak', 'proposeSqueakSolution', 'moveToClose', 'voteOnMotion'];
         _.each(capTypes, function(type) { 
           var user;
@@ -198,7 +198,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         });
       });
 
-      it("Should set the first instance of some types to not decay and subsequent instances to decay", function() { 
+      it('Should set the first instance of some types to not decay and subsequent instances to decay', function() { 
         var notDecayTypes = ['insertSqueak', 'commentOnSqueak', 'proposeSqueakSolution', 'moveToClose', 'motionPassed', 'resolutionPassed', 
           'squeakResolved'];
 
@@ -215,7 +215,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         });
       });
 
-      it("Should set the first instance of some types to decay", function() { 
+      it('Should set the first instance of some types to decay', function() { 
         var decayTypes = ['voteForSqueak', 'voteOnMotion', 'votedCorrectly', 'votedIncorrectly', 'motionRejected', 'resolutionRejected', 
           'squeakRejected'];
         _.each(decayTypes, function(type) { 
@@ -229,7 +229,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         });
       });
 
-      it("Should update viscosity adminship if the user goes over a score of 100", function() { 
+      it('Should update viscosity adminship if the user goes over a score of 100', function() { 
         var user; 
         Meteor.users.update({username: testUser}, {$set: {viscosityEvents: 
               [{ type: 'Test', score: 99, timestamp: now, decays: false}]

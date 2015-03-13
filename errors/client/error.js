@@ -16,7 +16,7 @@ Template.registerHelper('errorMessage', function(inputName) {
 })
 /**
  * Add an error to inputErrors Session variable
- * @param {Object} error An error in form {inputName: "Error text"}
+ * @param {Object} error An error in form {inputName: 'Error text'}
  * @return {void} 
  */
 addInputError = function addInputError(error) { 

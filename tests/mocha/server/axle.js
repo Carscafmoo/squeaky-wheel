@@ -79,25 +79,25 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         logout();
       });
 
-      it("Should be possible to watch if the user is logged in", function() { 
+      it('Should be possible to watch if the user is logged in', function() { 
         loginTestUser();
         expect(watchAxle(findTestAxle()._id)).to.be.true;
         expect(findTestAxle().watchers).to.contain(this.userId);
         logout();
       });
 
-      it("Should not be possible to watch if the user is not logged in or the axle doesn't exist", function() { 
+      it('Should not be possible to watch if the user is not logged in or the axle doesn\'t exist', function() { 
         var test = function() { return watchAxle(findTestAxle()._id); }
-        expect(test).to.throw("User is not logged in");
+        expect(test).to.throw('User is not logged in');
         expect(findTestAxle().watchers).to.have.length(0);
 
         test = function() { return watchAxle('fakeaxleid'); }
         loginTestUser();
-        expect(test).to.throw("No such Axle");
+        expect(test).to.throw('No such Axle');
         logout();
       });
 
-      it("Should be possible to un-watch if the logged-in user is watching", function() { 
+      it('Should be possible to un-watch if the logged-in user is watching', function() { 
         loginTestUser();
         watchAxle(findTestAxle()._id);
 
@@ -106,18 +106,18 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         logout();
       });
 
-      it("Should not be possible to un-watch if the user is not logged in or the axle doesn't exist", function() { 
+      it('Should not be possible to un-watch if the user is not logged in or the axle doesn\'t exist', function() { 
         var test = function() { return unwatchAxle(findTestAxle()._id); }
-        expect(test).to.throw("User is not logged in");
+        expect(test).to.throw('User is not logged in');
         expect(findTestAxle().watchers).to.have.length(0);
 
         test = function() { return unwatchAxle('fakeaxleid'); }
         loginTestUser();
-        expect(test).to.throw("No such Axle");
+        expect(test).to.throw('No such Axle');
         logout();
       });
 
-      it("Should generate an alert when a Squeak is tagged to that axle", function() { 
+      it('Should generate an alert when a Squeak is tagged to that axle', function() { 
         var axle = findTestAxle();
         var squeakId;
         var activity; 
@@ -127,7 +127,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         squeakId = insertSqueak(testSqueak);
         tagSqueakToAxle(squeakId, axle.name);
 
-        activity = Activities.findOne({"action._id": squeakId, "action.user": this.userId, type: 'squeakTaggedToAxle'});
+        activity = Activities.findOne({'action._id': squeakId, 'action.user': this.userId, type: 'squeakTaggedToAxle'});
         expect(activity).to.exist;
         expect(activity.users).to.have.length(1);
         expect(activity.users[0]).to.deep.equal({userId: this.userId, ack: true});
@@ -135,7 +135,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         unwatchAxle(axle._id);
       });
 
-      it("Should generate an alert when a Squeak is untagged from that axle", function() { 
+      it('Should generate an alert when a Squeak is untagged from that axle', function() { 
         var axle = findTestAxle();
         var squeakId;
         var activity; 
@@ -146,7 +146,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         watchAxle(axle._id);
         removeSqueakFromAxle(squeakId, axle.name);
 
-        activity = Activities.findOne({"action._id": squeakId, "action.user": this.userId, type: 'squeakRemovedFromAxle'});
+        activity = Activities.findOne({'action._id': squeakId, 'action.user': this.userId, type: 'squeakRemovedFromAxle'});
         expect(activity).to.exist;
         expect(activity.users).to.have.length(1);
         expect(activity.users[0]).to.deep.equal({userId: this.userId, ack: true});
@@ -155,7 +155,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         logout();
       });
 
-      it("Should generate an alert when a Squeak tagged to that axle is deleted, *only* for those watchers not watching the Squeak ", 
+      it('Should generate an alert when a Squeak tagged to that axle is deleted, *only* for those watchers not watching the Squeak ', 
         function() { 
           var axle = findTestAxle();
           var otherUserId;

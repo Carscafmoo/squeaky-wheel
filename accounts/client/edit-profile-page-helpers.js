@@ -110,7 +110,7 @@ Template.editProfilePage.events({
   'change #input-new-password': function() { 
     confirmPasswordMatch(); // Set the error if the new password and confirm password don't match
     if (!validatePassword($('#input-new-password').val())) { 
-      addInputError({newPassword: "Passwords must be at least 7 characters and contain non-alphabetic characters"});
+      addInputError({newPassword: 'Passwords must be at least 7 characters and contain non-alphabetic characters'});
     } else { 
       clearInputError('newPassword');
     }

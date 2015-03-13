@@ -7,8 +7,8 @@
 module.exports.command = function(callback) {
   var self = this;
   
-  self.url("http://127.0.0.1:3000") 
-      .waitForElementVisible("body", 1000)
+  self.url('http://127.0.0.1:3000') 
+      .waitForElementVisible('body', 1000)
       
   return this; // allows the command to be chained.
 };

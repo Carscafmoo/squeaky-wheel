@@ -9,7 +9,7 @@ Template.squeakBottom.helpers({
    */
   voteClass: function() { 
     var squeak = (this.squeak ? this.squeak : this); // deal with calling from multiple contexts
-    if (_.contains(squeak.voters, Meteor.userId()) || squeak.state === 'Greased') { 
+    if (_.contains(squeak.voters, Meteor.userId()) || squeak.state === 'Greased' || squeak.state === 'Rejected') { 
       return 'disabled'; 
     } else { 
       return ''; 

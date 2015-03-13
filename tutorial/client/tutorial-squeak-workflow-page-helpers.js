@@ -22,10 +22,10 @@ Template.tutorialSqueakWorkflowPage.helpers({
    * @return {[Object]}
    */
   rejectionReasons: function() { 
-    return [{reason: "Withdrawn", explanation: "The author has determined that this is not truly a problem." },
-          {reason: "Duplicate", explanation: "This Squeak is similar or identical to another, existing Squeak." },
-          {reason: "Unproductive", explanation: "The discussion on the Squeak or the Squeak itself was not productive; no solution is possible."},
-          {reason: "Offensive", explanation: "The subject matter of the Squeak did not conform to community standards."}]
+    return [{reason: 'Withdrawn', explanation: 'The author has determined that this is not truly a problem.' },
+          {reason: 'Duplicate', explanation: 'This Squeak is similar or identical to another, existing Squeak.' },
+          {reason: 'Unproductive', explanation: 'The discussion on the Squeak or the Squeak itself was not productive; no solution is possible.'},
+          {reason: 'Offensive', explanation: 'The subject matter of the Squeak did not conform to community standards.'}]
   },
   /** 
    * Workflow explanations
@@ -33,14 +33,14 @@ Template.tutorialSqueakWorkflowPage.helpers({
    */
   workflowExplanations: function() { 
     return [
-      { state: "Squeaky", 
-        explanation: "This problem is still active.  No one has stepped up to solve it yet." },
-      { state: "Under inspection", 
-        explanation: "This Squeak is undergoing Squeaky Wheel's 1000-point inspection: there is an open proposal to change its workflow state." },
-      { state: "Greased", 
-        explanation: "This problem has been solved!" },
-      { state: "Rejected", 
-        explanation: "This problem does not conform to the community's standards." }
+      { state: 'Squeaky', 
+        explanation: 'This problem is still active.  No one has stepped up to solve it yet.' },
+      { state: 'Under inspection', 
+        explanation: 'This Squeak is undergoing Squeaky Wheel\'s 1000-point inspection: there is an open proposal to change its workflow state.' },
+      { state: 'Greased', 
+        explanation: 'This problem has been solved!' },
+      { state: 'Rejected', 
+        explanation: 'This problem does not conform to the community\'s standards.' }
     ]
   }
 });

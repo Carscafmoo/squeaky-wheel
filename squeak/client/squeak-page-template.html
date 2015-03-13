@@ -4,7 +4,12 @@
   {{#if _id}}
     {{> squeakInfo}}
     {{> squeakSubmissionMeta}}
-    <div id='squeak-comments' class='comments'>
+    {{# if showDiscussion}}<!-- If there's nothing to show, don't bother showing anything at all-->
+      <div class='row load-more'>
+        <a href='#' id='show-squeak-discussion'>{{discussionLinkText}}</a>
+      </div>
+    {{/if}}
+    <div id='squeak-comments' class='comments' style='display: none;'><!-- starts off hidden always-->
       {{#each comments}}
         {{> _comment}}
       {{/each}}

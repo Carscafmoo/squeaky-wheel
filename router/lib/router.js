@@ -8,7 +8,7 @@ Router.configure({
   notFoundTemplate: 'notFound',
   waitOn: function() { return Meteor.subscribe('notifications'); }, // Probably we'll need to get rid of this at some point...
   onBeforeAction: function() { 
-    document.title = "Squeaky Wheel"; 
+    document.title = 'Squeaky Wheel'; 
     this.next(); 
   } // temporary title so we don't get ugly [hostname] before loading
 });
@@ -208,7 +208,7 @@ PaginatedController = RouteController.extend({
     var hasMore = this.dataLength() === this.getLimit();
     
     return {
-      ready: this.subscription.ready,
+      ready: function() { return _.every(this.subscription, function(sub) { return sub.ready(); }) }, 
       data: this.getData(),
       nextPath: hasMore ? this.nextPath() : null,
       dataOptions: this.getDataOptions()
@@ -222,7 +222,7 @@ PaginatedController = RouteController.extend({
 ActivityListController = PaginatedController.extend({
   getData: function() { 
     // requires its own limit to deal with conflicting `notifications` subscription
-    return Activities.find({}, {sort: {created: -1}, limit: this.getLimit()}) 
+    return Activities.find({type: {$exists: true}}, {sort: {created: -1}, limit: this.getLimit()}) // exists filters out the other sub
       .map(function(act) { return createNewActivity(act); })
       .sort(function(a, b) { 
         if (a.activity.created > b.activity.created) { return -1; } // descending
@@ -235,7 +235,7 @@ ActivityListController = PaginatedController.extend({
     return Router.routes.activityList.path({dataLimit: this.getLimit() + this.increment}); 
   },
   subscriptions: function() { 
-    this.subscription = Meteor.subscribe('activities', this.getLimit());
+    this.subscription = [Meteor.subscribe('activities', this.getLimit())];
     if (this.data().data) { 
       // Now get through each of the activities you found and pull in the info you need about it...
       var activities = this.data().data;
@@ -254,7 +254,7 @@ ActivityListController = PaginatedController.extend({
         return activity.activity.action._id; 
       }); // return only the comment IDs.
       
-      if (squeakComments.length) { this.subscribe('squeakComments', squeakComments).wait(); }
+      if (squeakComments.length) { this.subscription.push(Meteor.subscribe('squeakComments', squeakComments)); }
 
       // Subscribe to any necessary axles:
       axles = _.filter(activities, function(activity) { 
@@ -310,24 +310,14 @@ ActivityListController = PaginatedController.extend({
       });
 
       squeaksToPull = _.union(squeaksToPull, watchedSqueaks);
-      if (squeaksToPull.length) { this.subscribe('squeaksByIds', squeaksToPull).wait(); }
-      if (editIds.length) { this.subscribe('editsByIds', editIds).wait(); }
-      if (axles.length) { this.subscribe('axleById', axles).wait(); }
-      if (userIds.length) { this.subscribe('usersById', _.uniq(userIds)).wait(); }
+      if (squeaksToPull.length) { this.subscription.push(Meteor.subscribe('squeaksByIds', squeaksToPull)); }
+      if (editIds.length) { this.subscription.push(Meteor.subscribe('editsByIds', editIds)); }
+      if (axles.length) { this.subscription.push(Meteor.subscribe('axleById', axles)); }
+      if (userIds.length) { this.subscription.push(Meteor.subscribe('usersById', _.uniq(userIds))); }
     }
-
-    return this.subscription; // I think if you want it to wait you have to return something?
   },
   dataLength: function() { 
     return this.getData().length;
-  },
-  data: function() { 
-    var hasMore = this.dataLength() === this.getLimit();
-    return {
-      ready: this.subscription.ready,
-      data: this.getData(),
-      nextPath: hasMore ? this.nextPath() : null
-    }
   }
 });
 /**
@@ -347,15 +337,22 @@ Router.route('/activity/:dataLimit?', {
 SqueakListController = PaginatedController.extend({
   template: 'squeakList',
   subscriptions: function() {
+    this.subscription = [];
     var users = [];
     var squeaks = this.getData();
-    this.subscription = Meteor.subscribe('squeaks', this.getWhich(), this.getOptions()); // assignment returns the value of assignment
+    var axleName = Session.get('squeakListAxle');
+    
+    if (axleName) { 
+      this.subscription.push(Meteor.subscribe('axleByName', axleName));
+    } 
 
+    this.subscription.push(Meteor.subscribe('squeaks', this.getWhich(), this.getOptions())); 
+    
     // Pull in all author data:
     if (squeaks) { 
       users = squeaks.map(function(squeak) { return squeak.author; });
 
-      this.subscribe('usersById', users).wait();
+      this.subscription.push(Meteor.subscribe('usersById', users));
     }
   },
   getData: function() { 
@@ -430,14 +427,6 @@ SqueakListController = PaginatedController.extend({
     data.dataLimit = this.getLimit() + this.increment;
 
     return Router.routes.squeakList.path(data);
-  },
-  waitOn: function() { 
-    var axleName = Session.get('squeakListAxle');
-    if (axleName) { 
-      return [Meteor.subscribe('axleByName', axleName)];
-    }
-
-    return [];
   }
 });
 /**

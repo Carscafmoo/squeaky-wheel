@@ -1,5 +1,5 @@
 module.exports = {
-  "Tutorial pages" : function (client) {
+  'Tutorial pages' : function (client) {
     client
       .load()
       
@@ -8,24 +8,24 @@ module.exports = {
       .waitForElementVisible('#tutorial-page', 1000)
 
       // we should be on the welcome page:
-      .assert.elementPresent("#tutorial-welcome-page")
+      .assert.elementPresent('#tutorial-welcome-page')
 
       //logged out it shouldn't say we're glad you joined:
-      .assert.containsText('#tutorial-welcome-page', "Let's take a look around.")
+      .assert.containsText('#tutorial-welcome-page', 'Let\'s take a look around.')
 
       // But logged in, it should
       .loginTestUser()
       .click('#tutorial-footer-link')
       .waitForElementVisible('#tutorial-page', 1000)
-      .assert.containsText('#tutorial-welcome-page', "We're glad you joined")
+      .assert.containsText('#tutorial-welcome-page', 'We\'re glad you joined')
 
-      // Does the "explore on your own link" work?
+      // Does the 'explore on your own link' work?
       .click('#tutorial-welcome-page a')
       .waitForElementVisible('#squeak-list', 1000)
 
       .logout()
       .click('#tutorial-footer-link')
-      .assert.containsText('#tutorial-nav-current', "1 / 10") // this should break if we add anything, and that's probably fine
+      .assert.containsText('#tutorial-nav-current', '1 / 10') // this should break if we add anything, and that's probably fine
       .assert.containsText('#tutorial-next-page', 'Squeaks')
       .assert.elementNotPresent('#tutorial-previous-page')
 

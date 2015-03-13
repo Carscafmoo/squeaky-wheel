@@ -6,8 +6,8 @@ if (!(typeof MochaWeb === 'undefined') && true) {
     var testDescription = 'This Squeak is a test.';
     var testSqueak = {title: testSqueakTitle, 
       description: testDescription, 
-      reCreation: "Cannot be recreated",
-      target: "All you kids out there in radioland"
+      reCreation: 'Cannot be recreated',
+      target: 'All you kids out there in radioland'
     };
 
     var testUser = 'test_user';
@@ -205,10 +205,10 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(squeak.title).to.equal('New test title');
 
         // Test that edits generate a notification:
-        expect(Activities.find({type: 'squeakEdited', "watched._id": squeakId}).count()).to.equal(4);
+        expect(Activities.find({type: 'squeakEdited', 'watched._id': squeakId}).count()).to.equal(4);
 
         deleteSqueak(squeakId);  // Test that it gets rid of activities...
-        expect(Activities.find({type: 'squeakEdited', "watched._id": squeakId}).count()).to.equal(0);        
+        expect(Activities.find({type: 'squeakEdited', 'watched._id': squeakId}).count()).to.equal(0);        
         logout();
       }); // end it should be editable by the author
 
@@ -287,13 +287,13 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         squeak = findTestSqueak();
 
         // comments should create a notification:
-        expect(Activities.find({"watched._id": squeak._id, type: "comment"}).count()).to.equal(1);
+        expect(Activities.find({'watched._id': squeak._id, type: 'comment'}).count()).to.equal(1);
         
         // deleting a squeak should remove the notification:
         logout();
         loginTestUser();
         deleteSqueak(squeak._id);
-        expect(Activities.find({"watched._id": squeak._id, type: "comment"}).count()).to.equal(0);
+        expect(Activities.find({'watched._id': squeak._id, type: 'comment'}).count()).to.equal(0);
 
         logout();
       }); // end should allow comment creation
@@ -484,13 +484,13 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         logout();
       });
 
-      it("Should, by default, be watched by the author", function() { 
+      it('Should, by default, be watched by the author', function() { 
         var watchers = findTestSqueak().watchers;
         expect(watchers).to.have.length(1);
         expect(watchers).to.include(getTestUserId());
       });
 
-      it("Should not be possible to try to watch or unwatch a Squeak if not logged in", function() { 
+      it('Should not be possible to try to watch or unwatch a Squeak if not logged in', function() { 
         var test = function test() { watchSqueak(getTestSqueakId()); }
         expect(test).to.throw('User is not logged in');
 
@@ -498,17 +498,17 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(test).to.throw('User is not logged in');
       });
 
-      it("Should error if a bogus Squeak is submitted", function() { 
+      it('Should error if a bogus Squeak is submitted', function() { 
         loginTestUser();
-        var test = function test() { watchSqueak("Bogus_Squeak_Id"); }
+        var test = function test() { watchSqueak('Bogus_Squeak_Id'); }
         expect(test).to.throw('No such Squeak');
 
-        test = function test() { unwatchSqueak("Bogus_Squeak_Id"); }
+        test = function test() { unwatchSqueak('Bogus_Squeak_Id'); }
         expect(test).to.throw('No such Squeak');
         logout();
       });
 
-      it("Should be possible to subscribe and unsubscribe from Squeaks", function() { 
+      it('Should be possible to subscribe and unsubscribe from Squeaks', function() { 
         var watchers;
 
         loginOtherUser();
@@ -546,24 +546,24 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         logout();
       });
 
-      it("Should not be possible for a non-logged-in user", function() { 
+      it('Should not be possible for a non-logged-in user', function() { 
         var test = function() { initiateSqueakMotion(getTestSqueakId(), {proposedState: 'Rejected'}); }
         expect(test).to.throw('User is not logged in');
       });
 
-      it("Should reject bogus proposals", function() { 
+      it('Should reject bogus proposals', function() { 
         var test = function() { initiateSqueakMotion(getTestSqueakId(), {proposedState: 'bouncy'}); }
         loginTestUser();
         expect(test).to.throw('proposedState must be one of');
       });
 
-      it("Should not be possible to move to open a Squeak that's already open", function() { 
+      it('Should not be possible to move to open a Squeak that\'s already open', function() { 
         var test = function() { initiateSqueakMotion(getTestSqueakId(), {proposedState: 'Squeaky'}); }
         loginTestUser();
         expect(test).to.throw('Cannot move to re-open a Squeak');
       });
 
-      it("Should not be possible to move to close a Squeak that's already closed", function() { 
+      it('Should not be possible to move to close a Squeak that\'s already closed', function() { 
         var test = function() { initiateSqueakMotion(getTestSqueakId(), {proposedState: 'Greased'}); }
         loginTestUser();
         Squeaks.update({title: testSqueakTitle}, {$set: {state: 'Greased'}});
@@ -579,31 +579,31 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(test).to.throw('Cannot move to reject or grease a Squeak');
       });
 
-      it("Should require a comment", function() { 
+      it('Should require a comment', function() { 
         var test = function() { initiateSqueakMotion(getTestSqueakId(), {proposedState: 'Greased'}); }
         loginTestUser();
         expect(test).to.throw('You must provide a comment');
       });
 
-      it("Should require a reason if the Squeak is being rejected", function() { 
+      it('Should require a reason if the Squeak is being rejected', function() { 
         var test = function() { initiateSqueakMotion(getTestSqueakId(), {proposedState: 'Rejected', comment: 'test'}); }
         loginTestUser();
         expect(test).to.throw('Reason must be one of');
       });
 
-      it("Should reject bogus reasons if the Squeak is being rejected", function() { 
+      it('Should reject bogus reasons if the Squeak is being rejected', function() { 
         var test = function() { initiateSqueakMotion(getTestSqueakId(), {proposedState: 'Rejected', comment: 'test', reason: 'I feel like it'}); }
         loginTestUser();
         expect(test).to.throw('Reason must be one of');
       });
 
-      it("Should not be possible for non-author to withdraw the Squeak", function() { 
+      it('Should not be possible for non-author to withdraw the Squeak', function() { 
         var test = function() { initiateSqueakMotion(getTestSqueakId(), {proposedState: 'Rejected', comment: 'test', reason: 'Withdrawn'}); }
         loginOtherUser();
         expect(test).to.throw('Only the author');
       });
 
-      it("Should not be possible for a user with < 100 viscosity rating to initiate a close or re-open motion", function() { 
+      it('Should not be possible for a user with < 100 viscosity rating to initiate a close or re-open motion', function() { 
         var test = function() { initiateSqueakMotion(getTestSqueakId(), {proposedState: 'Rejected', comment: 'test', reason: 'Duplicate'}); }
         loginTestUser();
         expect(test).to.throw('Users with a Viscosity Rating');
@@ -613,14 +613,14 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(test).to.throw('Users with a Viscosity Rating');
       });
 
-      it("Should not be possible to create multiple open motions of the same type", function() { 
+      it('Should not be possible to create multiple open motions of the same type', function() { 
         Squeaks.update({title: testSqueakTitle}, {$set: {motions: [{proposedState: 'Greased', state: 'Open'}]}});
         var test = function() { initiateSqueakMotion(getTestSqueakId(), {proposedState: 'Greased', comment: 'test'}); }
         loginTestUser();
         expect(test).to.throw('There is already a proposal');
       });
 
-      it("Should be possible for any user to submit a proposal, should add viscosity event and activity and change Squeak state", function() { 
+      it('Should be possible for any user to submit a proposal, should add viscosity event and activity and change Squeak state', function() { 
         var test = function() { return initiateSqueakMotion(getTestSqueakId(), {proposedState: 'Greased', comment: 'test'}); }
         var squeak;
         var motion; 
@@ -663,7 +663,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
       });
 
       // I only broke this out so I didn't have to re-use the beforeEach code.
-      it("Should do the same for motions to close for users with VR > 100", function() { 
+      it('Should do the same for motions to close for users with VR > 100', function() { 
         var test = function() { return initiateSqueakMotion(getTestSqueakId(), {proposedState: 'Rejected', comment: 'test', reason: 'Offensive'}); }
         var squeak;
         var motion; 
@@ -702,7 +702,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(activity.watched._id).to.equal(getTestSqueakId());
       });
 
-      it("Should be possible to re-open a Squeak", function() { 
+      it('Should be possible to re-open a Squeak', function() { 
         var squeak;
 
         Squeaks.update({_id: getTestSqueakId()}, {$set: {state: 'Greased'}});
@@ -715,7 +715,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(squeak.state).to.equal('Squeaky');
       });
 
-      it("Should be possible to have multiple open motions of different types", function() { 
+      it('Should be possible to have multiple open motions of different types', function() { 
         var squeak;
         var motion;
         
@@ -743,7 +743,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
     /**
      * Assumes Squeak exists, users logged out, no VE, no VR, no activities
      */
-    describe("Squeak Workflow motion resolution", function() { 
+    describe('Squeak Workflow motion resolution', function() { 
       beforeEach(function() { 
         Activities.remove({});
         removeTestSqueak();
@@ -759,7 +759,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         logout();
       });
 
-      it("Should be possible for any user to vote on a motion, contribute that user's VR, and should award VE", function() { 
+      it('Should be possible for any user to vote on a motion, contribute that user\'s VR, and should award VE', function() { 
         var squeak;
         var motion;
         var ve;
@@ -784,7 +784,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(ve[1].type).to.equal('voteOnMotion');
       });
 
-      it("Should allow negative voting", function() { 
+      it('Should allow negative voting', function() { 
         var squeak;
         var motion;
         var ve;
@@ -809,7 +809,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(ve[1].type).to.equal('voteOnMotion');
       });
 
-      it("Should not be possible for the motion author to vote or a user to vote more than once", function() { 
+      it('Should not be possible for the motion author to vote or a user to vote more than once', function() { 
         var test = function() { voteOnMotion(findTestSqueak().motions[0]._id, true); }
         var squeak;
         var motion;
@@ -834,28 +834,28 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(motion.state).to.equal('Open');
       });
 
-      it("Should not be possible to vote on a closed motion", function() { 
+      it('Should not be possible to vote on a closed motion', function() { 
         var test = function() { voteOnMotion(findTestSqueak().motions[0]._id, true); }
         Squeaks.update({title: testSqueakTitle}, {$set: {motions: [{_id: 'testId', state: 'Accepted'}]}})
         loginOtherUser();
-        expect(test).to.throw("Cannot vote on a closed motion");
+        expect(test).to.throw('Cannot vote on a closed motion');
       });
 
-      it("Should not be possible to resolve a closed motion", function() { 
+      it('Should not be possible to resolve a closed motion', function() { 
         var test = function() { resolveMotion(findTestSqueak().motions[0]._id, true); }
         Squeaks.update({title: testSqueakTitle}, {$set: {motions: [{_id: 'testId', state: 'Accepted'}]}});
         loginOtherUser();
-        expect(test).to.throw("motion is already resolved");
+        expect(test).to.throw('motion is already resolved');
       });
 
-      it("Should not be possible for non-motion-author to resolve if voting does not warrant it", function() { 
+      it('Should not be possible for non-motion-author to resolve if voting does not warrant it', function() { 
         var test = function() { resolveMotion(findTestSqueak().motions[0]._id, true); }
         Squeaks.update({title: testSqueakTitle}, {$set: {motions: [{_id: 'testId', state: 'Open', user: getTestUserId(), score: 100}]}});
         loginOtherUser();
-        expect(test).to.throw("the user who initiated the motion can withdraw his own motion");
+        expect(test).to.throw('the user who initiated the motion can withdraw his own motion');
       });
 
-      it("Should resolve a proposed solution favorably if the motion's score goes above 1000, change Squeak state, add activities, and award necessary VE", function() { 
+      it('Should resolve a proposed solution favorably if the motion\'s score goes above 1000, change Squeak state, add activities, and award necessary VE', function() { 
         var squeak;
         var motion;
         var ve;
@@ -907,7 +907,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(Activities.findOne({type: 'workflowMotionResolved'})).to.be.undefined;
       });
 
-      it("Should resolve a motion to close favorably if the motion's score goes above 1000, change Squeak state, add activities, and award necessary VE", function() { 
+      it('Should resolve a motion to close favorably if the motion\'s score goes above 1000, change Squeak state, add activities, and award necessary VE', function() { 
         var squeak;
         var motion;
         var ve;
@@ -951,7 +951,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(activity.watched._id).to.equal(squeak._id);
       });
 
-      it("Should reject a proposal if the proposal's score goes below -1000, no state change, activities and award necessary VE", function() { 
+      it('Should reject a proposal if the proposal\'s score goes below -1000, no state change, activities and award necessary VE', function() { 
         var squeak;
         var motion;
         var ve;
@@ -995,7 +995,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(activity.watched._id).to.equal(squeak._id);
       });
 
-      it("Should reject a motion if the motion's score goes below -1000, no state change, activities and award necessary VE", function() { 
+      it('Should reject a motion if the motion\'s score goes below -1000, no state change, activities and award necessary VE', function() { 
         var squeak;
         var motion;
         var ve;
@@ -1039,7 +1039,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(activity.watched._id).to.equal(squeak._id);
       });
 
-      it("Should be possible for the squeak author to automatically accept a proposal to resolve", function() { 
+      it('Should be possible for the squeak author to automatically accept a proposal to resolve', function() { 
         var squeak;
         var motion;
 
@@ -1057,7 +1057,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(squeak.state).to.equal('Greased');
       });
 
-      it("Should be possible for the squeak author to reject a proposed solution", function() { 
+      it('Should be possible for the squeak author to reject a proposed solution', function() { 
         var squeak;
         var motion;
 
@@ -1075,7 +1075,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(squeak.state).to.equal('Squeaky');
       });
 
-      it("Should not be possible for the squeak author to automatically reject a proposal to close", function() { 
+      it('Should not be possible for the squeak author to automatically reject a proposal to close', function() { 
         var squeak;
         var motion;
         var test = function() { resolveMotion(findTestSqueak().motions[0]._id, false); }
@@ -1086,14 +1086,14 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         logout();
 
         loginTestUser();
-        expect(test).to.throw("can accept or reject a solution");
+        expect(test).to.throw('can accept or reject a solution');
         squeak = findTestSqueak();
         motion = squeak.motions[0];
         expect(motion.state).to.equal('Open');
         expect(motion.score).to.equal(100); // shouldn't have updated the score
       });
 
-      it("Should be possible for the initiating user to reject his or her own proposal", function() { 
+      it('Should be possible for the initiating user to reject his or her own proposal', function() { 
         var squeak;
         var motion;
         var test = function() { resolveMotion(findTestSqueak().motions[0]._id, false); }
@@ -1109,7 +1109,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(squeak.state).to.equal('Squeaky');
       });
 
-      it("Should be possible for the squeak author to withdraw a Squeak without calling for a motion", function() { 
+      it('Should be possible for the squeak author to withdraw a Squeak without calling for a motion', function() { 
         var squeak;
         var motion;
 
@@ -1123,7 +1123,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(motion[0].state).to.equal('Accepted');
       });
 
-      it("Should automatically resolve a motion if the initiating user has > 1000 VR", function() { 
+      it('Should automatically resolve a motion if the initiating user has > 1000 VR', function() { 
         var squeak;
         var motion;
         var test = function() { resolveMotion(findTestSqueak().motions[0]._id, false); }
@@ -1138,7 +1138,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(squeak.state).to.equal('Rejected');
       });
 
-      it("Should resolve all open motions if a motion passes", function() { 
+      it('Should resolve all open motions if a motion passes', function() { 
         var squeak;
         var motion;
         
@@ -1165,7 +1165,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(motion.score).to.equal(1011); // it's 100 + 10 for having already proposed a solution + 901 from user3
       });
 
-      it("Should not resolve other open notifications if the resolution does not pass", function() { 
+      it('Should not resolve other open notifications if the resolution does not pass', function() { 
         var squeak;
         var motion;
         
@@ -1192,7 +1192,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         expect(motion.score).to.equal(-1001); // it's 100 + 10 for having already proposed a solution - 1111 from user3
       });
 
-      it("Should revert the Squeak to the previous state if the resolution does not pass", function() { 
+      it('Should revert the Squeak to the previous state if the resolution does not pass', function() { 
         var squeakId = getTestSqueakId();; 
         
         loginTestUser();
@@ -1219,7 +1219,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
     /** 
      * Expects no logged in user, the test Squeak to exist, users to have zero VR, no activities, and there to be one open motion.
      */
-    describe("Workflow discussion", function() { 
+    describe('Workflow discussion', function() { 
       beforeEach(function() { 
         removeTestSqueak();
         insertTestSqueak();
@@ -1238,30 +1238,30 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         logout();
       });
 
-      it("Should not be possible to comment on a resolved motion", function() { 
+      it('Should not be possible to comment on a resolved motion', function() { 
         var squeak = findTestSqueak();
-        var test = function() { commentOnMotion(squeak.motions[0]._id, "Test"); }
+        var test = function() { commentOnMotion(squeak.motions[0]._id, 'Test'); }
         loginTestUser();
         resolveMotion(squeak.motions[0]._id, false);
         logout();
         loginOtherUser();
-        expect(test).to.throw("Cannot comment on resolved motion");
+        expect(test).to.throw('Cannot comment on resolved motion');
       });
 
-      it("Should require the user to submit a non-empty comment", function() { 
+      it('Should require the user to submit a non-empty comment', function() { 
         var squeak = findTestSqueak();
-        var test = function() { commentOnMotion(squeak.motions[0]._id, "  "); }
+        var test = function() { commentOnMotion(squeak.motions[0]._id, '  '); }
         loginOtherUser();
-        expect(test).to.throw("Comment cannot be empty!");
+        expect(test).to.throw('Comment cannot be empty!');
       });
 
-      it("Should not be possible for a logged-out user to comment on an open motion", function() { 
+      it('Should not be possible for a logged-out user to comment on an open motion', function() { 
         var squeak = findTestSqueak();
-        var test = function() { commentOnMotion(squeak.motions[0]._id, "Test"); }
-        expect(test).to.throw("User is not logged in");
+        var test = function() { commentOnMotion(squeak.motions[0]._id, 'Test'); }
+        expect(test).to.throw('User is not logged in');
       });      
 
-      it("Should be possible for any logged-in user to comment on an open motion and should provide notifications and VR points", function() { 
+      it('Should be possible for any logged-in user to comment on an open motion and should provide notifications and VR points', function() { 
         var squeak = findTestSqueak();
         var motion;
         var comment;
@@ -1269,7 +1269,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
         var ve;
 
         loginOtherUser();
-        expect(commentOnMotion(squeak.motions[0]._id, "Test comment")).to.be.true;
+        expect(commentOnMotion(squeak.motions[0]._id, 'Test comment')).to.be.true;
 
         motion = findTestSqueak().motions[0];
         expect(motion.comments).to.have.length(1);

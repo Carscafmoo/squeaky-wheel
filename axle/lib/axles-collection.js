@@ -106,21 +106,6 @@ deleteAxle = function deleteAxle(axleName) {
   return true;
 }
 /**
- * Watch an axle
- * @param {String} axleId The _id of the axle to watch
- * @author  moore
- */
-watchAxle = function watchAxle(axleId, env) { 
-  var user = getCurrentUserId(env);
-  var axle = Axles.findOne({_id: axleId});
-
-  if (!axle) { throw new Meteor.Error('No such Axle!'); }
-
-  Axles.update({_id: axleId}, {$addToSet: {watchers: user}});
-
-  return true;
-}
-/**
  * Logged-in user un-watch a Axle
  * @param {String} axleId The ID of the Axle to stop watching
  * @param {Object} env the calling environment
@@ -137,17 +122,36 @@ unwatchAxle = function unwatchAxle(axleId, env) {
   return true;
 }
 /**
+ * Watch an axle
+ * @param {String} axleId The _id of the axle to watch
+ * @author  moore
+ */
+watchAxle = function watchAxle(axleId, env) { 
+  var user = getCurrentUserId(env);
+  var axle = Axles.findOne({_id: axleId});
+
+  if (!axle) { throw new Meteor.Error('No such Axle!'); }
+
+  Axles.update({_id: axleId}, {$addToSet: {watchers: user}});
+
+  return true;
+}
+/**
  * Axle-related meteor methods
  * @author  moore
  */
 Meteor.methods({
   /**
-   * Watch an axle
-   * @param {String} axleId The _id of the axle to watch
-   * @author  moore
+   * Query axle names on the server from the client
+   * @param  {String} query A regular expression to match Axle names against
+   * @return {[Object]}       An array of objects
    */
-  watchAxle: function(axleId) {
-    return watchAxle(axleId, this);
+  queryAxleNames: function(query) { 
+    var names = Axles.find({name: {$regex: '.*' + query + '.*', $options: 'i'}}, 
+      {sort: {matchBeginning: 1, name: 1}, // sort by whether it starts with the query text or not 
+      limit: 8});
+    
+    return names.map(function(axle) { return axle.name; }); // ugh.
   },
   /**
    * Logged-in user un-watch a Axle
@@ -159,20 +163,11 @@ Meteor.methods({
     return unwatchAxle(axleId, this);
   },
   /**
-   * Query axle names on the server from the client
-   * @param  {String} query A regular expression to match Axle names against
-   * @return {[Object]}       An array of objects
+   * Watch an axle
+   * @param {String} axleId The _id of the axle to watch
+   * @author  moore
    */
-  queryAxleNames: function(query) { 
-    
-    var names = Axles.find({name: {$regex: '.*' + query + '.*', $options: 'i'}}, 
-      {sort: {matchBeginning: 1, name: 1}, // sort by whether it starts with the query text or not 
-      limit: 8});/*, // Limit to 8 just so you don't overcrowd it y'know
-      transform: function(object) { 
-        object.matchBeginning = new RegExp('^' + query + '.*', 'i').test(object.name);
-        
-        return object;
-      }});*/
-    return names.map(function(axle) { return axle.name; }); // ugh.
+  watchAxle: function(axleId) {
+    return watchAxle(axleId, this);
   }
 });

@@ -5,16 +5,17 @@
  * @type {Object}
  */
 module.exports = {
-  "Activity Page" : function (client) {
+  'Activity Page' : function (client) {
     client
       .load()
-      .assert.visible(".welcome") // Should display the welcome div as part of the login page
+      .assert.visible('.welcome') // Should display the welcome div as part of the login page
       .createTestSqueak() // create the test squeak and log back out...
 
       // Login as non-test user -- we're gonna comment on some Squeaks... 
       .loginOtherUser() // navigate to the most recent Squeak
       .navigateToNewestSqueak()
 
+      .click('#show-squeak-discussion')
       .commentOnSqueak('a')
       .commentOnSqueak('b')
       .commentOnSqueak('c')
@@ -55,31 +56,31 @@ module.exports = {
       .waitForElementVisible('#activity-list', 3000)
 
       // We use N+2 because there are (currently) 2 tags between the .squeak-list and the divs we're counting.
-      .assert.elementPresent("#activity-list div.entry:nth-child(3)") // Expect to find the first comment
-      .assert.cssClassPresent("#activity-list div.entry:nth-child(3) div.activity-entry", 'activity-un-acknowledged') // should be un-ack'd
-      .assert.elementPresent("#activity-list div.entry:nth-child(12)") // Expect to find the 10th comment
-      .assert.cssClassPresent("#activity-list div.entry:nth-child(12) div.activity-entry", 'activity-un-acknowledged') // should be un-ack'd
-      .assert.elementNotPresent("#activity-list div.entry:nth-child(13)") // Expect not to find the 11th comment
-      .assert.containsText("#activity-list div.entry:nth-child(3)", "m") // reverse sort order
-      .assert.containsText("#activity-list div.entry:nth-child(12)", "d") // reverse sort order
+      .assert.elementPresent('#activity-list div.entry:nth-child(3)') // Expect to find the first comment
+      .assert.cssClassPresent('#activity-list div.entry:nth-child(3) div.activity-entry', 'activity-un-acknowledged') // should be un-ack'd
+      .assert.elementPresent('#activity-list div.entry:nth-child(12)') // Expect to find the 10th comment
+      .assert.cssClassPresent('#activity-list div.entry:nth-child(12) div.activity-entry', 'activity-un-acknowledged') // should be un-ack'd
+      .assert.elementNotPresent('#activity-list div.entry:nth-child(13)') // Expect not to find the 11th comment
+      .assert.containsText('#activity-list div.entry:nth-child(3)', 'm') // reverse sort order
+      .assert.containsText('#activity-list div.entry:nth-child(12)', 'd') // reverse sort order
 
       // Should be paginated
       .assert.elementPresent('.load-more')
       .click('.load-more a')
-      .waitForElementPresent("#activity-list div.entry:nth-child(13)", 5000) // Expect to find the 11th comment now
-      .assert.containsText("#activity-list div.entry:nth-child(15)", "a") // reverse sort order
-      .assert.cssClassPresent("#activity-list div.entry:nth-child(15) div.activity-entry", 'activity-un-acknowledged') // should be un-ack'd
-      .assert.urlContains("/20") // should have loaded more in the URL
+      .waitForElementPresent('#activity-list div.entry:nth-child(13)', 5000) // Expect to find the 11th comment now
+      .assert.containsText('#activity-list div.entry:nth-child(15)', 'a') // reverse sort order
+      .assert.cssClassPresent('#activity-list div.entry:nth-child(15) div.activity-entry', 'activity-un-acknowledged') // should be un-ack'd
+      .assert.urlContains('/20') // should have loaded more in the URL
 
       // Moving away from the page resets the un-ack'd activity counter and acks all activities:
       .click('#view-axles')
       .waitForElementPresent('#axle-list', 5000)
-      .assert.containsText("#notification-badge", "") // I don't think this is really what we want here...?
+      .assert.containsText('#notification-badge', '') // I don't think this is really what we want here...?
 
       .click('#view-activity')
       .waitForElementVisible('#activity-list', 3000)
-      .assert.elementPresent("#activity-list div.entry:nth-child(3)") // Expect to find the first comment
-      .assert.cssClassNotPresent("#activity-list div.entry:nth-child(3) div.activity-entry", 'activity-un-acknowledged') // should be ack'd
+      .assert.elementPresent('#activity-list div.entry:nth-child(3)') // Expect to find the first comment
+      .assert.cssClassNotPresent('#activity-list div.entry:nth-child(3) div.activity-entry', 'activity-un-acknowledged') // should be ack'd
 
       // Check to see that axle notifications showed up:
       .logout()
@@ -97,14 +98,14 @@ module.exports = {
       .click('#view-activity')
       .waitForElementVisible('#activity-list', 3000)
 
-      .click("#activity-list div.entry:nth-child(3) .watched-link") // navigate back to Squeak page to delete
+      .click('#activity-list div.entry:nth-child(3) .watched-link') // navigate back to Squeak page to delete
       .waitForElementVisible('#squeak-info', 3000)
 
       .deleteSqueak()
 
       // move back to the activity page; did this generate an activity?  Did all the other activities go away?
       .click('#view-activity')
-      .waitForElementVisible("#activity-list", 3000)
+      .waitForElementVisible('#activity-list', 3000)
       .assert.containsText('#activity-list div.entry:nth-child(3) label', 'You deleted watched squeak')
       .assert.elementNotPresent('#activity-lst div.entry:nth-child(4)') // deleting the Squeak should clean up all activities
       .logout()

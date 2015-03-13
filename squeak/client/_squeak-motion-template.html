@@ -53,7 +53,7 @@
         </div><!--row-within-a-row-->
       </div><!--col-xs-6-->
     </div><!--row-->
-    <div class='squeak-motion well'>
+    <div class='squeak-motion-comment well'>
       {{comment}}
     </div>
     <div class='row'>
@@ -61,11 +61,10 @@
         {{> authorSpan getUser}} {{dateFormat created}}
       </div>
     </div>
-      {{> squeakMotionDiscussionModal getDiscussionMotion}}
-      <div class='row'>
-        <div class='col-xs-12 centered'>
-          <a href='#' class='squeak-motion-discussion-toggle' data-toggle='modal' data-target='#squeak-motion-discussion-modal' data-id="{{_id}}">View Discussion ({{commentLength}})</a>
-        </div>
-      </div>
-  </div>
+  </div><!--.squeak-motion-->
+  {{#if showDiscussion}}
+    <div class='row centered squeak-motion-discussion-row'><!-- pulling this out centers the discussion link-->
+      <a href='#' class='squeak-motion-discussion-toggle' data-toggle='modal' data-target='#squeak-motion-discussion-modal' data-id="{{_id}}">View discussion ({{commentLength}})</a>
+    </div>
+  {{/if}}
 </template>

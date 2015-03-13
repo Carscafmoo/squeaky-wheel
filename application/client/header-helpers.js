@@ -42,7 +42,7 @@ Template.header.events({
   'submit #header-search-form': function(event) { 
     event.preventDefault();
     // Navigate to the search page and trigger the search...
-    Router.go('searchPage', {}, {query: "s=" + $('#header-search-input').val() });
+    Router.go('searchPage', {}, {query: 's=' + $('#header-search-input').val() });
     $('#header-search-input').val(''); // clear the header search after submission
   }
 });

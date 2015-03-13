@@ -1,6 +1,6 @@
 /**
  * This file defines global variables and functions useful in client-side testing of all (or > 1) modules.
- * It is called "a.js" because it must be loaded first, and therefore must come alphabetically prior to all other testing scripts. 
+ * It is called 'a.js' because it must be loaded first, and therefore must come alphabetically prior to all other testing scripts. 
  *
  * Code specific to a single module should go in that module's testing script.
  * For more information on client-side testing, see http://squeakywheel.wikidot.com/procedures:code-testing
@@ -43,7 +43,7 @@ expect = chai.expect;
  */
 otherPass = 'test456';
 /**
- * Name of a user who is not the test user (used for, e.g., "logged in use is not author")
+ * Name of a user who is not the test user (used for, e.g., 'logged in use is not author')
  * @type {String}
  */
 otherUser = 'test_user1';
@@ -56,12 +56,12 @@ should = chai.should();
  * Standard test Axle to tag Squeaks to
  * @type {String}
  */
-testAxle = "Rose"; // har har
+testAxle = 'Rose'; // har har
 /**
  * Description of a standard Test Squeak
  * @type {String}
  */
-testDescription = "Test Description";
+testDescription = 'Test Description';
 /**
  * The password of the test user
  * @type {String}
@@ -71,15 +71,15 @@ testPass = 'test123';
  * Title of a standard test Squeak
  * @type {String}
  */
-testTitle = "Test Squeak";
+testTitle = 'Test Squeak';
 /**
  * Standard test Squeak -- note that this has to come after testTitle (sorry, alphabet)
  * @type {Object}
  */
 testSqueak = {title: testTitle, 
   description: testDescription, 
-  reCreation: "Cannot be recreated",
-  target: "All you kids out therein radioland"
+  reCreation: 'Cannot be recreated',
+  target: 'All you kids out therein radioland'
 };  
 /**
  * The name of the test user
@@ -112,9 +112,9 @@ callbackAssertion = function callbackAssertion(assertion, done) {
  * @throws if the test Axle or the test Squeak exist, or any user is logged in.
  */
 confirmBlankSlate = function confirmBlankSlate() { 
-  if (Meteor.userId()) { throw new Meteor.Error("Expected to be logged out!"); }
-  if (findTestSqueak()) { console.log(findTestSqueak()); throw new Meteor.Error("Expected test Squeak not to exist!"); }
-  if (findTestAxle()) { throw new Meteor.Error("Expected test Axle to not exist!"); }
+  if (Meteor.userId()) { throw new Meteor.Error('Expected to be logged out!'); }
+  if (findTestSqueak()) { console.log(findTestSqueak()); throw new Meteor.Error('Expected test Squeak not to exist!'); }
+  if (findTestAxle()) { throw new Meteor.Error('Expected test Axle to not exist!'); }
   
   return true;
 }
@@ -203,7 +203,7 @@ pullTestSqueakId = function pullTestSqueakId() {
  * Assumes user is logged in as Test User and that Test Squeak exists
  */
 tagTestSqueak = function tagTestSqueak(callback) { 
-  Meteor.call("tagSqueakToAxle", pullTestSqueakId(), testAxle, callback);
+  Meteor.call('tagSqueakToAxle', pullTestSqueakId(), testAxle, callback);
 }
 /**
  * Remove the test squeak from the test Axle
@@ -212,5 +212,5 @@ tagTestSqueak = function tagTestSqueak(callback) {
  * Assumes user is logged in as test user and test squeak is tagged to test axle.
  */
 untagTestSqueak = function untagTestSqueak(callback) { 
-  Meteor.call("removeSqueakFromAxle", pullTestSqueakId(), testAxle, callback);
+  Meteor.call('removeSqueakFromAxle', pullTestSqueakId(), testAxle, callback);
 }

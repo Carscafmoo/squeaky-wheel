@@ -16,7 +16,7 @@
  *   
  * @author  moore
  */
-if ( Meteor.isServer ) { // Should we split this into two files?
+if ( Meteor.isServer ) {
   /**
    * Publish only the user names and IDs of other users given their IDs
    * @param {[String]} ids the IDs to publish
@@ -37,25 +37,28 @@ if ( Meteor.isServer ) { // Should we split this into two files?
    */
   Meteor.publish('usersBySqueak', function(squeakId) { 
     var squeak = Squeaks.findOne({_id: squeakId});
-    var users = [];
+
+    // implement a pseudo-set like so: users[{userID}: true], then access only the keys (keys(users) = [{useID}])
+    // Given the # of users we may be adding, this may have some added efficiency gains compared to storing duplicates in an array?
+    var users = {}; 
     if (squeak) { 
-      users.push(squeak.author);
+      users[squeak.author] = true;
       
       // Loop through any comments and plug the comment authors in:
-      _.map(squeak.comments, function(comment) { 
-        users.push(comment.author);
+      _.each(squeak.comments, function(comment) { 
+        users[comment.author] = true;
       });
 
       // Ditto resolutions
       _.each(squeak.motions, function(mo) { 
-        users.push(mo.user);
+        users[mo.user] = true;
         _.each(mo.comments, function(comment) { 
-          users.push(comment.author);
+          users[comment.author];
         });
       });
     } 
     
-    return Meteor.users.find({_id: {$in: _.uniq(users)}});
+    return Meteor.users.find({_id: {$in: Object.keys(users)}});
   });
 } else {
   Meteor.subscribe('currentUser');
@@ -76,7 +79,7 @@ addViscosityEvent = function addViscosityEvent(users, type) {
   var timestamp = new Date();
 
   if (foundUsers.count() !== users.length) { 
-    throw new Meteor.Error("Found " + foundUsers.count() + " of requested " + users.length + " users!");
+    throw new Meteor.Error('Found ' + foundUsers.count() + ' of requested ' + users.length + ' users!');
   }
   /**
    * Go through this logic for each user. We could separate the logic for the score vs. the decaying but... eh?
@@ -136,7 +139,7 @@ addViscosityEvent = function addViscosityEvent(users, type) {
       event.score = -20;
       event.decay = true; // negative scores always decay
     } else { 
-      throw new Meteor.Error("Unknown viscosity event type " + type);
+      throw new Meteor.Error('Unknown viscosity event type ' + type);
     }
 
     if (!user.viscosityAdmin) { 
@@ -154,6 +157,25 @@ addViscosityEvent = function addViscosityEvent(users, type) {
   });
 
   return true;
+}
+/** 
+ * Calculate a user's VR
+ * @param  {User} user The user in question
+ * @return {Integer}      The user's current viscosity rating.
+ */
+calculateViscosityRating = function calculateViscosityRating(user) { 
+  if (!user) { return 0; }
+  
+  var rating = Math.round(_.reduce(user.viscosityEvents, function(accum, event) {
+    var decay_factor = event.decays ? (new Date() - event.timestamp) / 1000 / 3600 / 24 / 365 : 0;
+    var contrib = event.score * (1 - (decay_factor > 1 ? 1 : decay_factor));
+    
+    return accum + contrib;
+  }, 0));
+
+  if (user.viscosityAdmin) { rating = rating < 100 && rating >= 0 ? 100 : rating; }
+
+  return rating;
 }
 /**
  * Helper function returning the current user ID or erroring if user is not logged in
@@ -174,14 +196,6 @@ getCurrentUserId = function getCurrentUserId(env) {
 
   return user;
 }
-/** 
- * Validate a potential password
- * @param  {String} strPass The password in question
- * @return {Boolean}        True if the password conforms to minimum requirements, false otherwise
- */
-validatePassword = function validatePassword(strPass) { 
-  return (strPass.length >= 7 && !!strPass.match(/[^a-zA-Z]/));
-}
 /**
  * Return the [real] name of a user given a user ID
  * @param  {String} userId The _id of the user in question
@@ -190,15 +204,6 @@ validatePassword = function validatePassword(strPass) {
 getUserName = function getUserName(userId) { 
   var user = Meteor.users.findOne({_id: userId});
   return (user ? user.name : ''); // Deals with errors if the data is requested but not yet subscribed to temporarily
-}
-/**
- * Check if a user exists by ID
- * @param  {String} userId The User Id
- * @return Void
- * @throws {Meteor.Error} If the user does not exist
- */
-var userExists = function userExists(userId) { 
-  if (!Meteor.users.find({_id: userId}).count()) { throw new Meteor.Error('No such user ' + userId + '!'); }  
 }
 /**
  * Update a user profile 
@@ -225,24 +230,22 @@ updateUserProfile = function updateUserProfile(field, value, env) {
 
   return true;
 }
-/** 
- * Calculate a user's VR
- * @param  {User} user The user in question
- * @return {Integer}      The user's current viscosity rating.
+/**
+ * Check if a user exists by ID
+ * @param  {String} userId The User Id
+ * @return Void
+ * @throws {Meteor.Error} If the user does not exist
  */
-calculateViscosityRating = function calculateViscosityRating(user) { 
-  if (!user) { return 0; }
-  
-  var rating = Math.round(_.reduce(user.viscosityEvents, function(accum, event) {
-    var decay_factor = event.decays ? (new Date() - event.timestamp) / 1000 / 3600 / 24 / 365 : 0;
-    var contrib = event.score * (1 - (decay_factor > 1 ? 1 : decay_factor));
-    
-    return accum + contrib;
-  }, 0));
-
-  if (user.viscosityAdmin) { rating = rating < 100 && rating >= 0 ? 100 : rating; }
-
-  return rating;
+var userExists = function userExists(userId) { 
+  if (!Meteor.users.find({_id: userId}).count()) { throw new Meteor.Error('No such user ' + userId + '!'); }  
+}
+/** 
+ * Validate a potential password
+ * @param  {String} strPass The password in question
+ * @return {Boolean}        True if the password conforms to minimum requirements, false otherwise
+ */
+validatePassword = function validatePassword(strPass) { 
+  return (strPass.length >= 7 && !!strPass.match(/[^a-zA-Z]/));
 }
 /**
  * Methods for interacting with the collection

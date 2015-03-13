@@ -81,7 +81,7 @@ Template.axleList.helpers({
     var limit = axleSearch.get('currentLimit'); // What's the *next* one going to be
     var next = ( total > (limit + 10) ? limit + 10 : total); // Next limit
 
-    return "More (" + (limit + 1) + " - " + next + " of " + total + ")";
+    return 'More (' + (limit + 1) + ' - ' + next + ' of ' + total + ')';
   },
   /** 
    * Whats the total #

@@ -10,10 +10,10 @@
  * target: long text field, indicating potential benefitters from a solution
  * author: normalized; ObjectID.
  * state: String, one of ...
- *   "Squeaky" (Open), 
- *   "Under inspection" (A solution has been proposed),
- *   "Greased" (closed -- solution accepted),
- *   "Rejected" (closed -- Squeak itself was bogus)
+ *   'Squeaky' (Open), 
+ *   'Under inspection' (A solution has been proposed),
+ *   'Greased' (closed -- solution accepted),
+ *   'Rejected' (closed -- Squeak itself was bogus)
  * motions: [Object] in form {
  *     _id: A unique ID on the motion proposal.
  *     proposedState: The state that is being proposed (one of 'Squeaky' for re-opening, 'Greased' for resolutions, 
@@ -39,6 +39,7 @@
  * @todo
  *   some other stuff, I'm sure
  *   normalize comments?
+ *   normalize proposals?
  * @todo  Add indices (do we do this... here)?  I think we do this in the startup.js file.  Add the test in tests/mocha/server/squeaks.js? 
  *        (or wherever)
  * @todo  paginate comments maybe?
@@ -79,11 +80,11 @@ var searchOpts = {
     // If we're searching for people, we need to change our query to search for people IDs instead
     userFields = _.intersection(userFields, this.props.fields);
     if (userFields.length) { 
-      authors = Meteor.users.find({name: {$regex: ".*" + searchString + ".*", $options: 'i'}}).fetch();
+      authors = Meteor.users.find({name: {$regex: '.*' + searchString + '.*', $options: 'i'}}).fetch();
       authors = authors.map(function(obj) { return obj._id});
       
-      _.each(userFields, function(field) {  // loop through each and add a new "or" option.
-        var subQuery = {} // build up our "or" statement
+      _.each(userFields, function(field) {  // loop through each and add a new 'or' option.
+        var subQuery = {} // build up our 'or' statement
         subQuery[field] = {$in: authors};
         newOr.push(subQuery);
       });
@@ -108,7 +109,15 @@ var searchOpts = {
 EasySearch.createSearchIndex('squeaks', searchOpts);
 
 if ( Meteor.isServer ) { // Should we split this into its own file?
-  // Publish all Squeaks
+  /**
+   * Publish all fields of certain squeaks, used in the Squeak List view
+   * @param  {Object} which    object in form {axles: optional String, 
+   *                                           author: optional String, 
+   *                                           state: optional String, 
+   *                                           watchers: optional String}
+   * @param  {Object} options) in form {sort: Sort Object, limit: Integer}
+   * @return {Mongo.Cursor} 
+   */
   Meteor.publish('squeaks', function(which, options) {
     check(which, {
       axles: Match.Optional(String),
@@ -124,29 +133,61 @@ if ( Meteor.isServer ) { // Should we split this into its own file?
     
     return Squeaks.find(which, options); // eventually want to limit to only the data we actually want
   });
-
+  /**
+   * Publish all fields in a set of Squeaks given an array of squeak IDs
+   * @param  {[String]} ids the IDs of the Squeaks to publish
+   * @return {Mongo.Cursor}
+   */
   Meteor.publish('squeaksByIds', function(ids) { 
     return Squeaks.find({_id: {$in: ids}});
   });
-
-  // Publish a single Squeak's details
+  /**
+   * Publish the details of a single Squeak
+   * @param {String} [squeakId] The ID of the Squeak to publish
+   * @return {Mongo.Cursor}
+   */
   Meteor.publish('squeakDetail', function(squeakId) {
     check(squeakId, String);
 
     return Squeaks.find({_id: squeakId});
   });
-
+  /**
+   * Publish Squeaks given comment IDs attached to that Squeak
+   * @param  {[String]} commentIds An array of comment _ids 
+   * @return {Mongo.Cursor}                 [description]
+   */
   Meteor.publish('squeakComments', function(commentIds) { 
     check(commentIds, [String]);
-    return Squeaks.find({"comments._id": {$in: commentIds}}, {fields: {comments: 1, author: 1, title: 1}});
+    return Squeaks.find({'comments._id': {$in: commentIds}}, {fields: {comments: 1, author: 1, title: 1}});
   });
-
+  /**
+   * Publish the example Squeak for use in the tutorial / tour
+   * @return {Mongo.Cursor}
+   */
   Meteor.publish('exampleSqueak', function() { 
     return Squeaks.find({title: 'Mechanism for regulating the flow of automobiles at intersections'});
   })
 }
 /**
- * Helper function for finding indices in an array to replace _.findIndex, which is experimental
+ * Pseudo-private method for determining if a Squeak is actually open.
+ * Throw an error if the Squeak has already been closed and you're trying to edit it, among other things
+ * @param  {Squeak} squeak The Squeak in question
+ * @return {Boolean}        true if the Squeak is not greased
+ * @throws {Meteor.Error} If the Squeak has already been greased and is therefore not eligible for modification.
+ */
+var confirmOpen = function confirmOpen(squeak) { 
+  if (squeak.state === 'Greased') { 
+    throw new Meteor.Error('Cannot perform any operations on greased Squeaks!');
+  }
+
+  return true;
+}
+/**
+ * Psuedo-private Helper function for finding indices in an array to replace _.findIndex, which is experimental
+ *   Finds the first instance in the passed array for which the predicate function returns true
+ * @param {Array} array the array in which to find the index of the predicate
+ * @param {Function} predicate a function on the elements of the array returning a Boolean value.
+ * @return {Integer} The first index of the array for which the predicate returns true, or -1 if none does.
  */
 var findIndex = function findIndex(array, predicate) { 
   var retIndex = -1;
@@ -163,58 +204,112 @@ var findIndex = function findIndex(array, predicate) {
   return retIndex;
 }
 /**
+ * Pseudo-private helper for determining whether a Squeak title exists or not
+ * @param  {String} title the title of the Squeak in question
+ * @return {Boolean}       True if the title already exists, false otherwise
+ */
+var squeakTitleExists = function squeakTitleExists(title) { 
+  return !!Squeaks.findOne({title: title});
+}
+
+/**
  * Methods below will only work when called from the server (the client is restricted from inserting into the Squeak collection).
  *   The logic is separated from the Meteor Methods because the MM's can only be called from the client, while these may be called from
  *   the server (e.g., by the MM or in testing).
  */
 /**
- * Server-side function for inserting a Squeak into the Squeak collection.  See the Meteor Method below.
- * @param  {Object} semiSqueak The Squeak description and title.
- * @param {Object} env the calling environment, necessary for using getUserId() if called from a Metor Method.
- * @return {String}            The newly-inserted Squeak's ID
+ * Comment on a workflow motion
+ * @param {String} motionId The _id of the motion in question
+ * @param {String} comment the comment to add to the motion
  */
-insertSqueak = function insertSqueak(semiSqueak, env) {
-  var user = getCurrentUserId(env); // see users-collection.js
-  var squeak;
-  var squeakId;
+commentOnMotion = function commentOnMotion(motionId, comment, env) { 
+  check(motionId, String);
+  check(comment, String);
+  var squeak = Squeaks.findOne({'motions._id': motionId});
+  var user = getCurrentUserId(env);
+  var push = {};
+  var motion; 
+  var motionIndex;
+  var commentToPush;
+  
 
-  check(user, String); // if not logged in, this should fail
+  if (!squeak) { throw new Meteor.Error('No Squeak found with given motion ID'); }
+  
+  comment = comment.trim();
+  if (!comment) { throw new Meteor.Error('Comment cannot be empty!'); }
 
-  check(semiSqueak, {
-    title: String,
-    description: String,
-    reCreation: String,
-    target: String
-  });
+  motionIndex = findIndex(squeak.motions, function(mo) { return mo._id === motionId; });
+  motion = squeak.motions[motionIndex];
+  if (motion.state !== 'Open') { throw new Meteor.Error('Cannot comment on resolved motion!'); }
+  
+  commentToPush = {_id: new Mongo.Collection.ObjectID().valueOf(), 
+                  author: user, 
+                  comment: comment, 
+                  createdAt: new Date()
+                }
 
-  // Make sure they're non-empty:
-  if (!semiSqueak.title || 
-    !semiSqueak.description ||
-    !semiSqueak.reCreation ||
-    !semiSqueak.target
-  ) { throw new Meteor.Error("Title, description, re-creation, and target are all required fields!"); }
+  push['motions.' + motionIndex + '.comments'] = commentToPush;
+  Squeaks.update({_id: squeak._id}, {$push: push});
 
-  // Make sure title is unique:
-  if (squeakTitleExists(semiSqueak.title)) { 
-    throw new Meteor.Error("A Squeak with title '" + semiSqueak.title + "' already exists!  Please select a new title");
+  // Create a new activity
+  if (squeak.watchers.length) { 
+    createActivity({type: 'workflowMotionComment',
+          action: {_id: commentToPush._id, motionId: motionId}, 
+          watched: {type: 'squeak', _id: squeak._id},
+          users: squeak.watchers
+        }, env);
   }
-  
-  var squeak = _.extend({
-    author: user, 
-    state: 'Squeaky',
-    motions: [],
-    createdAt: new Date(),
-    comments: [],
-    votes: 0,
-    voters: [user], // include user in the voters so they can't vote for their own posts
-    axles: [],
-    watchers: [user] // user should watch his own Squeaks!
-  }, semiSqueak);
-  
-  squeakId = Squeaks.insert(squeak);
-  addViscosityEvent([user], 'insertSqueak');
 
-  return squeakId;
+  // And the Viscosity Event
+  addViscosityEvent([user], 'commentOnSqueak'); // treat this sort of comment like any other for VE purposes
+
+  return true;
+}
+/**
+ * Comment on a Squeak
+ * @param  {String} squeakId The ID of the Squeak to comment on
+ * @param  {String} comment  The comment
+ * @param {Object} env the calling environment, necessary for using getUserId() if called from a Metor Method.
+ * @return {Boolean}         true on success
+ * @author  moore
+ * @todo  move this into a comments collection so that they can be edited / whatever separately?
+ */
+commentOnSqueak = function commentOnSqueak(squeakId, comment, env) {
+  var user = getCurrentUserId(env);
+  var squeak; 
+  var commentToPush;
+  var _this = this;
+  
+  check(user, String);
+  check(squeakId, String);
+  check(comment, String);
+  if (!comment) { throw new Meteor.Error('Comment cannot be blank!'); }
+
+  squeak = Squeaks.findOne({_id: squeakId});
+  if ( !squeak ) { throw new Meteor.Error('Cannot comment on Squeak; Squeak does not exist!'); }
+  
+  commentToPush = {_id: new Mongo.Collection.ObjectID().valueOf(),
+                author: user, 
+                comment: comment,
+                createdAt: new Date()};
+
+  Squeaks.update({_id: squeakId}, {$push: {comments: commentToPush}});
+
+  // Notify all watching users that this Squeak was commented on
+  // Build the notification:
+  if (squeak.watchers.length) {
+    notification = {
+      type: 'comment',
+      action: {_id: commentToPush._id, user: user}, // including user here simplifies subscription
+      watched: {type: 'squeak', _id: squeakId},
+      users: squeak.watchers
+    }
+  }
+
+  createActivity(notification, env);
+  addViscosityEvent([user], 'commentOnSqueak'); // add this to the user's profile
+  
+  return true;
 }
 /**
  * delete a Squeak given its ID
@@ -233,15 +328,15 @@ deleteSqueak = function deleteSqueak(squeakId, env) {
   if ( squeak.author !== user ) { throw new Meteor.Error('Cannot delete Squeak; user is not author.'); }
   confirmOpen(squeak);
   
-  Activities.remove({"watched.type": 'squeak', "watched._id": squeakId}); // These are meaningless now
-  Activities.remove({"action.type": 'squeak', "action._id": squeakId}); // These are meaningless now
+  Activities.remove({'watched.type': 'squeak', 'watched._id': squeakId}); // These are meaningless now
+  Activities.remove({'action.type': 'squeak', 'action._id': squeakId}); // These are meaningless now
   if (squeak.axles.length) { decrementSqueakCounts(squeak.axles); } // decrement the squeak count for each axle
   
   Squeaks.remove({_id: squeakId}); // finally, pull that bad boy.
 
   // create a notification about the Squeak having been deleted:
   if (squeak.watchers.length) { 
-    createActivity({type: "watchedSqueakDeleted", 
+    createActivity({type: 'watchedSqueakDeleted', 
                     action: {title: squeak.title, user: user},
                     watched: {title: squeak.title},
                     users: squeak.watchers}, env);
@@ -255,7 +350,7 @@ deleteSqueak = function deleteSqueak(squeakId, env) {
     if (axle.watchers.length) { 
       watchers = _.difference(axle.watchers, alerted);
       if (watchers.length) { 
-        createActivity({type: "squeakDeletedFromAxle", 
+        createActivity({type: 'squeakDeletedFromAxle', 
                     action: {title: squeak.title, user: user},
                     watched: {_id: axle._id},
                     users: watchers}, env);
@@ -285,16 +380,16 @@ editSqueak = function editSqueak(squeakId, field, value, env) {
   check(field, String);
   check(value, String);
   if (!value) { 
-    throw new Meteor.Error("This field cannot be empty!");
+    throw new Meteor.Error('This field cannot be empty!');
   }
 
   if (!_.contains(['title', 'description', 'reCreation', 'target'], field)) { 
-    throw new Meteor.Error("Only title, description, reCreation, and target are valid fields to edit!");
+    throw new Meteor.Error('Only title, description, reCreation, and target are valid fields to edit!');
   }
 
   if (field === 'title') { 
     if (squeakTitleExists(value)) { 
-      throw new Meteor.Error("A Squeak with that title already exists! Please select a unique title");
+      throw new Meteor.Error('A Squeak with that title already exists! Please select a unique title');
     }
   }
 
@@ -335,79 +430,155 @@ editSqueak = function editSqueak(squeakId, field, value, env) {
   return true;
 }
 /**
- * Comment on a Squeak
- * @param  {String} squeakId The ID of the Squeak to comment on
- * @param  {String} comment  The comment
- * @param {Object} env the calling environment, necessary for using getUserId() if called from a Metor Method.
- * @return {Boolean}         true on success
- * @author  moore
- * @todo  move this into a comments collection so that they can be edited / whatever separately?
+ * Get a random Squeak ID from the Squeaks collection on the server
+ * @return {String} The ID of a random Squeak
  */
-commentOnSqueak = function commentOnSqueak(squeakId, comment, env) {
+getRandomSqueakId = function getRandomSqueakId() { 
+  // Figure out a random # between 0 and #documents:
+  var cnt = Squeaks.find().count(); // this seems like a bad way to do this
+  if (cnt === 0) { return {}; }
+    
+  var randInt = Math.floor(Math.random() * Squeaks.find().count()); 
+    
+  return Squeaks.findOne({}, {limit: -1, skip: randInt})._id;
+}
+/**
+ * Initiate a Squeak workflow motion
+ * @param  {String} squeakId The ID of the Squeak in question
+ * @param  {Object} proposal of type {proposedState: String, comment: String, reason: String -- optional}
+ * @param  {Object} env      The current env to get the user from
+ * @return {Boolean} true on success
+ */
+initiateSqueakMotion = function initiateSqueakMotion(squeakId, proposal, env) { 
   var user = getCurrentUserId(env);
-  var squeak; 
-  var commentToPush;
-  var _this = this;
-  
-  check(user, String);
-  check(squeakId, String);
-  check(comment, String);
-  if (!comment) { throw new Meteor.Error("Comment cannot be blank!"); }
+  var squeak = Squeaks.findOne({_id: squeakId});
+  var isWithdrawn = false;
+  var viscosityRating;
+  var motion;
 
-  squeak = Squeaks.findOne({_id: squeakId});
-  if ( !squeak ) { throw new Meteor.Error('Cannot comment on Squeak; Squeak does not exist!'); }
-  
-  commentToPush = {_id: new Mongo.Collection.ObjectID().valueOf(),
-                author: user, 
-                comment: comment,
-                createdAt: new Date()};
+  if (!squeak) { 
+    throw new Meteor.Error('No such Squeak!');
+  }
 
-  Squeaks.update({_id: squeakId}, {$push: {comments: commentToPush}});
+  if (!_.contains(['Squeaky', 'Greased', 'Rejected'], proposal.proposedState)) { 
+    throw new Meteor.Error('proposedState must be one of Squeaky, Greased, or Rejected!');
+  }
 
-  // Notify all watching users that this Squeak was commented on
-  // Build the notification:
-  if (squeak.watchers.length) {
-    notification = {
-      type: "comment",
-      action: {_id: commentToPush._id, user: user}, // including user here simplifies subscription
-      watched: {type: 'squeak', _id: squeakId},
-      users: squeak.watchers
+  if (proposal.proposedState === 'Squeaky' && !_.contains(['Greased', 'Rejected'], squeak.state)) { 
+    throw new Meteor.Error('Cannot move to re-open a Squeak that\'s already open');
+  }
+
+  if (_.contains(['Greased', 'Rejected'], squeak.state) && _.contains(['Greased', 'Rejected'], proposal.proposedState)) { 
+    throw new Meteor.Error('Cannot move to reject or grease a Squeak that has already been rejected or greased!');
+  }
+
+  if (proposal.proposedState === 'Rejected') { 
+    if (!_.contains(['Withdrawn', 'Offensive', 'Duplicate', 'Unproductive'], proposal.reason)) { 
+      throw new Meteor.Error('Reason must be one of Withdrawn, Offensive, Duplicate, or Unproductive!');
+    }
+
+    if (proposal.reason === 'Withdrawn') { 
+      if (user !== squeak.author) { 
+        throw new Meteor.Error('Only the author can withdraw the Squeak');
+      } else { 
+        isWithdrawn = true;
+      }
     }
   }
 
-  createActivity(notification, env);
-  addViscosityEvent([user], 'commentOnSqueak'); // add this to the user's profile
-  
+  if (!proposal.comment) { 
+    throw new Meteor.Error('You must provide a comment indicating why the workflow state should change');
+  }
+
+  // If there's already an identical motion, don't let this one in:
+  if (_.find(squeak.motions, function(mo) { return mo.proposedState === proposal.proposedState && mo.state === 'Open' })) { 
+    throw new Meteor.Error('There is already a proposal to move this Squeak to ' + proposal.proposedState);
+  }
+
+  viscosityRating = calculateViscosityRating(Meteor.users.findOne({_id: user}));
+
+  // the author should always be able to withdraw regardless of rating and any user can propose a solution
+  if (viscosityRating < 100 && !(isWithdrawn || proposal.proposedState === 'Greased')) {  
+    throw new Meteor.Error('Users with a Viscosity Rating less than 100 cannot initiate a Squeak workflow state change!');
+  }
+
+  motion = {_id: new Mongo.Collection.ObjectID().valueOf(), 
+            proposedState: proposal.proposedState,
+            previousState: squeak.state, // the current state of the Squeak to resolve ambiguity if this gets defeated.
+            reason: proposal.reason,
+            user: user,
+            created: new Date(),
+            resolved: null,
+            comment: proposal.comment,
+            state: 'Open',
+            score: viscosityRating,
+            comments: [],
+            voters: [{userId: user, isFor: true}]
+  };
+
+  Squeaks.update({_id: squeakId}, {$push: {motions: motion}, $set: {state: 'Under inspection'}});
+  addViscosityEvent([user], (proposal.proposedState === 'Greased' ? 'proposeSqueakSolution' : 'moveToClose'));
+
+  createActivity({type: 'workflowMotionInitiated',
+                  action: {_id: motion._id},
+                  watched: {type: 'squeak', _id: squeak._id},
+                  users: squeak.watchers}, 
+                  env);
+
+  if (motion.score >= 1000 || isWithdrawn) { // user can withdraw without submitting to a vote
+    resolveMotion(motion._id, true, env);
+  }
+
   return true;
 }
 /**
- * Upvote a Squeak
- * @param  {String} squeakId The Squeak to vote on
+ * Server-side function for inserting a Squeak into the Squeak collection.  See the Meteor Method below.
+ * @param  {Object} semiSqueak The Squeak description and title.
  * @param {Object} env the calling environment, necessary for using getUserId() if called from a Metor Method.
- * @return {Boolean} true on success
- * @author  moore
+ * @return {String}            The newly-inserted Squeak's ID
  */
-voteForSqueak = function voteForSqueak(squeakId, env) { 
-  var user = getCurrentUserId(env);
+insertSqueak = function insertSqueak(semiSqueak, env) {
+  var user = getCurrentUserId(env); // see users-collection.js
   var squeak;
+  var squeakId;
 
-  check(user, String);
-  check(squeakId, String);
+  check(user, String); // if not logged in, this should fail
 
-  squeak = Squeaks.findOne({_id: squeakId});
-  if (!squeak) { throw new Meteor.Error('Cannot vote on Squeak; Squeak does not exist!'); }
-  
-  Squeaks.update({
-      _id: squeakId,
-      voters: {$ne: user}, // Can't vote if you've already voted
-    }, {
-      $addToSet: {voters: user},
-      $inc: {votes: 1}
+  check(semiSqueak, {
+    title: String,
+    description: String,
+    reCreation: String,
+    target: String
   });
 
-  addViscosityEvent([user], 'voteForSqueak');
+  // Make sure they're non-empty:
+  if (!semiSqueak.title || 
+    !semiSqueak.description ||
+    !semiSqueak.reCreation ||
+    !semiSqueak.target
+  ) { throw new Meteor.Error('Title, description, re-creation, and target are all required fields!'); }
 
-  return true;
+  // Make sure title is unique:
+  if (squeakTitleExists(semiSqueak.title)) { 
+    throw new Meteor.Error('A Squeak with title \'' + semiSqueak.title + '\' already exists!  Please select a new title');
+  }
+  
+  var squeak = _.extend({
+    author: user, 
+    state: 'Squeaky',
+    motions: [],
+    createdAt: new Date(),
+    comments: [],
+    votes: 0,
+    voters: [user], // include user in the voters so they can't vote for their own posts
+    axles: [],
+    watchers: [user] // user should watch his own Squeaks!
+  }, semiSqueak);
+  
+  squeakId = Squeaks.insert(squeak);
+  addViscosityEvent([user], 'insertSqueak');
+
+  return squeakId;
 }
 /**
  * Remove a Squeak from an Axle
@@ -452,153 +623,6 @@ removeSqueakFromAxle = function removeSqueakFromAxle(squeakId, axleName, env) {
   return true;
 }
 /**
- * Throw an error if the Squeak has already been closed and you're trying to edit it, among other things
- * @param  {Squeak} squeak The Squeak in question
- * @return {Boolean}        true if the Squeak is not greased
- * @throws {Meteor.Error} If the Squeak has already been greased and is therefore not eligible for modification.
- */
-confirmOpen = function confirmOpen(squeak) { 
-  if (squeak.state === 'Greased') { 
-    throw new Meteor.Error("Cannot perform any operations on greased Squeaks!");
-  }
-
-  return true;
-}
-/**
- * Initiate a Squeak workflow motion
- * @param  {String} squeakId The ID of the Squeak in question
- * @param  {Object} proposal of type {proposedState: String, comment: String, reason: String -- optional}
- * @param  {Object} env      The current env to get the user from
- * @return {Boolean} true on success
- */
-initiateSqueakMotion = function initiateSqueakMotion(squeakId, proposal, env) { 
-  var user = getCurrentUserId(env);
-  var squeak = Squeaks.findOne({_id: squeakId});
-  var isWithdrawn = false;
-  var viscosityRating;
-  var motion;
-
-  if (!squeak) { 
-    throw new Meteor.Error("No such Squeak!");
-  }
-
-  if (!_.contains(['Squeaky', 'Greased', 'Rejected'], proposal.proposedState)) { 
-    throw new Meteor.Error('proposedState must be one of Squeaky, Greased, or Rejected!');
-  }
-
-  if (proposal.proposedState === 'Squeaky' && !_.contains(['Greased', 'Rejected'], squeak.state)) { 
-    throw new Meteor.Error("Cannot move to re-open a Squeak that's already open");
-  }
-
-  if (_.contains(['Greased', 'Rejected'], squeak.state) && _.contains(['Greased', 'Rejected'], proposal.proposedState)) { 
-    throw new Meteor.Error("Cannot move to reject or grease a Squeak that has already been rejected or greased!");
-  }
-
-  if (proposal.proposedState === 'Rejected') { 
-    if (!_.contains(['Withdrawn', 'Offensive', 'Duplicate', 'Unproductive'], proposal.reason)) { 
-      throw new Meteor.Error("Reason must be one of Withdrawn, Offensive, Duplicate, or Unproductive!");
-    }
-
-    if (proposal.reason === 'Withdrawn') { 
-      if (user !== squeak.author) { 
-        throw new Meteor.Error("Only the author can withdraw the Squeak");
-      } else { 
-        isWithdrawn = true;
-      }
-    }
-  }
-
-  if (!proposal.comment) { 
-    throw new Meteor.Error("You must provide a comment indicating why the workflow state should change");
-  }
-
-  // If there's already an identical motion, don't let this one in:
-  if (_.find(squeak.motions, function(mo) { return mo.proposedState === proposal.proposedState && mo.state === 'Open' })) { 
-    throw new Meteor.Error("There is already a proposal to move this Squeak to " + proposal.proposedState);
-  }
-
-  viscosityRating = calculateViscosityRating(Meteor.users.findOne({_id: user}));
-
-  // the author should always be able to withdraw regardless of rating and any user can propose a solution
-  if (viscosityRating < 100 && !(isWithdrawn || proposal.proposedState === 'Greased')) {  
-    throw new Meteor.Error("Users with a Viscosity Rating less than 100 cannot initiate a Squeak workflow state change!");
-  }
-
-  motion = {_id: new Mongo.Collection.ObjectID().valueOf(), 
-            proposedState: proposal.proposedState,
-            previousState: squeak.state, // the current state of the Squeak to resolve ambiguity if this gets defeated.
-            reason: proposal.reason,
-            user: user,
-            created: new Date(),
-            resolved: null,
-            comment: proposal.comment,
-            state: 'Open',
-            score: viscosityRating,
-            comments: [],
-            voters: [{userId: user, isFor: true}]
-  };
-
-  Squeaks.update({_id: squeakId}, {$push: {motions: motion}, $set: {state: 'Under inspection'}});
-  addViscosityEvent([user], (proposal.proposedState === 'Greased' ? 'proposeSqueakSolution' : 'moveToClose'));
-
-  createActivity({type: 'workflowMotionInitiated',
-                  action: {_id: motion._id},
-                  watched: {type: 'squeak', _id: squeak._id},
-                  users: squeak.watchers}, 
-                  env);
-
-  if (motion.score >= 1000 || isWithdrawn) { // user can withdraw without submitting to a vote
-    resolveMotion(motion._id, true, env);
-  }
-
-  return true;
-}
-/**
- * Vote on a Squeak workflow motion
- * @param {String} motionId The ID of the motion to vote for
- * @param {Boolean} isFor Whether the vote is for (true) or against (false) the motion in question
- * @param {Object} [env] the calling environment so we can get the user out
- * @return {Boolean} True on success
- */
-voteOnMotion = function voteOnMotion(motionId, isFor, env) { 
-  check(motionId, String);
-  check(isFor, Boolean);
-  var user = Meteor.users.findOne({_id: getCurrentUserId(env)});
-  var squeak = Squeaks.findOne({'motions._id': motionId});
-  var motionIndex;
-  var motion;
-  
-  if (!squeak) { throw new Meteor.Error("No Squeaks with given motion ID!"); }
-
-  motionIndex = findIndex(squeak.motions, function(mo) { return mo._id === motionId; }); // pretty sure that's guaranteed to work given above
-  motion = squeak.motions[motionIndex];
-  
-  if (motion.state !== 'Open') { 
-    throw new Meteor.Error("Cannot vote on a closed motion!");
-  }
-
-  if (_.contains(_.pluck(motion.voters, 'userId'), user._id)) { 
-    throw new Meteor.Error("Cannot vote for the same motion twice!");
-  }
-
-  inc = {};
-  inc['motions.' + motionIndex + '.score'] = calculateViscosityRating(user) * (isFor ? 1 : -1);
-
-  setAdd = {}
-  setAdd['motions.' + motionIndex + '.voters'] = {userId: user._id, isFor: isFor};
-
-  Squeaks.update({_id: squeak._id}, {$inc: inc, $addToSet: setAdd});
-  addViscosityEvent([user._id], 'voteOnMotion');
-  
-  // Now pull it back in and see if we are the deciding vote:
-  motion = Squeaks.findOne({_id: squeak._id}).motions[motionIndex];
-  if (Math.abs(motion.score) >= 1000) { 
-    resolveMotion(motionId, (motion.score > 0), env);
-  }
-
-  return true;
-}
-/**
  * Resolve a motion and perform the necessary state transition
  * @param  {String}  motionid The ID of the motion in question
  * @param  {Boolean} isPass   Whether the motion passed (true) or failed (false)
@@ -606,8 +630,8 @@ voteOnMotion = function voteOnMotion(motionId, isFor, env) {
  * @return {Boolean}          True on success, false on failure
  */
 resolveMotion = function resolveMotion(motionId, isPass, env) {
-  var squeak = Squeaks.findOne({"motions._id": motionId});
-  if (!squeak) { throw new Meteor.Error("No Squeak with that Motion ID!"); }
+  var squeak = Squeaks.findOne({'motions._id': motionId});
+  if (!squeak) { throw new Meteor.Error('No Squeak with that Motion ID!'); }
   
   var motionIndex = findIndex(squeak.motions, function(mo) { return mo._id === motionId; });
   var motion = squeak.motions[motionIndex];
@@ -616,8 +640,8 @@ resolveMotion = function resolveMotion(motionId, isPass, env) {
   var motionsToResolve;
   var voters;
   
-  if (motion.state !== "Open") { 
-    throw new Meteor.Error("Cannot resolve motion; motion is already resolved!");
+  if (motion.state !== 'Open') { 
+    throw new Meteor.Error('Cannot resolve motion; motion is already resolved!');
   }
 
   // If the user is the author, they can resolve to accept a motion to Grease if the motion's score < 1000 either way
@@ -628,23 +652,23 @@ resolveMotion = function resolveMotion(motionId, isPass, env) {
     if (!((motion.proposedState === 'Greased' && squeak.author === user) || 
       (user === motion.user && !isPass) ||
       squeak.author === user && motion.proposedState === 'Rejected' && motion.reason === 'Withdrawn')) { 
-      throw new Meteor.Error("The Squeak author can accept or reject a solution or withdraw his or her Squeak, " +
-          "and the user who initiated the motion can withdraw his own motion, but no other out of merit resolutions are allowed.");
+      throw new Meteor.Error('The Squeak author can accept or reject a solution or withdraw his or her Squeak, ' +
+          'and the user who initiated the motion can withdraw his own motion, but no other out of merit resolutions are allowed.');
     }
   } else { 
     if ((isPass && motion.score < 0) || (!isPass && motion.score > 0)) { 
-      throw new Meteor.Error("Cannot accept or reject a motion in contradiction to its score!");
+      throw new Meteor.Error('Cannot accept or reject a motion in contradiction to its score!');
     }
   }
 
   update = {};
-  motionsToResolve = [{_id: motionId, index: motionIndex, resolution: isPass ? "Accepted" : "Rejected" }];
+  motionsToResolve = [{_id: motionId, index: motionIndex, resolution: isPass ? 'Accepted' : 'Rejected' }];
   
   if (isPass) { // Go ahead and update the Squeak itself; if it doesn't pass, keep it the way it is!
     update.state = motion.proposedState;
     _.each(squeak.motions, function(mo, index) { 
       if ( mo._id !== motionId && mo.state === 'Open') { 
-        motionsToResolve.push({_id: mo._id, index: index, resolution: "Rejected"});
+        motionsToResolve.push({_id: mo._id, index: index, resolution: 'Rejected'});
       }
     });
   } else { 
@@ -656,8 +680,8 @@ resolveMotion = function resolveMotion(motionId, isPass, env) {
 
   // And update all the motions themselves too and send out notifications
    _.each(motionsToResolve, function(mo) { 
-    update["motions." + mo.index + ".state"] = mo.resolution;
-    update["motions." + mo.index + ".resolved"] = timestamp;
+    update['motions.' + mo.index + '.state'] = mo.resolution;
+    update['motions.' + mo.index + '.resolved'] = timestamp;
     createActivity({type: 'workflowMotionResolved',
                   action: {_id: mo._id},
                   watched: {type: 'squeak', _id: squeak._id},
@@ -685,96 +709,6 @@ resolveMotion = function resolveMotion(motionId, isPass, env) {
   }
 
   return true;
-}
-/**
- * Comment on a workflow motion
- * @param {String} motionId The _id of the motion in question
- * @param {String} comment the comment to add to the motion
- */
-commentOnMotion = function commentOnMotion(motionId, comment, env) { 
-  check(motionId, String);
-  check(comment, String);
-  var squeak = Squeaks.findOne({"motions._id": motionId});
-  var user = getCurrentUserId(env);
-  var push = {};
-  var motion; 
-  var motionIndex;
-  var commentToPush;
-  
-
-  if (!squeak) { throw new Meteor.Error("No Squeak found with given motion ID"); }
-  
-  comment = comment.trim();
-  if (!comment) { throw new Meteor.Error("Comment cannot be empty!"); }
-
-  motionIndex = findIndex(squeak.motions, function(mo) { return mo._id === motionId; });
-  motion = squeak.motions[motionIndex];
-  if (motion.state !== 'Open') { throw new Meteor.Error("Cannot comment on resolved motion!"); }
-  
-  commentToPush = {_id: new Mongo.Collection.ObjectID().valueOf(), 
-                  author: user, 
-                  comment: comment, 
-                  createdAt: new Date()
-                }
-
-  push["motions." + motionIndex + ".comments"] = commentToPush;
-  Squeaks.update({_id: squeak._id}, {$push: push});
-
-  // Create a new activity
-  if (squeak.watchers.length) { 
-    createActivity({type: 'workflowMotionComment',
-          action: {_id: commentToPush._id, motionId: motionId}, 
-          watched: {type: 'squeak', _id: squeak._id},
-          users: squeak.watchers
-        }, env);
-  }
-
-  // And the Viscosity Event
-  addViscosityEvent([user], 'commentOnSqueak'); // treat this sort of comment like any other for VE purposes
-
-  return true;
-}
-/**
- * Return a plaintext explanation of any workflow state
- * @param  {state} state The workflow state whose explanation you want
- * @return String an plaintext explanation of the workflow state
- */
-workflowExplanation = function workflowExplanation(state) { 
-  if (state === 'Squeaky') { 
-    return "An existing problem dying to be solved!";
-  } else if (state === "In the shop") { 
-    return "A problem currently being worked on!"
-  } else if (state === "Under inspection") { 
-    return "A problem with a potential solution.  Go weigh in!";
-  } else if (state === "Greased") { 
-    return "This problem's solved!";
-  } else if (state === "Rejected") { 
-    return "This problem wasn't a valid candidate for Squeaky Wheel."
-  }
-}
-/**
- * Sort the solutions to a Squeak descending by time
- * @param  {Squeak} squeak The squeak whose solutions to sort
- * @return array an array of resolutions.  Note that it *maybe* does this in place?
- */
-sortSolutions = function sortSolutions(squeak) { 
-  var resolutions = squeak.resolutions;
-
-  resolutions.sort(function(a, b) { 
-    if (a.timestamp > b.timestamp) { return -1; } // reverse order
-    if (b.timestamp > a.timestamp) { return 1; } 
-    return 0;
-  });
-
-  return resolutions;
-}
-/**
- * Determine whether a Squeak title exists or not
- * @param  {String} title the title of the Squeak in question
- * @return {Boolean}       True if the title already exists, false otherwise
- */
-squeakTitleExists = function squeakTitleExists(title) { 
-  return !!Squeaks.findOne({title: title});
 }
 /**
  * Tag a Squeak to an Axle
@@ -831,6 +765,80 @@ unwatchSqueak = function unwatchSqueak(squeakId, env) {
   return true;
 }
 /**
+ * Upvote a Squeak
+ * @param  {String} squeakId The Squeak to vote on
+ * @param {Object} env the calling environment, necessary for using getUserId() if called from a Metor Method.
+ * @return {Boolean} true on success
+ * @author  moore
+ */
+voteForSqueak = function voteForSqueak(squeakId, env) { 
+  var user = getCurrentUserId(env);
+  var squeak;
+
+  check(user, String);
+  check(squeakId, String);
+
+  squeak = Squeaks.findOne({_id: squeakId});
+  if (!squeak) { throw new Meteor.Error('Cannot vote on Squeak; Squeak does not exist!'); }
+  
+  Squeaks.update({
+      _id: squeakId,
+      voters: {$ne: user}, // Can't vote if you've already voted
+    }, {
+      $addToSet: {voters: user},
+      $inc: {votes: 1}
+  });
+
+  addViscosityEvent([user], 'voteForSqueak');
+
+  return true;
+}
+/**
+ * Vote on a Squeak workflow motion
+ * @param {String} motionId The ID of the motion to vote for
+ * @param {Boolean} isFor Whether the vote is for (true) or against (false) the motion in question
+ * @param {Object} [env] the calling environment so we can get the user out
+ * @return {Boolean} True on success
+ */
+voteOnMotion = function voteOnMotion(motionId, isFor, env) { 
+  check(motionId, String);
+  check(isFor, Boolean);
+  var user = Meteor.users.findOne({_id: getCurrentUserId(env)});
+  var squeak = Squeaks.findOne({'motions._id': motionId});
+  var motionIndex;
+  var motion;
+  
+  if (!squeak) { throw new Meteor.Error('No Squeaks with given motion ID!'); }
+
+  motionIndex = findIndex(squeak.motions, function(mo) { return mo._id === motionId; }); // pretty sure that's guaranteed to work given above
+  motion = squeak.motions[motionIndex];
+  
+  if (motion.state !== 'Open') { 
+    throw new Meteor.Error('Cannot vote on a closed motion!');
+  }
+
+  if (_.contains(_.pluck(motion.voters, 'userId'), user._id)) { 
+    throw new Meteor.Error('Cannot vote for the same motion twice!');
+  }
+
+  inc = {};
+  inc['motions.' + motionIndex + '.score'] = calculateViscosityRating(user) * (isFor ? 1 : -1);
+
+  setAdd = {}
+  setAdd['motions.' + motionIndex + '.voters'] = {userId: user._id, isFor: isFor};
+
+  Squeaks.update({_id: squeak._id}, {$inc: inc, $addToSet: setAdd});
+  addViscosityEvent([user._id], 'voteOnMotion');
+  
+  // Now pull it back in and see if we are the deciding vote:
+  motion = Squeaks.findOne({_id: squeak._id}).motions[motionIndex];
+  if (Math.abs(motion.score) >= 1000) { 
+    resolveMotion(motionId, (motion.score > 0), env);
+  }
+
+  return true;
+}
+/**
  * Logged-in user sign up to watch a Squeak
  * @param {String} squeakId The ID of the Squeak to watch
  * @param {Object} env the calling environment
@@ -847,17 +855,20 @@ watchSqueak = function watchSqueak(squeakId, env) {
   return true;
 }
 /**
- * Get a random Squeak ID from the Squeaks collection on the server
- * @return {String} The ID of a random Squeak
+ * Return a plaintext explanation of any workflow state
+ * @param  {state} state The workflow state whose explanation you want
+ * @return String an plaintext explanation of the workflow state
  */
-getRandomSqueakId = function getRandomSqueakId() { 
-  // Figure out a random # between 0 and #documents:
-  var cnt = Squeaks.find().count(); // this seems like a bad way to do this
-  if (cnt === 0) { return {}; }
-    
-  var randInt = Math.floor(Math.random() * Squeaks.find().count()); 
-    
-  return Squeaks.findOne({}, {limit: -1, skip: randInt})._id;
+workflowExplanation = function workflowExplanation(state) { 
+  if (state === 'Squeaky') { 
+    return 'An existing problem dying to be solved!';
+  } else if (state === 'Under inspection') { 
+    return 'A problem with a potential solution.  Go weigh in!';
+  } else if (state === 'Greased') { 
+    return 'This problem\'s solved!';
+  } else if (state === 'Rejected') { 
+    return 'This problem wasn\'t a valid candidate for Squeaky Wheel.'
+  }
 }
 /**
  * Methods for operating on the Squeak collection
@@ -865,58 +876,13 @@ getRandomSqueakId = function getRandomSqueakId() {
  */
 Meteor.methods({
   /**
-   * Insert a Squeak into the collection
-   * @param  {Object} protoSqueak The client-configurable Squeak options, including title and description.
-   * @return {String} the ID of the inserted Squeak
-   * @author  moore
+   * Comment on a workflow motion
+   * @param {String} motionId The _id of the motion in question
+   * @param {String} comment the comment to add to the motion
    */
-  insertSqueak: function(semiSqueak) {
-    return insertSqueak(semiSqueak, this); // pass along the environment
-  },
-  /**
-   * Delete a Squeak from the Squeaks collection -- probably? just used for testing? for now?
-   * @param  {String} squeakId The ID of a Squeak in the Squeaks collection
-   * @return {Boolean} true on success
-   * @author  moore
-   */
-  deleteSqueak: function(squeakId) {
-    return deleteSqueak(squeakId, this);
-  },
-  /**
- * Comment on a workflow motion
- * @param {String} motionId The _id of the motion in question
- * @param {String} comment the comment to add to the motion
- */
   commentOnMotion: function(motionId, comment) { 
     return commentOnMotion(motionId, comment, this);
-  },
-  /**
- * Initiate a Squeak workflow motion
- * @param  {String} squeakId The ID of the Squeak in question
- * @param  {Object} motion of type {proposedState: String, comment: String, reason: String -- optional}
- * @return {Boolean} true on success
- */
-  initiateSqueakMotion: function(squeakId, motion) { 
-    return initiateSqueakMotion(squeakId, motion, this);
-  },
-  /**
-   * Resolve a motion and perform the necessary state transition
-   * @param  {String}  motionId The ID of the motion in question
-   * @param  {Boolean} isPass   Whether the motion passed (true) or failed (false)
-   * @return {Boolean}          True on success, false on failure
-   */
-  resolveMotion: function(motionId, isPass) {
-    return resolveMotion(motionId, isPass, this);
-  },
-  /**
-   * Vote on a Squeak workflow motion
-   * @param {String} motionId The ID of the motion to vote for
-   * @param {Boolean} isFor Whether the vote is for (true) or against (false) the motion in question
-   * @return {Boolean} True on success
-   */
-  voteOnMotion: function(motionId, isFor) { 
-    return voteOnMotion(motionId, isFor, this);
-  },
+  },  
   /**
    * Comment on a Squeak
    * @param  {String} squeakId The ID of the Squeak to comment on
@@ -929,6 +895,15 @@ Meteor.methods({
     return commentOnSqueak(squeakId, comment, this);
   },
   /**
+   * Delete a Squeak from the Squeaks collection -- probably? just used for testing? for now?
+   * @param  {String} squeakId The ID of a Squeak in the Squeaks collection
+   * @return {Boolean} true on success
+   * @author  moore
+   */
+  deleteSqueak: function(squeakId) {
+    return deleteSqueak(squeakId, this);
+  },
+  /**
    * Edit a Squeak
    * @param  {String} squeakId The ID of the Squeak to edit
    * @param  {String} field    The field of the Squeak to edit; must be one of title, description, reCreation, target
@@ -939,13 +914,48 @@ Meteor.methods({
     return editSqueak(squeakId, field, value, this);
   },
   /**
-   * Upvote a Squeak
-   * @param  {String} squeakId The Squeak to vote on
+   * Get a random Squeak ID from the Squeaks collection on the server
+   * @return {String} The ID of a random Squeak
+   */
+  getRandomSqueakId: function() { 
+    return getRandomSqueakId();
+  },
+  /**
+   * Initiate a Squeak workflow motion
+   * @param  {String} squeakId The ID of the Squeak in question
+   * @param  {Object} motion of type {proposedState: String, comment: String, reason: String -- optional}
+   * @return {Boolean} true on success
+   */
+  initiateSqueakMotion: function(squeakId, motion) { 
+    return initiateSqueakMotion(squeakId, motion, this);
+  },
+  /**
+   * Insert a Squeak into the collection
+   * @param  {Object} protoSqueak The client-configurable Squeak options, including title and description.
+   * @return {String} the ID of the inserted Squeak
+   * @author  moore
+   */
+  insertSqueak: function(semiSqueak) {
+    return insertSqueak(semiSqueak, this); // pass along the environment
+  },
+  /**
+   * Remove a Squeak from an Axle
+   * @param  {String} squeakId The ID of the Squeak to remove from the Axle
+   * @param  {String} axleName The name of the Axle to remove the Squeak from
    * @return {Boolean} true on success
    * @author  moore
    */
-  voteForSqueak: function(squeakId) { 
-    return voteForSqueak(squeakId, this);
+  removeSqueakFromAxle: function(squeakId, axleName) {
+    return removeSqueakFromAxle(squeakId, axleName, this);
+  },
+  /**
+   * Resolve a motion and perform the necessary state transition
+   * @param  {String}  motionId The ID of the motion in question
+   * @param  {Boolean} isPass   Whether the motion passed (true) or failed (false)
+   * @return {Boolean}          True on success, false on failure
+   */
+  resolveMotion: function(motionId, isPass) {
+    return resolveMotion(motionId, isPass, this);
   },
   /**
    * Determine whether a Squeak title exists or not
@@ -966,24 +976,6 @@ Meteor.methods({
     return tagSqueakToAxle(squeakId, axleName, this);
   },
   /**
-   * Remove a Squeak from an Axle
-   * @param  {String} squeakId The ID of the Squeak to remove from the Axle
-   * @param  {String} axleName The name of the Axle to remove the Squeak from
-   * @return {Boolean} true on success
-   * @author  moore
-   */
-  removeSqueakFromAxle: function(squeakId, axleName) {
-    return removeSqueakFromAxle(squeakId, axleName, this);
-  },
-  /**
-   * Currently logged-in user signs up for Squeak notifications
-   * @param {String} [squeakId] The Squeak to watch
-   * @return {Boolean} true on success
-   */
-  watchSqueak: function(squeakId) { 
-    return watchSqueak(squeakId, this);
-  },
-  /**
    * Currently logged-in user signs up for Squeak notifications
    * @param {String} [squeakId] The Squeak to stop receiving notifications about
    * @return {Boolean} true on success
@@ -992,30 +984,29 @@ Meteor.methods({
     return unwatchSqueak(squeakId, this);
   },
   /**
-   * Put a Squeak in the shop (move it into the "in progress" phase)
-   * @param {String} squeakId the ID of the Squeak to move into the shop
-   * @param {Object} extras Object containing optionally a comment to submit with the Squeak:
-   *                        {comment: String}
+   * Upvote a Squeak
+   * @param  {String} squeakId The Squeak to vote on
    * @return {Boolean} true on success
+   * @author  moore
    */
-  takeSqueakToShop: function(squeakId, extras) { 
-    return takeSqueakToShop(squeakId, extras, this);
+  voteForSqueak: function(squeakId) { 
+    return voteForSqueak(squeakId, this);
   },
   /**
-   * Declare a Squeak still, well, Squeaky
-   * @param {String} SqueakId The ID of the Squeak to transition state for
-   * @param {Object} extras Object containing optionally a comment to submit with the Squeak:
-   *                        {comment: String}
-   * @return {Boolean} true on success
+   * Vote on a Squeak workflow motion
+   * @param {String} motionId The ID of the motion to vote for
+   * @param {Boolean} isFor Whether the vote is for (true) or against (false) the motion in question
+   * @return {Boolean} True on success
    */
-  declareSqueakSqueaky: function(squeakId, extras) { 
-    return declareSqueakSqueaky(squeakId, extras, this);
+  voteOnMotion: function(motionId, isFor) { 
+    return voteOnMotion(motionId, isFor, this);
   },
   /**
-   * Get a random Squeak ID from the Squeaks collection on the server
-   * @return {String} The ID of a random Squeak
+   * Currently logged-in user signs up for Squeak notifications
+   * @param {String} [squeakId] The Squeak to watch
+   * @return {Boolean} true on success
    */
-  getRandomSqueakId: function() { 
-    return getRandomSqueakId();
+  watchSqueak: function(squeakId) { 
+    return watchSqueak(squeakId, this);
   }
 });

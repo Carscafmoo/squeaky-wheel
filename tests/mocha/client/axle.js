@@ -4,7 +4,7 @@ if (!(typeof MochaWeb === 'undefined') && blnTestAxles) {
      * Assume blank slate -- no Squeaks, no axles
      * @return {[type]} [description]
      */
-    describe("Creating Axles from the client", function() { 
+    describe('Creating Axles from the client', function() { 
       before(function() { 
         confirmBlankSlate();
       });
@@ -13,7 +13,7 @@ if (!(typeof MochaWeb === 'undefined') && blnTestAxles) {
         confirmBlankSlate();
       });
 
-      it("Should be impossible", function(done) { 
+      it('Should be impossible', function(done) { 
         Axles.insert({name: testAxle}, function(error, success) { 
           callbackAssertion(function() { 
             expect(error).to.exist;

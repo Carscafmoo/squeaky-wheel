@@ -1,5 +1,5 @@
 module.exports = {
-  "Community Guidelines Page" : function (client) {
+  'Community Guidelines Page' : function (client) {
     client
       .load()
       

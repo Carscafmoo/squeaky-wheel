@@ -1,5 +1,5 @@
 /**
- * Override default user creation to match our schema; generate a "joined" notification 
+ * Override default user creation to match our schema; generate a 'joined' notification 
  * @param  {object} options The options object passed from createUser()
  * @param  {object} user   A proposed user object
  * @return {object} user if the options check out, or false if not
@@ -17,7 +17,7 @@ Accounts.onCreateUser(function(options, user) {
   user.viscosityAdmin = false; // New users cannot move to close, etc.
   if (user.profile) { delete user.profile; }
 
-  createActivity({type: "userJoined", 
+  createActivity({type: 'userJoined', 
                     action: {user: user._id},
                     watched: {},
                     users: [user._id]}, {userId: user._id});

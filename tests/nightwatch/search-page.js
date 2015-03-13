@@ -1,5 +1,5 @@
 module.exports = {
-  "Search Page" : function (client) {
+  'Search Page' : function (client) {
     client
       .load()
 
@@ -15,16 +15,18 @@ module.exports = {
       
       // Set up a comment to search for:
       .navigateToNewestSqueak()
-      .commentOnSqueak("Aardvark")
+      .click('#show-squeak-discussion')
+      .commentOnSqueak('Aardvark')
 
       // Now comment on it as the other user so we can search for him:
       .logout()
       .loginOtherUser()
       .navigateToNewestSqueak()
-      .commentOnSqueak("Thylacine")
+      .click('#show-squeak-discussion')
+      .commentOnSqueak('Thylacine')
 
       // Now let's go try to find something:
-      .setValue('#header-search-input', "e")
+      .setValue('#header-search-input', 'e')
       .submitForm('#header-search-form')
       
       // This should bring up a whole bunch of stuff
@@ -47,7 +49,7 @@ module.exports = {
       .pause(1000) // wait for stuff to load I guess
       .assert.elementPresent('#search-view div.squeak-entry:nth-child(15)') // Should have actually loaded more
       
-      // Make sure the "in" dropdown is working...
+      // Make sure the 'in' dropdown is working...
       .click('#search-option-dropdown button')
 
       // Everything should be checked 
@@ -85,7 +87,7 @@ module.exports = {
 
       // Change the search query text and see that it triggers a new search:
       .clearValue('.easy-search')
-      .setValue('.easy-search', "Aardvark") // No titles with this in them
+      .setValue('.easy-search', 'Aardvark') // No titles with this in them
       .pause(1000) // wait for search
       .assert.elementNotPresent('#search-view div.squeak-entry:nth-child(5)') // Nothing
 
@@ -148,7 +150,7 @@ module.exports = {
       .assert.cssClassNotPresent('#submit-header-search', 'disabled')
 
       // Navigate back and make sure it held onto our tastes and preferences
-      .setValue('#header-search-input', "Test")
+      .setValue('#header-search-input', 'Test')
       .click('#submit-header-search') // this should submit the form
       .waitForElementVisible('#search-view', 1000) // wait for data
 

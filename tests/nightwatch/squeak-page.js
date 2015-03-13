@@ -15,14 +15,35 @@ module.exports = {
       // Author is signed up to watch this by default:
       .assert.elementPresent('.unwatch-squeak-button')
 
+      // Comment should be hidden
+      .assert.hidden('#squeak-comments')
+      .assert.containsText('#show-squeak-discussion', 'Show discussion (0)')
+      .click('#show-squeak-discussion')
+      .pause(500) // wait for stuff to happen
+      .assert.visible('#squeak-comments')
+      .assert.elementNotPresent('#show-squeak-discussion')
+      .assert.elementPresent('#hide-squeak-discussion')
+      .assert.containsText('#hide-squeak-discussion', 'Hide')
+      .click('#hide-squeak-discussion')
+      .pause(500) // wait again
+      .assert.hidden('#squeak-comments')
+      .assert.elementNotPresent('#hide-squeak-discussion')
+      .assert.elementPresent('#show-squeak-discussion')
+      .assert.containsText('#show-squeak-discussion', 'Show discussion (0)')
+      .click('#show-squeak-discussion')
+      
       // Try to comment on Squeak:
       .setValue('#squeak-comment-submit-input', 'Nightwatch is automatically commenting on this Squeak')
       .click('#squeak-submit-comment')
       .waitForElementVisible('div.comment', 1000)
       .assert.containsText('div.comment', 'Nightwatch is automatically commenting on this Squeak')
-      .assert.containsText('.squeak-counts', '1 comment')
+      .assert.containsText('.squeak-counts', ': 0; : 1')// vote: ; comment: 
       .assert.elementPresent('#squeak-comment-submit-input') // The form is still there
       .assert.elementPresent('#squeak-submit-comment')
+      .getText('#hide-squeak-discussion', function(success) { 
+            console.log(success.value);
+            this.assert.equal(new RegExp(/[0-9]+/).test(success.value), false); // some problems with the # showing up there earlier
+      })
       
       // Try to tag a Squeak to an Axle:
       .assert.elementPresent('#axle-input')
@@ -32,7 +53,7 @@ module.exports = {
       .assert.cssClassPresent('.bootstrap-tagsinput span', 'tag')
 
       // Does autocomplete work?
-      .setValue('.bootstrap-tagsinput input', 'Squeaky Wheel') // There is a "Squeaky Wheel Examples"
+      .setValue('.bootstrap-tagsinput input', 'Squeaky Wheel') // There is a 'Squeaky Wheel Examples'
       .assert.visible('.typeahead.dropdown-menu li a')
       .assert.containsText('.typeahead.dropdown-menu li a', 'Squeaky Wheel')
       .click('.typeahead.dropdown-menu li a')
@@ -49,7 +70,7 @@ module.exports = {
       .assert.cssClassPresent('button.vote-button', 'disabled')
       .click('button.vote-button')
       .pause(500)
-      .assert.containsText('.squeak-counts', '0; 1 comments') // clicking on the disabled button doesn't trigger the event
+      .assert.containsText('.squeak-counts', '0; : 1') // clicking on the disabled button doesn't trigger the event
 
       // Logout and log in as the other user...
       .logout()
@@ -62,14 +83,15 @@ module.exports = {
       .navigateToNewestSqueak()
       
       // Then test to make sure the data actually persisted:
+      .click('#show-squeak-discussion')
       .assert.containsText('div.comment', 'Nightwatch is automatically commenting on this Squeak')
       .assert.elementPresent('.axle-element')
       .assert.containsText('.axle-element', 'Test Axle')
 
       // And he can comment on stuff:
       .assert.cssClassPresent('#squeak-submit-comment', 'disabled')
-      .setValue("#squeak-comment-submit-input", "anything")
-      .assert.cssClassNotPresent("#squeak-submit-comment", 'disabled') 
+      .setValue('#squeak-comment-submit-input', 'anything')
+      .assert.cssClassNotPresent('#squeak-submit-comment', 'disabled') 
 
       // And he can watch and unwatch:
       .assert.elementNotPresent('.unwatch-squeak-button')
@@ -84,11 +106,11 @@ module.exports = {
       // And voting for stuff works...
       .click('button.vote-button')
       .pause(500) // wait for vote to register
-      .assert.containsText('.squeak-counts', '1; 1 comments')
+      .assert.containsText('.squeak-counts', '1; : 1')
       .assert.cssClassPresent('button.vote-button', 'disabled') // should only be able to vote once!
       .click('button.vote-button')
       .pause(500)
-      .assert.containsText('.squeak-counts', '1; 1 comments') // clicking on the disabled button doesn't trigger the event
+      .assert.containsText('.squeak-counts', '1; : 1') // clicking on the disabled button doesn't trigger the event
 
       // And the non-author doesn't get the option to edit:
       .assert.elementNotPresent('#edit-squeak-button')

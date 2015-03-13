@@ -10,7 +10,7 @@
 dateFormat = function dateFormat(date) { 
   var mome = moment(date);
 
-  return 'on ' + mome.format('MMM Do YYYY') + ' at ' + mome.format('h:mm:ss A');
+  return 'on ' + mome.format('MMM Do YYYY') + ' at ' + mome.format('h:mm A');
 }
 /**
  * Register dateformat as a helper on all templates
@@ -25,3 +25,20 @@ Template.registerHelper('dateFormat', function(date) {
 Template.registerHelper('setTitle', function(title) { 
   document.title = title;
 });
+/**
+ * Possessive-izing a name
+ * @param  {String} whose The name to make possessive, e.g,. 'John Doe,' 'me,' 'you'
+ * @return {String} The possessive of whose, e.g., 'John Doe's', 'my', 'your'
+ */
+possessivize = function possessivize(whose) { 
+  if (whose.toLowerCase() === 'me') { return whose.charAt(0) + 'y'; }
+  if (whose.toLowerCase() === 'you') { return whose + 'r'; } 
+
+  return whose + '\'s';
+}
+/**
+ * Capitalize the first letter of a word
+ */
+String.prototype.capitalize = function(what) { 
+  return this.charAt(0).toUpperCase() + this.slice(1)
+}

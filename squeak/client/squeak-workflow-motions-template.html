@@ -9,6 +9,7 @@
   {{/if}}    
   </div>
   {{#if motions.length}}
+    {{> squeakMotionDiscussionModal getDiscussionMotion}}
     <div id='squeak-motions' class='motions'>
       {{#each openMotions}}
         {{> _squeakMotion}}
@@ -18,7 +19,7 @@
       {{/if}}
       {{#if hasMotionHistory}}
       <div class='row load-more'>
-        <a href='#' id='show-all-motions'>Show history</a>
+        <a href='#' id='show-all-motions'>Show history ({{motionHistory.length}})</a>
       </div>
       <div id='rejected-motions' style='display: none;'><!--This always starts off hidden-->
         {{#each motionHistory}}

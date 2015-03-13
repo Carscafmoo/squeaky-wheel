@@ -45,22 +45,3 @@ Template.axleInput.helpers({
     return Session.get('squeakListAxle');
   }
 });
-/** 
- * Event handlers
- * @author  moore
- */
-Template.axleInput.events({
-  /**
-   * Listen for form enter if users are searching by axle
-   */
-  'submit #axle-restriction-form': function(event) { 
-    event.preventDefault();
-    var newAxle = $('#axle-restriction-input').val().trim();
-    
-    if (!newAxle) { Session.set('squeakListAxle', null); }
-    else { Session.set('squeakListAxle', newAxle); }
-  },
-  /**
-   * Submit the form on enter or on 
-   */
-});

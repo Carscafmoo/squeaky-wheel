@@ -10,8 +10,8 @@ if (!(typeof MochaWeb === 'undefined') && blnTestUsers) {
      * Makes no real assumptions
      * @return void
      */
-    describe("The Users collection", function() {
-      it("Should be available to the client", function() { 
+    describe('The Users collection', function() {
+      it('Should be available to the client', function() { 
         loginTestUser(function() { 
           callbackAssertion(function() { 
             expect(Meteor.users.find({}).count()).to.be.at.least(1);
@@ -21,7 +21,7 @@ if (!(typeof MochaWeb === 'undefined') && blnTestUsers) {
         });
       });
 
-      it("Should contain the user's full dataset, but no other data set", function(done) { 
+      it('Should contain the user\'s full dataset, but no other data set', function(done) { 
         loginTestUser(function() { 
           callbackAssertion(function() { 
             expect(Meteor.user().services).to.exist;

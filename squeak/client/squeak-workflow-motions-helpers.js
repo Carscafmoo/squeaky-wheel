@@ -103,6 +103,17 @@ Template.squeakWorkflowMotions.helpers({
     return !!possibleStates(this).length;
   },
   /**
+   * Return the motion whose discussion to display
+   * @return {SqueakMotion} 
+   */
+  getDiscussionMotion: function() { 
+    var moId = Session.get('discussionMotion');
+    var squeak = Squeaks.findOne({'motions._id': moId});
+    if (squeak) { return _.findWhere(squeak.motions, {_id: moId}); }
+
+    return {};
+  },
+  /**
    * Is the Squeak resolved?
    * @return {Boolean} True if the Squeak is resolved, false else
    */
@@ -157,17 +168,17 @@ Template.squeakWorkflowMotions.events({
 
     $('#rejected-motions').show();
     $button.attr('id', 'hide-all-motions');
-    $button.text('Hide');
+    $button.text('Hide history');
 
   },
   /**
    * Likewise, clicking the hide button should hide them...
    */
-  'click #hide-all-motions': function(event) { 
+  'click #hide-all-motions': function(event, template) { 
     var $button = $('#hide-all-motions');
     
     $('#rejected-motions').hide();
     $button.attr('id', 'show-all-motions');
-    $button.text('Show history');
+    $button.text('Show history (' + motionHistory(template.data).length + ')');
   }
 })

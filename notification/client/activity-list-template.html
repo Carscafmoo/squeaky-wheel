@@ -13,5 +13,9 @@
     {{else}}
       <h3 class='none-found'>No recent activity.</h3>
     {{/if}}
+    {{#unless ready}}
+      {{> spinner}}
+    {{/unless}}
+    {{> squeakMotionDiscussionModal getDiscussionMotion}}<!-- in case there are any squeak motion activities -->
   </div>
 </template>

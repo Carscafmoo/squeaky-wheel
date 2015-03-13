@@ -26,7 +26,7 @@ Template.commentSubmit.helpers({
    * @return {String}
    */
   errorType: function() { 
-    return type + "SubmitComment";
+    return type + 'SubmitComment';
   },
   /**
    * Return the type.  Not capitalized
@@ -61,10 +61,10 @@ Template.commentSubmit.events({
     
     if (template.data.squeak) { 
       dataId = template.data.squeak._id;
-      method = "commentOnSqueak";
+      method = 'commentOnSqueak';
     } else { 
       dataId = template.data.motion._id;
-      method = "commentOnMotion"
+      method = 'commentOnMotion'
     }
 
     Meteor.call(method, dataId, comment, function(error, result) {
@@ -87,7 +87,7 @@ Template.commentSubmit.events({
       $target.closest('form').find('.comment-submit-button').removeClass('disabled'); 
       clearInputError(type + 'SubmitComment');
     } else { 
-      $target.closest(form).find('.comment-submit-button').addClass('disabled'); 
+      $target.closest('form').find('.comment-submit-button').addClass('disabled'); 
     }
   }
 });

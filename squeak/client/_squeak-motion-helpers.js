@@ -33,17 +33,6 @@ Template._squeakMotion.helpers({
     return this.comments.length; 
   },
   /**
-   * Return the motion whose discussion to display
-   * @return {SqueakMotion} 
-   */
-  getDiscussionMotion: function() { 
-    var moId = Session.get('discussionMotion');
-    var squeak = Squeaks.findOne({'motions._id': moId});
-    if (squeak) { return _.findWhere(squeak.motions, {_id: moId}); }
-
-    return {};
-  },
-  /**
    * Get the user object of the user who created this Motion
    * @return {User} 
    */
@@ -89,12 +78,12 @@ Template._squeakMotion.helpers({
    * @return {String} [description]
    */
   motionType: function() { 
-    if (this.proposedState === 'Greased') { return "Solution"; }
-    if (this.proposedState === 'Squeaky') { return "Proposal to re-open"; }
-    if (this.reason === 'Withdrawn') { return "Withdrawn"; }
-    if (this.reason === 'Unproductive') { return "Proposal to close as unproductive"; }
-    if (this.reason === 'Offensive') { return "Proposal to close as offensive"; }
-    if (this.reason === 'Duplicate') { return "Proposal to close as duplicate"; }
+    if (this.proposedState === 'Greased') { return 'Solution'; }
+    if (this.proposedState === 'Squeaky') { return 'Proposal to re-open'; }
+    if (this.reason === 'Withdrawn') { return 'Withdrawn'; }
+    if (this.reason === 'Unproductive') { return 'Proposal to close as unproductive'; }
+    if (this.reason === 'Offensive') { return 'Proposal to close as offensive'; }
+    if (this.reason === 'Duplicate') { return 'Proposal to close as duplicate'; }
   },
   /**
    * Text for the rejection button -- namely, whether you are explicitly rejecting or withdrawing the motion
@@ -112,7 +101,7 @@ Template._squeakMotion.helpers({
     return (this.score >= 0 ? '' : '-') + this.score + ' / 1000';
   },
   /**
-   * Whether the resolution "passed" or was "rejected"
+   * Whether the resolution 'passed' or was 'rejected'
    * @return {String} 
    */
   resolutionStatus: function() { 
@@ -128,6 +117,13 @@ Template._squeakMotion.helpers({
     } else { 
       return 'motion-score-negative';
     }
+  },
+  /**
+   * Should we give the option to show discussion?  We shouldn't if it's closed and there's no discussion.
+   * @return {Boolean} [description]
+   */
+  showDiscussion: function() { 
+    return (this.state === 'Open' || !!this.comments.length);
   },
   /**
    * Return the current user's viscosity

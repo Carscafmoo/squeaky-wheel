@@ -64,7 +64,7 @@ Template.searchPage.helpers({
     var limit = search.get('currentLimit');
     var next = ( total > (limit + 10) ? limit + 10 : total);
 
-    return "More (" + (limit + 1) + " - " + next + " of " + total + ")";
+    return 'More (' + (limit + 1) + ' - ' + next + ' of ' + total + ')';
   },
   /**
    * return a list of fields to be searched
@@ -134,7 +134,7 @@ Template.searchPage.events({
       EasySearch.changeProperty('squeaks', 'fields', fields);
       clearInputError('searchFieldOptions');
     } else { 
-      addInputError({searchFieldOptions: "You must specify at least one field to search!"});
+      addInputError({searchFieldOptions: 'You must specify at least one field to search!'});
       Session.set('retriggerSearch', false); // don't retrigger the search on that nonsense!
     }
     

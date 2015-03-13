@@ -18,16 +18,16 @@ Template.squeakMotionDiscussionModal.helpers({
       var author = getUserName(this.user);
       var text;
       if (this.proposedState === 'Greased') { 
-        text = "Solution"; 
+        text = 'Solution'; 
       } else if (this.proposedState === 'Squeaky') { 
-        text = "Proposal to re-open";
+        text = 'Proposal to re-open';
       } else if (this.reason === 'Withdrawn') { 
-        text = "Proposal to withdraw"; 
+        text = 'Proposal to withdraw'; 
       } else { 
-        text = "Proposal to close as " + this.reason.toLowerCase();
+        text = 'Proposal to close as ' + this.reason.toLowerCase();
       }
 
-      return text + " from " + author + " " + dateFormat(this.created); 
+      return text + ' from ' + author + ' ' + dateFormat(this.created); 
     }
   }, 
   /**

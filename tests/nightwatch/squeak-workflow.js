@@ -36,10 +36,10 @@ module.exports = {
 
       .setValue('#squeak-motion-comment', 'Test resolution')
       .click('#submit-squeak-motion-button')
-      .waitForElementPresent("#squeak-motions .squeak-motion:nth-child(1)", 1000)
+      .waitForElementPresent('#squeak-motions .squeak-motion:nth-child(1)', 1000)
       .pause(300) // sometimes we hit a snag here
       .assert.containsText('#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-resolution-meta h3', 'Solution')
-      .assert.containsText('#squeak-motions .squeak-motion:nth-child(1) .squeak-motion.well', 'Test resolution')
+      .assert.containsText('#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-comment', 'Test resolution')
 
       // Test that only one solution can be proposed at a time
       .assert.elementNotPresent('#propose-workflow-motion')
@@ -52,7 +52,7 @@ module.exports = {
       .navigateToNewestSqueak()
       .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(1) .reject-motion-button')
 
-      // Test that an appropriate user can reject as "X"
+      // Test that an appropriate user can reject as 'X'
       .assert.elementPresent('#propose-workflow-motion')
       .click('#propose-workflow-motion')
       .waitForElementPresent('#squeak-motion-modal-select', 1000)
@@ -67,24 +67,24 @@ module.exports = {
       .click('#squeak-motion-modal-select')
       .click('#squeak-motion-modal-select option[value=Duplicate]')
       .click('#submit-squeak-motion-button')
-      .waitForElementPresent('#squeak-motions .squeak-motion:nth-child(2)', 1000)
+      .waitForElementPresent('#squeak-motions .squeak-motion:nth-child(3)', 1000)
 
       // Test that proposals are displayed as appropriate, with author, timestamp, and comment, in the right order
       .assert.containsText('#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-resolution-meta h3', 'Solution') // these should not have changed
-      .assert.containsText('#squeak-motions .squeak-motion:nth-child(1) .squeak-motion.well', 'Test resolution')
-      .assert.containsText('#squeak-motions .squeak-motion:nth-child(2) .squeak-motion-resolution-meta h3', 'duplicate')// these should have been added
-      .assert.containsText('#squeak-motions .squeak-motion:nth-child(2) .squeak-motion.well', 'Test rejection')
+      .assert.containsText('#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-comment', 'Test resolution')
+      .assert.containsText('#squeak-motions .squeak-motion:nth-child(3) .squeak-motion-resolution-meta h3', 'duplicate')// these should have been added
+      .assert.containsText('#squeak-motions .squeak-motion:nth-child(3) .squeak-motion-comment', 'Test rejection')
 
-      // And we shouldn't yet have the "show history" button:
+      // And we shouldn't yet have the 'show history' button:
       .assert.elementNotPresent('#show-all-motions')
 
       // ----------- Discussion ----------
       // Test that it shows the discussion points
-      .assert.containsText('#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-discussion-toggle', '(0)')
-      .assert.containsText('#squeak-motions .squeak-motion:nth-child(2) .squeak-motion-discussion-toggle', '(0)')
+      .assert.containsText('#squeak-motions .squeak-motion-discussion-row:nth-child(2) .squeak-motion-discussion-toggle', '(0)')
+      .assert.containsText('#squeak-motions .squeak-motion-discussion-row:nth-child(4) .squeak-motion-discussion-toggle', '(0)')
 
       // Test that the discussion modal pops up with the correct title, etc.
-      .click('#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-discussion-toggle')
+      .click('#squeak-motions .squeak-motion-discussion-row:nth-child(2) .squeak-motion-discussion-toggle')
       .waitForElementVisible('#squeak-motion-discussion-modal', 2000)
       .assert.elementPresent('#proposal-comment-submit-input') // we should be able to comment
       .assert.containsText('#squeak-motion-discussion-title', 'Solution from')
@@ -98,7 +98,7 @@ module.exports = {
       .pause(300) // gah
 
       // Test that it works even if two separate proposals are open
-      .click('#squeak-motions .squeak-motion:nth-child(2) .squeak-motion-discussion-toggle')
+      .click('#squeak-motions .squeak-motion-discussion-row:nth-child(4) .squeak-motion-discussion-toggle')
       .waitForElementVisible('#squeak-motion-discussion-modal', 2000)
       .assert.elementPresent('#proposal-comment-submit-input') // we should be able to comment
       .assert.containsText('#squeak-motion-discussion-title', 'Proposal to close as duplicate')
@@ -114,9 +114,9 @@ module.exports = {
       .logout()
       .loginViscosityUser('low')
       .navigateToNewestSqueak()
-      .assert.containsText('#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-discussion-toggle', '(1)')
-      .assert.containsText('#squeak-motions .squeak-motion:nth-child(2) .squeak-motion-discussion-toggle', '(1)')
-      .click('#squeak-motions .squeak-motion:nth-child(2) .squeak-motion-discussion-toggle')
+      .assert.containsText('#squeak-motions .squeak-motion-discussion-row:nth-child(2) .squeak-motion-discussion-toggle', '(1)')
+      .assert.containsText('#squeak-motions .squeak-motion-discussion-row:nth-child(4) .squeak-motion-discussion-toggle', '(1)')
+      .click('#squeak-motions .squeak-motion-discussion-row:nth-child(4) .squeak-motion-discussion-toggle')
       .pause(300) // gah
       .waitForElementVisible('#squeak-motion-discussion-modal', 2000)
       .assert.elementPresent('#proposal-comment-submit-input') // we should be able to comment
@@ -125,21 +125,21 @@ module.exports = {
       .click('#proposal-submit-comment')
       .click('.modal-header .close')
       .pause(1000) // wait for everything to take hold I guess
-      .assert.containsText('#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-discussion-toggle', '(1)')
-      .assert.containsText('#squeak-motions .squeak-motion:nth-child(2) .squeak-motion-discussion-toggle', '(2)') // updates the right one
+      .assert.containsText('#squeak-motions .squeak-motion-discussion-row:nth-child(2) .squeak-motion-discussion-toggle', '(1)')
+      .assert.containsText('#squeak-motions .squeak-motion-discussion-row:nth-child(4) .squeak-motion-discussion-toggle', '(2)') // updates the right one
       
 
       // ---------- Voting and Resolution --------
       // Test that the voting icon shows for everyone and displays the vote score
       // For low V user, it should be there for two but not for one.
-      .assert.elementPresent('#squeak-motions .squeak-motion:nth-child(2) .downvote-motion-button')
-      .assert.elementPresent('#squeak-motions .squeak-motion:nth-child(2) .upvote-motion-button')
+      .assert.elementPresent('#squeak-motions .squeak-motion:nth-child(3) .downvote-motion-button')
+      .assert.elementPresent('#squeak-motions .squeak-motion:nth-child(3) .upvote-motion-button')
       .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(1) .downvote-motion-button')
       .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(1) .upvote-motion-button')
-      .getText('#squeak-motions .squeak-motion:nth-child(2) .downvote-motion-button', function(result) { 
+      .getText('#squeak-motions .squeak-motion:nth-child(3) .downvote-motion-button', function(result) { 
             this.assert.equal(new RegExp(/-[0-9]+/).test(result.value), true);
       })
-      .getText('#squeak-motions .squeak-motion:nth-child(2) .upvote-motion-button', function(result) { 
+      .getText('#squeak-motions .squeak-motion:nth-child(3) .upvote-motion-button', function(result) { 
             this.assert.equal(new RegExp(/\+[0-9]+/).test(result.value), true);
       })
       
@@ -147,8 +147,8 @@ module.exports = {
             // Rejection for resolution proposer for the resolution but not for the proposal to reject:
             .assert.elementPresent('#squeak-motions .squeak-motion:nth-child(1) .reject-motion-button')
             .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(1) .accept-motion-button')
-            .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(2) .reject-motion-button')
-            .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(2) .accept-motion-button')
+            .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(3) .reject-motion-button')
+            .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(3) .accept-motion-button')
 
 
             // Squeak author for the proposal to resolve, but not proposal to Reject
@@ -157,8 +157,8 @@ module.exports = {
             .navigateToNewestSqueak()
             .assert.elementPresent('#squeak-motions .squeak-motion:nth-child(1) .reject-motion-button')
             .assert.elementPresent('#squeak-motions .squeak-motion:nth-child(1) .accept-motion-button')
-            .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(2) .reject-motion-button')
-            .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(2) .accept-motion-button')
+            .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(3) .reject-motion-button')
+            .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(3) .accept-motion-button')
             
             // rejection author for proposal to reject, but not proposal to resolve
             .logout()
@@ -166,11 +166,11 @@ module.exports = {
             .navigateToNewestSqueak()
             .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(1) .reject-motion-button')
             .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(1) .accept-motion-button')
-            .assert.elementPresent('#squeak-motions .squeak-motion:nth-child(2) .reject-motion-button')
-            .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(2) .accept-motion-button')
+            .assert.elementPresent('#squeak-motions .squeak-motion:nth-child(3) .reject-motion-button')
+            .assert.elementNotPresent('#squeak-motions .squeak-motion:nth-child(3) .accept-motion-button')
       
       // Test that the reject proposal button works for author of proposal to reject and successfully closes resolution
-      .click('#squeak-motions .squeak-motion:nth-child(2) .reject-motion-button')
+      .click('#squeak-motions .squeak-motion:nth-child(3) .reject-motion-button')
       .waitForElementVisible('#show-all-motions', 1000) // wait for stuff to take effect
       .assert.elementPresent('#rejected-motions .squeak-motion:nth-child(1)')
       .assert.hidden('#rejected-motions .squeak-motion:nth-child(1)')
@@ -183,11 +183,11 @@ module.exports = {
       .assert.elementPresent('#rejected-motions .squeak-motion:nth-child(1) .squeak-motion-title .glyphicon-remove')
 
       // Test that the rejected resolution can no longer be comented on
-      .click('#rejected-motions .squeak-motion:nth-child(1) .squeak-motion-discussion-toggle')
+      .click('#rejected-motions .squeak-motion-discussion-row:nth-child(2) .squeak-motion-discussion-toggle')
       .waitForElementVisible('#squeak-motion-discussion-modal', 2000)
       .assert.elementNotPresent('#proposal-comment-submit-input') // we should not be able to comment
       
-      // Test that the "Accept" button works for the Squeak author
+      // Test that the 'Accept' button works for the Squeak author
       .logout()
       .loginTestUser()
       .navigateToNewestSqueak()
@@ -233,7 +233,7 @@ module.exports = {
       .assert.elementPresent('#activity-list .entry:nth-child(4)')
       .assert.containsText('#activity-list .entry:nth-child(4) .activity-label', 'from Greased to Squeaky') 
       .assert.containsText('#activity-list .entry:nth-child(4) .activity-label', 'Nightwatch Test Squeak')
-      .assert.containsText('#activity-list .entry:nth-child(4) .activity-label', 'proposed change of workflow state')
+      .assert.containsText('#activity-list .entry:nth-child(4) .activity-label', 'proposed that workflow state of')
       .assert.elementPresent('#activity-list .entry:nth-child(4) .squeak-motion')
       .assert.containsText('#activity-list .entry:nth-child(4) .squeak-motion .squeak-motion-title', 'Proposal to re-open')
 
@@ -247,7 +247,7 @@ module.exports = {
       .assert.containsText('#activity-list .entry:nth-child(7) .comment-text .comment', 'Test comment')
 
       // And finally should be able to view -- but not comment on -- discussion:
-      .click('#activity-list .entry:nth-child(6) .squeak-motion .squeak-motion-discussion-toggle')
+      .click('#activity-list .entry:nth-child(6) .squeak-motion-discussion-row .squeak-motion-discussion-toggle')
       .waitForElementVisible('#squeak-motion-discussion-modal', 1000)
       .assert.visible('#squeak-motion-discussion-modal .comment-text:nth-child(1)')
       .assert.containsText('#squeak-motion-discussion-modal .comment-text:nth-child(1) .comment', 'Test comment')

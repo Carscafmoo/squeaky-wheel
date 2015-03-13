@@ -1,5 +1,5 @@
 module.exports = {
-  "About page" : function (client) {
+  'About page' : function (client) {
     client
       .load()
       

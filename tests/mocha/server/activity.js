@@ -119,7 +119,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
        */
       it('Should not be possible to acknowledge a fake activity', function() { 
       // testNotification passes the notification specs, but shouldn't be found in the collection (it doesn't have created, etc.)
-        var test = function test() { return ackActivity("fake"); }
+        var test = function test() { return ackActivity('fake'); }
         var testId = createTestActivity(); // create this so we can check that it *doesn't* get ack'd.
         loginTestUser();
         expect(test).to.throw('No such activity');

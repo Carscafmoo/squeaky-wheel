@@ -6,7 +6,7 @@
  * Activities performed by various users on various objects.
  * Schema:
  *   _id: default
- *   type: String; the type of activity (e.g., "comment")
+ *   type: String; the type of activity (e.g., 'comment')
  *   action: An object containing the subscription and args required to subscribe to view the action triggering the activity.
  *   watched: An object containing the subscription and args required to subscribe to view the thing being watched 
  *   users: [Object] An array of objects in form {userId: String, ack: Boolean} to whom the activity is relevant; ack is true
@@ -30,7 +30,7 @@ if (Meteor.isServer) {
   });
 
   Meteor.publish('activities', function(limit) { 
-    return Activities.find({"users.userId": this.userId}, {users: -1, sort: {created: -1, _id: 1}, limit: limit});
+    return Activities.find({'users.userId': this.userId}, {users: -1, sort: {created: -1, _id: 1}, limit: limit});
   });
 }
 /**
@@ -77,7 +77,7 @@ createActivity = function createActivity(semiActivity, env) {
 
   // Check to make sure all users actually exist:
   if ( newActivity.type !== 'userJoined' && (users.length === 0 || Meteor.users.find({_id: {$in: users}}).count() !== users.length)) { 
-    throw new Meteor.Error("Activity must be relevant for some non-zero number of existing users!");
+    throw new Meteor.Error('Activity must be relevant for some non-zero number of existing users!');
   }
 
   newActivity.users = _.map(users, function(user) { 

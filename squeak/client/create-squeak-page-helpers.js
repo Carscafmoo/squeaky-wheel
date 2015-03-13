@@ -56,7 +56,7 @@ Template.createSqueakPage.events({
  */
 Template.createSqueakPage.helpers({
   /**
-   * If the form is incomplete, give the submit buttont the "disabled" setting.
+   * If the form is incomplete, give the submit buttont the 'disabled' setting.
    * @return {String} 
    */
   submitSqueakClass: function() { 

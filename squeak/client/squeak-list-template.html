@@ -2,7 +2,9 @@
   {{setTitle 'Squeaky Wheel / Squeaks'}}
   <div class='squeak-list' id='squeak-list'>
     <h3 class='welcome'>
-      Viewing {{> whichSqueaksDropdown}} Squeaks sorted by {{> sortSqueaksDropdown}} that are {{> squeakWorkflowDropdown}} attached to {{> axleInput}}
+      <form class='form-inline' id='axle-restriction-form'>
+        Viewing {{> whichSqueaksDropdown}} Squeaks sorted by {{> sortSqueaksDropdown}} that are {{> squeakWorkflowDropdown}} attached to {{> axleInput}}
+      </form>
     </h3>
     <hr>
     {{#if data.count}}
@@ -15,5 +17,8 @@
     {{else}}
       <h3 class="none-found">No squeaks found.</h3>
     {{/if}}
+    {{#unless ready}}
+      {{> spinner}}
+    {{/unless}}
   </div>  
 </template>

@@ -15,7 +15,7 @@ Template.editSqueakPage.events({
       Meteor.call('deleteSqueak', this._id, function(error, success) { 
         if (error) { throw error; }
 
-        Router.go("home");
+        Router.go('home');
       });
     }
   },

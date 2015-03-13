@@ -14,6 +14,6 @@ Template.tutorialCreateSqueakPage.helpers({
    * @return {String} the text from the Squeak link
    */
   createSqueakText: function() { 
-    return "Squeak!"; // $('#new-squeak').text() yields Squeak!Be Heard which is not great
+    return 'Squeak!'; // $('#new-squeak').text() yields Squeak!Be Heard which is not great
   }
 });

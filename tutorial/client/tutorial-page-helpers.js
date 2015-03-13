@@ -27,13 +27,13 @@ var currentHash = function currentHash() {
  * When created, set the session variable to templates know we're in the tour
  */
 Template.tutorialPage.created = function() { 
-  Session.set("isTutorial", true);
+  Session.set('isTutorial', true);
 }
 /**
  * And when we leave, re-set that session var
  */
 Template.tutorialPage.destroyed = function() { 
-  Session.set("isTutorial", false);
+  Session.set('isTutorial', false);
 }
 /**
  * Helpers for the tutorial page
