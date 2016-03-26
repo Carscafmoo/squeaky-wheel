@@ -1,0 +1,83 @@
+<template name='demoPage'>
+  <div id='demo-page' class='logged-out section even'>
+    <div class='container'>
+      <div class='section-header jumbotron' id='about-header'>
+        <h1>Demo Release Notes</h1>
+        <div class='text'>
+          <p>
+            Squeaky Wheel is not production-ready.  In short, this means it lacks key features, may experience unexpected and prolonged downtime, and may be subject to periodic data deletion.  It is currently set up as a demo; we encourage you to create an account and start using it, but know that you do so at your own risk.
+          </p>
+        </div>
+      </div><!--about-header-->
+      <div class='demo-page-section' id='demo-page-why'>
+        <h2>Why?</h2>
+        <p>
+          <a href="http://www.carscafmoo.com" target="_blank">We</a> built Squeaky Wheel in a few months in early 2015 and wanted to have something to show for our work, so we've released this demo version while other projects take over our schedule.  The application should, broadly speaking, work, but many features are lacking and many elements may not appear as slick, user-friendly, or efficient as a production-level website or app should be.
+        </p>
+        <p>
+          During the release, we encourage users to explore, test, and use the application and submit any feedback they may have or features they may want added to <a href="mailto:support@squeaky-wheel.com">support@squeaky-wheel.com</a>.  If we hear enough positive, constructive feedback, we may be able to push Squeaky Wheel back to the top of our to-do list!
+        </p>
+      </div>
+      <div class='demo-page-section' id='demo-page-instability'>
+        <h2>Instability</h2>
+        <p>
+          Squeaky Wheel is currently hosted through <a href="http://docs.meteor.com/#/full/deploying" target="_blank">Meteor.com</a>.  This hosting is meant to allow Meteor developers to post working models of their applications, <em>not</em> for production-level hosting.  We do not have access to the hosting platform, and Meteor makes no guarantees about the reliability or scalability of their hosting.  Therefore, Squeaky Wheel is subject to any or all of the following:
+        </p>
+        <ul>
+          <li>Unexpected or unannounced service interruptions</li>
+          <li>Prolonged interruptions</li>
+          <li>Unexpected or unannounced permanent termination of service</li>
+          <li>Poor network or server performance</li>
+        </ul>
+        <p>
+          Related, Meteor hosting will spin down the application if it has no users for a prolonged period of time.  Since this is the expected usage profile during the demo release, you may see a "This site is down" warning when you navigate to the site. The app should spin up in under a minute or so, after which you should be able to refresh the page.  If we gain a sufficient userbase, we may redeploy through a more production-ready (and less free) framework.
+        </p>
+        <p>
+          For more information on the reliability of Meteor hosting, see <a href="https://groups.google.com/forum/#!topic/meteor-talk/B3QNH4Rv4ic" target="_blank">this thread</a> from the old Meteor Google Group.
+        </p>
+      </div>
+      <div class='demo-page-section' id='demo-page-data-transience'>
+        <h2>Data Transience</h2>
+        <p>
+          While our <a href="{{pathFor 'termsOfUsePage'}}">terms of use</a> explicitly state that we reserve the right to remove any content at any time with no warning, it may be necessary from time to time to <strong>completely and entirely wipe our database</strong>, whether because we are moving to production hosting, restructuring the app, or completely shutting down.  
+        </p>
+        <p>
+          If this occurs, we may delete any or all of the following information, or information not included in this list:
+        </p>
+          <ul>
+            <li>Squeaks</li>
+            <li>Comments</li>
+            <li>Axles</li>
+            <li>Notifications</li>
+            <li>User accounts</li>
+          </ul>
+        <p>
+          In particular, if your account is deleted, you may be unable to log in and would have to create a new account. There would be no special warning in this circumstance; you would only be told that no such user exists.
+        </p>
+      </div>
+      <div class='demo-page-section' id='demo-page-feature-poverty'>
+        <h2>Feature Poverty</h2>
+        <p>
+          There is a long list of outstanding features that we'd love to implement but haven't had the time for.  In some cases this may lead to poor user experience, and while we'd love to hear about any problems that occur, we may not be able to fix them in a timely fashion or at all.
+        </p>
+        <p> 
+          In particular, users may notice the following features missing, which may negatively affect their experience:
+        </p>
+        <ul>
+          <li>Support for certain browsers</li>
+          <li>Support for mobile or wearable screen sizes</li>
+          <li>User preferences for homepages and notifications</li>
+          <li>Email notifications</li>
+          <li>Location services</li>
+          <li>Advanced search</li>
+          <li>Account deletion and reactivation</li>
+          <li>Squeak/Comment markdown and file/image attachment</li>
+          <li>Pictures instead of walls of text in the "About" / Tutorial material</li>
+        </ul>
+        <p>
+          We appreciate your patience and welcome any feedback (<a href="mailto:support@squeaky-wheel.com">support@squeaky-wheel.com</a>) you may have on these or other features.
+        </p>
+      </div>
+    </div><!-- container -->
+  </div><!-- #about-page -->
+</template>

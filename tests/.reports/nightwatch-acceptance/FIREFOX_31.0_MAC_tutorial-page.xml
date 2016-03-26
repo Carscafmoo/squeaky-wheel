@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="tutorial-page"
+             errors="0"
+             failures="0"
+             tests="102">
+  
+  <testsuite errors="0" failures="0" hostname="" id=""
+    name="Tutorial pages" package="tutorial-page" skipped="0"
+    tests="102" time="" timestamp="">
+    
+    
+      <testcase name="Element &lt;body&gt; was visible after 74 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#tutorial-page&gt; was visible after 24 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#tutorial-welcome-page&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#tutorial-welcome-page&gt; contains text: &quot;Let&#39;s take a look around.&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 36 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 1372 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#tutorial-page&gt; was visible after 30 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#tutorial-welcome-page&gt; contains text: &quot;We&#39;re glad you joined&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-list&gt; was visible after 33 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 29 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 27 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#tutorial-nav-current&gt; contains text: &quot;1 / 10&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#tutorial-next-page&gt; contains text: &quot;Squeaks&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#tutorial-previous-page&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was visible after 27 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-info h3.welcome&gt; contains text: &quot;Mechanism&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;span.squeak-edited&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.squeak-axle-list .axle-element:nth-child(1) a&gt; contains text: &quot;Automobiles&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-title&gt; contains text: &quot;Solution&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(1) .well&gt; contains text: &quot;series of colored lights&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-meta .s-w-author&gt; contains text: &quot;Garrett Morgan&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.squeak-axle-list .axle-element:nth-child(1) a&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.vote-button&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.squeak-motion-discussion-toggle&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.watch-squeak-button&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#tutorial-welcome-page&gt; was visible after 24 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was visible after 24 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#tutorial-create-squeak-page&gt; was visible after 31 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#create-squeak-page&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute disabled of &lt;#title&gt; equals &quot;true&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute disabled of &lt;#description&gt; equals &quot;true&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute disabled of &lt;#re-creation&gt; equals &quot;true&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute disabled of &lt;#target&gt; equals &quot;true&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute disabled of &lt;#submit-new-squeak&gt; equals &quot;true&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#tutorial-search-page&gt; was visible after 37 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.easy-search&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if value of &lt;.easy-search&gt; equals: &quot;automobiles at intersections&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view .squeak-entry:nth-child(4)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view .squeak-entry:nth-child(4) h3 a&gt; contains text: &quot;Mechanism for&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view .squeak-entry:nth-child(5)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute disabled of &lt;.easy-search&gt; equals &quot;true&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-option-dropdown .search-option .search-option-checkbox[option=Titles]&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute disabled of &lt;#search-option-dropdown .search-option .search-option-checkbox[option=Titles]&gt; equals &quot;true&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#search-view .squeak-entry:nth-child(4) h3 a&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.vote-button&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.watch-squeak-button&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#tutorial-axle-list-page&gt; was visible after 38 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.easy-search&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if value of &lt;.easy-search&gt; equals: &quot;Automobiles&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#axle-list .axle-entry:nth-child(3)&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#axle-list .axle-entry:nth-child(3) h3 a&gt; contains text: &quot;Automobiles&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#axle-list .axle-entry:nth-child(4)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if value of &lt;#axle-restriction-input&gt; equals: &quot;Automobiles&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.squeak-entry:nth-child(3)&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list .squeak-entry:nth-child(3) h3 a&gt; contains text: &quot;Mechanism for&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list .squeak-entry:nth-child(4)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute disabled of &lt;.easy-search&gt; equals &quot;true&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#view-axle-name&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#view-axle-name&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.watch-axle-button&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#axle-list .axle-entry:nth-child(3) h3 a&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#view-my-squeaks&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#view-my-squeaks&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#view-newest-squeaks&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#view-newest-squeaks&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#view-squeaky-squeaks&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#view-squeaky-squeaks&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute disabled of &lt;#axle-restriction-input&gt; equals &quot;true&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-list .squeak-entry:nth-child(3) h3 a&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.vote-button&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.watch-squeak-button&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#tutorial-activity-list-page&gt; was visible after 44 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(3)&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(4)&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(5)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(3) .activity-entry&gt; has css class: &quot;activity-un-acknowledged&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(4) .activity-entry&gt; does not have css class: &quot;activity-un-acknowledged&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#example-watch-button&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#tutorial-squeak-workflow-page&gt; was visible after 20 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion-title span.glyphicon-ok&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.squeak-motion-discussion-toggle&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#tutorial-viscosity-rating-page&gt; was visible after 18 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.glyphicon-tint&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#tutorial-comments-page&gt; was visible after 19 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#proposal-comment-submit-input&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#tutorial-clarification-question-comment .comment&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#tutorial-clarification-answer-comment .comment&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#tutorial-workflow-request-comment .comment&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#proposal-submit-comment&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute disabled of &lt;#proposal-comment-submit-input&gt; equals &quot;true&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#tutorial-complete-page&gt; was visible after 20 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#tutorial-next-page&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#create-account-link&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 19 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 852 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#tutorial-complete-page&gt; was visible after 1342 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#get-started-button&gt; is visible.">
+        
+        
+      </testcase>
+    
+    
+    </testsuite>
+  
+</testsuites>

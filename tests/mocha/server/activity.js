@@ -9,7 +9,7 @@ if (!(typeof MochaWeb === 'undefined') && true) {
     var loginTestUser = function loginTestUser() { this.userId = getTestUser()._id; }
     var loginOtherUser = function loginOtherUser() { this.userId = getOtherUser()._id; }
     var logout = function logout() { this.userId = null; }
-
+    
     var testActivity = {
       type: 'test',
       action: {subscription: 'test', _id: 'test'},

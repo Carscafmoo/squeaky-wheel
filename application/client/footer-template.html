@@ -11,17 +11,25 @@
           </li>{{divider}}
           <li class='footer-link-entry'>
             <a href="{{pathFor 'tutorialPage' hash='0'}}" id="tutorial-footer-link">Tour</a>
+          </li>{{divider}}
+          <li class='footer-link-entry'>
+            <a href="{{pathFor 'contactPage'}}" id="contact-footer-link">Contact</a>
           </li>
         </ul>
       </div><!--footer-links-left-->
-      <div id='copyright-notice' class='col-xs-2'>&copy; 2015 Carson Moore</div>
+      <div id='copyright-notice' class='col-xs-2'>
+        &copy; {{year}} <a href="http://www.carscafmoo.com" target="_blank">Carson C. Moore, LLC</a>
+      </div>
       <div class='footer-links col-xs-5' id='footer-links-right'>
         <ul class='footer-link-list list-inline pull-right'>
           <li class='footer-link-entry'>
-            <a href="{{pathFor 'comingSoonPage'}}" id='contact-footer-link'>Contact</a>
+            <a href="{{pathFor 'termsOfUsePage'}}" id='terms-of-use-footer-link'>Terms of Use</a>
           </li>{{divider}}
           <li class='footer-link-entry'>
-            <a href="{{pathFor 'comingSoonPage'}}" id='blog-footer-link'>Blog</a>
+            <a href="{{pathFor 'privacyPolicyPage'}}" id='privacy-policy-footer-link'>Privacy Policy</a>
+          </li>{{divider}}
+          <li class='footer-link-entry'>
+            <a href="{{pathFor 'technicalPage'}}" id='technical-footer-link'>Technical</a>
           </li>
         </ul>
       </div><!--footer-links-right-->

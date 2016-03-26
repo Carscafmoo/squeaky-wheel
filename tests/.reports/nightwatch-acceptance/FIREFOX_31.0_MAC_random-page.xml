@@ -9,22 +9,22 @@
     tests="6" time="" timestamp="">
     
     
-      <testcase name="Element &lt;body&gt; was visible after 111 milliseconds.">
+      <testcase name="Element &lt;body&gt; was visible after 79 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Element &lt;#login-username&gt; was visible after 32 milliseconds.">
+      <testcase name="Element &lt;#login-username&gt; was visible after 33 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Element &lt;.welcome&gt; was present after 22 milliseconds.">
+      <testcase name="Element &lt;.welcome&gt; was present after 19 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Element &lt;#squeak-info&gt; was visible after 89 milliseconds.">
+      <testcase name="Element &lt;#squeak-info&gt; was visible after 25 milliseconds.">
         
         
       </testcase>
@@ -34,7 +34,7 @@
         
       </testcase>
     
-      <testcase name="Testing if element &lt;h3.welcome&gt; contains text: &quot;Mechanism for regulating the flow of automobiles at intersections&quot;.">
+      <testcase name="Testing if element &lt;h3.welcome&gt; contains text: &quot;More reliable solid-state transistor&quot;.">
         
         
       </testcase>

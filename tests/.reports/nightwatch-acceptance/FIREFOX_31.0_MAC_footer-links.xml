@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="footer-links"
+             errors="0"
+             failures="0"
+             tests="15">
+  
+  <testsuite errors="0" failures="0" hostname="" id=""
+    name="Footer nonsense" package="footer-links" skipped="0"
+    tests="15" time="" timestamp="">
+    
+    
+      <testcase name="Element &lt;body&gt; was visible after 80 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#contact-page&gt; was visible after 34 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#email-address&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#website-address&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#terms-of-use-page&gt; was visible after 34 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#terms-of-use-page&gt; contains text: &quot;Terms of Use&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#privacy-policy-page&gt; was visible after 41 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#privacy-policy-page&gt; contains text: &quot;Privacy Policy&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#technical-page&gt; was visible after 27 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#technical-framework p:nth-child(2) a:nth-child(1)&gt; contains text: &quot;Meteor&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#technical-deployment p:nth-child(2) a:nth-child(2)&gt; contains text: &quot;demo&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#technical-style p:nth-child(2) a:nth-child(1)&gt; contains text: &quot;Bootstrap&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#technical-style p:nth-child(2) a:nth-child(2)&gt; contains text: &quot;Glyphicons&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#technical-testing p:nth-child(2) a:nth-child(1)&gt; contains text: &quot;Mocha&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#technical-testing p:nth-child(2) a:nth-child(2)&gt; contains text: &quot;Nightwatch&quot;.">
+        
+        
+      </testcase>
+    
+    
+    </testsuite>
+  
+</testsuites>

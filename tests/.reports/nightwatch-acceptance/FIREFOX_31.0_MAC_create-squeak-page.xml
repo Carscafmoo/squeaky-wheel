@@ -9,22 +9,22 @@
     tests="13" time="" timestamp="">
     
     
-      <testcase name="Element &lt;body&gt; was visible after 159 milliseconds.">
+      <testcase name="Element &lt;body&gt; was visible after 84 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Element &lt;#login-username&gt; was visible after 55 milliseconds.">
+      <testcase name="Element &lt;#login-username&gt; was visible after 36 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Element &lt;.welcome&gt; was present after 26 milliseconds.">
+      <testcase name="Element &lt;.welcome&gt; was present after 25 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Element &lt;#new-squeak-form&gt; was visible after 31 milliseconds.">
+      <testcase name="Element &lt;#new-squeak-form&gt; was visible after 28 milliseconds.">
         
         
       </testcase>
@@ -54,7 +54,7 @@
         
       </testcase>
     
-      <testcase name="Element &lt;#squeak-info&gt; was visible after 27 milliseconds.">
+      <testcase name="Element &lt;#squeak-info&gt; was visible after 31 milliseconds.">
         
         
       </testcase>
@@ -64,12 +64,12 @@
         
       </testcase>
     
-      <testcase name="Element &lt;.squeak-edit-input&gt; was visible after 34 milliseconds.">
+      <testcase name="Element &lt;.squeak-edit-input&gt; was visible after 28 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Element &lt;#squeak-list&gt; was visible after 299 milliseconds.">
+      <testcase name="Element &lt;#squeak-list&gt; was visible after 178 milliseconds.">
         
         
       </testcase>

@@ -41,7 +41,6 @@ module.exports = {
       .assert.elementPresent('#squeak-comment-submit-input') // The form is still there
       .assert.elementPresent('#squeak-submit-comment')
       .getText('#hide-squeak-discussion', function(success) { 
-            console.log(success.value);
             this.assert.equal(new RegExp(/[0-9]+/).test(success.value), false); // some problems with the # showing up there earlier
       })
       
@@ -58,10 +57,19 @@ module.exports = {
       .assert.containsText('.typeahead.dropdown-menu li a', 'Squeaky Wheel')
       .click('.typeahead.dropdown-menu li a')
 
+
       // Give it a sec to register and then make sure it showed up before getting rid of it:
       .waitForElementVisible('.bootstrap-tagsinput span:nth-child(2)', 1000)
-      .assert.containsText('.bootstrap-tagsinput span:nth-child(2)', 'Squeaky Wheel Examples')
-      .click('.bootstrap-tagsinput span:nth-child(2) span[data-role=remove]')
+      .getText('.bootstrap-tagsinput span:nth-child(2)', function(success) { 
+            var txt = success.value;
+            if (txt === 'Squeaky Wheel Examples') { 
+                  this.click('.bootstrap-tagsinput span:nth-child(2) span[data-role=remove]');
+            } else this.getText('.bootstrap-tagsinput span:nth-child(1)', function(success) { // try the other one.  I think it orders depending on _id
+                  var txt = success.value;
+                  if (txt !== 'Squeaky Wheel Examples') { throw new Exception("Error in the removal of the SWExample tag"); }
+                  this.click('.bootstrap-tagsinput span:nth-child(1) span[data-role=remove]');
+            });
+      })
       .pause(300) // wait for that to go away and let's make sure it's gone
       .assert.elementNotPresent('.bootstrap-tagsinput span:nth-child(2)')
 

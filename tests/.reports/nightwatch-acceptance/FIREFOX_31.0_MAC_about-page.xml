@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="about-page"
+             errors="0"
+             failures="0"
+             tests="11">
+  
+  <testsuite errors="0" failures="0" hostname="" id=""
+    name="About page" package="about-page" skipped="0"
+    tests="11" time="" timestamp="">
+    
+    
+      <testcase name="Element &lt;body&gt; was visible after 85 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#about-page&gt; was visible after 30 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#life-cycle-page&gt; was visible after 29 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#about-page&gt; was visible after 34 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#roles-page&gt; was visible after 29 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#about-page&gt; was visible after 29 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#mission-page&gt; was visible after 27 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#about-page&gt; was visible after 31 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 30 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 1964 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#about-page&gt; was visible after 27 milliseconds.">
+        
+        
+      </testcase>
+    
+    
+    </testsuite>
+  
+</testsuites>

@@ -1,0 +1,47 @@
+<template name='technicalPage'>
+  <div id='technical-page' class='logged-out section even'>
+    <div class='container'>
+      <div class='section-header jumbotron' id='about-header'>
+        <h1>Technical Considerations</h1>
+        <div class='text'>
+          <p>
+            Squeaky Wheel is built on the work of giants.
+          </p>
+        </div>
+      </div><!--about-header-->
+      <div class='technical-consideration-section' id='technical-framework'>
+        <h2>Framework</h2>
+        <p>
+          Squeaky Wheel is built in <a href='https://www.meteor.com/' target='_blank'>Meteor</a>, a full-stack JavaScript framework built on Node and MongoDB.  For more information on why you should use Meteor for your next project, check out <a href='http://www.meteorpedia.com/read/Why_Meteor' target='_blank'>Why Meteor?</a> on Meteorpedia.
+        </p>
+      </div>
+      <div class='technical-consideration-section' id='technical-deployment'>
+        <h2>Deployment</h2>
+        <p>
+          The demo release of Squeaky Wheel is hosted (for free!) on Meteor infrastructure using <code>meteor deploy</code>.  As mentioned in the <a href="{{pathFor 'demoPage'}}" id='tech-page-demo-link'>demo release notes</a>, this hosting is not stable.
+        </p>
+        <p>
+          More information about Meteor hosting is available in the <a href='http://docs.meteor.com/#/full/deploying' target="_blank">Meteor documentation</a>.
+        </p>
+      </div>
+      <div class='technical-consideration-section' id='technical-style'>
+        <h2>Style</h2>
+        <p>
+          Squeaky Wheel uses <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a> as its primary front-end framework.  In particular, icons are provided using Bootstrap's <a href="http://getbootstrap.com/components/#glyphicons-glyphs" target="_blank">Glyphicons</a>, provided for free from <a href="http://glyphicons.com/" target="_blank">glyphicons.com</a>; custom CSS was compiled using <a href="http://lesscss.org/" target="_blank">Less</a>.
+        </p>
+      </div>
+      <div class='technical-consideration-section' id='technical-testing'>
+        <h2>Testing</h2>
+        <p>
+          Unit tests are written and run using the <a href="http://mochajs.org/" target="_blank">Mocha framework</a>, and client-side end-to-end tests are run using <a href="http://nightwatchjs.org/" target="_blank">Nightwatch</a>, a framework built on <a href="http://www.seleniumhq.org/projects/webdriver/" target="_blank">Selenium WebDriver</a>.
+        </p>
+      </div>
+      <div class='technical-consideration-section'  id='technical-version-control'>
+        <h2>Version Control</h2>
+        <p>
+          Squeaky Wheel source code is hosted in a private git repository.  For questions or concerns about the underlying code, including internal documentation and testing, contact Carson Moore.
+        </p>
+      </div>
+    </div>
+  </div>
+</template>

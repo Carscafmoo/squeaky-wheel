@@ -59,7 +59,7 @@ Router.route('/mission', {
  * Route for the community guidelines page
  */
 Router.route('/community_guidelines', { 
-  name: 'communityGuidelinesPage',
+  name: 'communityGuidelinesPage', 
   controller: LoggedOutRouteController
 });
 /**
@@ -81,6 +81,44 @@ Router.route('/tutorial', {
 
     return subscriptions;
   }
+});
+/**
+ * Route for the contact page
+ */
+Router.route('/contact', { 
+  name: 'contactPage',
+  controller: LoggedOutRouteController
+});
+/**
+ * Route for the terms of use page
+ * @type {String}
+ */
+Router.route('/terms_of_use', {
+  name: 'termsOfUsePage',
+  controller: LoggedOutRouteController
+});
+/**
+ * Route for the privacy policy page
+ * @type {String}
+ */
+Router.route('/privacy_policy', {
+  name: 'privacyPolicyPage',
+  controller: LoggedOutRouteController
+});
+/**
+ * Route to the Demo explanation
+ */
+Router.route('/demo', {
+  name: 'demoPage',
+  controller: LoggedOutRouteController
+});
+/**
+ * Route to the technical info page
+ * @type {String}
+ */
+Router.route('/technical', { 
+  name: 'technicalPage', 
+  controller: LoggedOutRouteController
 });
 /**
  * For stuff that isn't yet implemented, tell people
@@ -126,6 +164,25 @@ Router.route('/squeak/:_id', {
     return [Meteor.subscribe('squeakDetail', this.params._id), 
       Meteor.subscribe('axleBySqueak', this.params._id),
       Meteor.subscribe('usersBySqueak', this.params._id)];
+  },
+  onAfterAction: function() { // set SEO meta data
+    var squeak;
+    
+    // The SEO object is only available on the client.
+    if (!Meteor.isClient) {
+      return;
+    }
+
+    squeak = this.data();
+    if (squeak) { 
+      SEO.set({
+        title: squeak.title,
+        meta: {
+          description: squeak.description,
+          rel_author: null
+        } // og and twitter titles should be taken care of automatically
+      });
+    }
   }
 });
 /** 
@@ -163,8 +220,7 @@ Router.route('/random', {
       Router.go('squeakPage', {_id: success});
     });
   }
-});
-
+}); 
 /**
  * Route for creating a new user (account-create-template.html)
  */
@@ -327,7 +383,6 @@ ActivityListController = PaginatedController.extend({
 Router.route('/activity/:dataLimit?', { 
   name: 'activityList'
 });
-
 /**
  * Generic controller for SqueakLists; could be sorted or limited in any # of ways in extensions.
  *   Extensions need to fill in getSort() and getNextPath
@@ -462,10 +517,67 @@ Router.route('/search/:searchTerm?', {
  */
 var noLoginRequired = ['createAccount', 
                         'welcomePage', 
+                        'aboutPage',
                         'lifeCyclePage', 
                         'rolesPage', 
                         'missionPage', 
                         'comingSoonPage',
                         'communityGuidelinesPage',
-                        'tutorialPage']
+                        'tutorialPage',
+                        'contactPage',
+                        'privacyPolicyPage',
+                        'termsOfUsePage',
+                        'demoPage',
+                        'technicalPage']
 Router.onBeforeAction(requireLogin, {except: noLoginRequired});
+/**
+ * Add all routes we care about being searchable to the sitemap:
+ */
+if (Meteor.isServer) { 
+  sitemaps.add('/sitemap.xml', function() { 
+    var minLastMod = _.min([new Date('2015-03-27 00:00:00 GMT-0400'), new Date()]);
+    var pages = [];
+    pages.push({page: '/welcome', lastmod: minLastMod, changefreq: 'yearly'});
+    pages.push({page: '/about', lastmod: minLastMod, changefreq: 'yearly', priority: .8});
+    pages.push({page: '/roles', lastmod: minLastMod, changefreq: 'yearly', priority: .2});
+    pages.push({page: '/life_cycle', lastmod: minLastMod, changefreq: 'yearly', priority: .2});
+    pages.push({page: '/mission', lastmod: minLastMod, changefreq: 'yearly', priority: .2});
+    pages.push({page: '/community_guidelines', lastmod: minLastMod, changefreq: 'yearly'});
+    pages.push({page: '/tutorial', lastmod: minLastMod, changefreq: 'yearly', priority: .4});
+    pages.push({page: '/demo', lastmod: minLastMod, changefreq: 'yearly', priority: .2});
+    pages.push({page: '/technical', lastmod: minLastMod, changefreq: 'yearly'});
+    pages.push({page: '/contact', lastMod: minLastMod, changefreq: 'yearly'});
+
+    // Loop through all Squeaks and add them as well
+    Squeaks.find().forEach(function(squeak) { 
+      var page = {page: 'squeak/' + squeak._id};
+
+      // Find the last time it was updated... note that nothing is actually older than initial deployment time
+      var updated = minLastMod;
+      if (squeak.createdAt > updated) { updated = squeak.createdAt; }
+      _.each(squeak.comments, function(comment) { 
+        if (comment.createdAt > updated) { updated = comment.createdAt; }
+      });
+    
+      _.each(squeak.motions, function(mo) { 
+        if (mo.created > updated) { updated = mo.created; }
+        _.each(mo.comments, function(comment) { 
+          if (comment.createdAt > updated) { updated = comment.createdAt; }
+        });
+
+        if (mo.resolved && mo.resolved > updated) { updated = mo.resolved; }
+      });
+      
+      if (squeak.titleEdited && squeak.titleEdited > updated) { updated = squeak.titleEdited; }
+      if (squeak.descriptionEdited && squeak.descriptionEdited > updated) { updated = squeak.descriptionEdited; }
+      if (squeak.targetEdited && squeak.targetEdited > updated) { updated = squeak.targetEdited; }
+      if (squeak.reCreationEdited && squeak.reCreationEdited > updated) { updated = squeak.reCreationEdited; }
+
+      page.lastmod = updated;
+      page.changefreq = 'weekly'; // for now -- if we ever had traffic, increase to hourly
+      pages.push(page);
+    });
+
+    return pages;
+  });
+}

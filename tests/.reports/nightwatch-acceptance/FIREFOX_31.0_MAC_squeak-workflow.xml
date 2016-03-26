@@ -2,389 +2,29 @@
 <testsuites name="squeak-workflow"
              errors="0"
              failures="0"
-             tests="104">
+             tests="154">
   
   <testsuite errors="0" failures="0" hostname="" id=""
     name="Squeak Workflow" package="squeak-workflow" skipped="0"
-    tests="104" time="" timestamp="">
+    tests="154" time="" timestamp="">
     
     
-      <testcase name="Element &lt;body&gt; was visible after 138 milliseconds.">
+      <testcase name="Element &lt;body&gt; was visible after 82 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Element &lt;#login-username&gt; was visible after 30 milliseconds.">
+      <testcase name="Element &lt;#login-username&gt; was visible after 32 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Element &lt;.welcome&gt; was present after 24 milliseconds.">
+      <testcase name="Element &lt;.welcome&gt; was present after 18 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Element &lt;#new-squeak-form&gt; was visible after 38 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 34 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;#welcome-text&gt; was visible after 31 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;#login-username&gt; was visible after 30 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;.welcome&gt; was present after 26 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;#squeak-info&gt; was present after 145 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#workflow-transition-dropdown-button&gt; is visible.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#workflow-transition-dropdown-button&gt; contains text: &quot;Squeaky&quot;.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#workflow-meta&gt; contains text: &quot;Created by&quot;.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;.state-change-option li a[action=takeSqueakToShop]&gt; was visible after 61 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;.state-change-option li a[action=proposeSqueakSolution]&gt; is visible.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;.state-change-option li a[action=declareSqueakGreased]&gt; is visible.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;#state-change-modal-form&gt; was visible after 571 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#reason-select option[value=Withdrawn]&gt; is present.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#reason-select option[value=Unproductive]&gt; is present.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#reason-select option[value=Offensive]&gt; is present.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#reason-select option[value=&quot;Passed inspection&quot;]&gt; is not present.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 216 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;#welcome-text&gt; was visible after 336 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;#login-username&gt; was visible after 27 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;.welcome&gt; was present after 15 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;#squeak-info&gt; was present after 14 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;.state-change-option li a[action=takeSqueakToShop]&gt; was visible after 249 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;.state-change-option li a[action=proposeSqueakSolution]&gt; is visible.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;.state-change-option li a[action=declareSqueakGreased]&gt; is not present.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;#state-change-modal-form&gt; was visible after 778 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#reason-select&gt; is not present.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#submit-state-change-button&gt; has css class: &quot;disabled&quot;.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#submit-state-change-button&gt; does not have css class: &quot;disabled&quot;.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#workflow-transition-dropdown-button&gt; is not present.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#workflow-state&gt; contains text: &quot;Under inspection&quot;.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#workflow-meta&gt; contains text: &quot;completed work&quot;.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;.squeak-resolution&gt; is present.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;.resolution-active&gt; is present.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;.resolution-active&gt; contains text: &quot;Nightwatch may actually be&quot;.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#squeak-resolutions span.resolution-meta:nth-child(1)&gt; contains text: &quot;proposed the following&quot;.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#show-all-resolutions&gt; is not present.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 38 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;#welcome-text&gt; was visible after 87 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;#login-username&gt; was visible after 38 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;.welcome&gt; was present after 497 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;#squeak-info&gt; was present after 14 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#workflow-transition-dropdown-button&gt; is present.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;.state-change-option li a[action=takeSqueakToShop]&gt; was visible after 48 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;.state-change-option li a[action=declareSqueakSqueaky]&gt; is visible.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;.state-change-option li a[action=declareSqueakGreased]&gt; is visible.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;#state-change-modal-form&gt; was visible after 576 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#reason-select&gt; is not present.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#submit-state-change-button&gt; does not have css class: &quot;disabled&quot;.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#workflow-transition-dropdown-button&gt; is not present.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#workflow-state&gt; contains text: &quot;In the shop&quot;.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#workflow-meta&gt; contains text: &quot;is applying grease&quot;.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;.resolution-active&gt; is not present.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#show-all-resolutions&gt; is present.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#rejected-resolutions&gt; is hidden.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;.resolution-rejected&gt; is visible.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#rejected-resolutions span.resolution-meta:nth-child(1)&gt; contains text: &quot;proposed the following&quot;.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;.resolution-rejected&gt; contains text: &quot;Nightwatch&quot;.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#rejected-resolutions&gt; is hidden.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;.comment&gt; is visible.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;.comment&gt; contains text: &quot;Back to the drawing board&quot;.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 27 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;#welcome-text&gt; was visible after 31 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;#login-username&gt; was visible after 29 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;.welcome&gt; was present after 17 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;#squeak-info&gt; was present after 14 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#workflow-transition-dropdown-button&gt; is present.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;.state-change-option li a[action=declareSqueakSqueaky]&gt; was visible after 52 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;.state-change-option li a[action=proposeSqueakSolution]&gt; is visible.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;.state-change-option li a[action=declareSqueakGreased]&gt; is not present.">
-        
-        
-      </testcase>
-    
-      <testcase name="Element &lt;#state-change-modal-form&gt; was visible after 545 milliseconds.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;#reason-select&gt; is not present.">
-        
-        
-      </testcase>
-    
-      <testcase name="Testing if element &lt;.resolution-active&gt; is visible.">
+      <testcase name="Element &lt;#new-squeak-form&gt; was visible after 23 milliseconds.">
         
         
       </testcase>
@@ -394,7 +34,102 @@
         
       </testcase>
     
-      <testcase name="Element &lt;#welcome-text&gt; was visible after 26 milliseconds.">
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 24 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 34 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 17 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was present after 12 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#lack-of-squeak-motions&gt; contains text: &quot;None&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#propose-workflow-motion&gt; contains text: &quot;Propose New Status&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-motion-modal-select&gt; was present after 19 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motion-modal-select option[value=Greased]&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motion-modal-select option[value=Withdrawn]&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-squeak-motion-button&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-squeak-motion-button&gt; does not have css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#submit-squeak-motion-button&gt; has css class: &quot;disabled&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-motions .squeak-motion:nth-child(1)&gt; was present after 11 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-resolution-meta h3&gt; contains text: &quot;Solution&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-comment&gt; contains text: &quot;Test resolution&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#propose-workflow-motion&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(1) .reject-motion-button&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 26 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 29 milliseconds.">
         
         
       </testcase>
@@ -404,72 +139,427 @@
         
       </testcase>
     
-      <testcase name="Element &lt;.welcome&gt; was present after 13 milliseconds.">
+      <testcase name="Element &lt;.welcome&gt; was present after 9 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Element &lt;#squeak-info&gt; was present after 15 milliseconds.">
+      <testcase name="Element &lt;#squeak-info&gt; was present after 14 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Element &lt;.state-change-option li a[action=declareSqueakGreased]&gt; was visible after 27 milliseconds.">
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(1) .reject-motion-button&gt; is not present.">
         
         
       </testcase>
     
-      <testcase name="Element &lt;#state-change-modal-form&gt; was visible after 551 milliseconds.">
+      <testcase name="Testing if element &lt;#propose-workflow-motion&gt; is present.">
         
         
       </testcase>
     
-      <testcase name="Testing if element &lt;#reason-select&gt; is present.">
+      <testcase name="Element &lt;#squeak-motion-modal-select&gt; was present after 15 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Testing if element &lt;#reason-select option[value=Withdrawn]&gt; is present.">
+      <testcase name="Testing if element &lt;#squeak-motion-modal-select option[value=Greased]&gt; is not present.">
         
         
       </testcase>
     
-      <testcase name="Testing if element &lt;#reason-select option[value=Unproductive]&gt; is present.">
+      <testcase name="Testing if element &lt;#squeak-motion-modal-select option[value=Withdrawn]&gt; is not present.">
         
         
       </testcase>
     
-      <testcase name="Testing if element &lt;#reason-select option[value=Offensive]&gt; is present.">
+      <testcase name="Testing if element &lt;#squeak-motion-modal-select option[value=Offensive]&gt; is present.">
         
         
       </testcase>
     
-      <testcase name="Testing if element &lt;#reason-select option[value=&quot;Passed inspection&quot;]&gt; is present.">
+      <testcase name="Testing if element &lt;#squeak-motion-modal-select option[value=Unproductive]&gt; is present.">
         
         
       </testcase>
     
-      <testcase name="Testing if element &lt;#workflow-transition-dropdown-button&gt; is not present.">
+      <testcase name="Testing if element &lt;#squeak-motion-modal-select option[value=Duplicate]&gt; is present.">
         
         
       </testcase>
     
-      <testcase name="Testing if element &lt;#workflow-state&gt; contains text: &quot;Greased&quot;.">
+      <testcase name="Element &lt;#squeak-motions .squeak-motion:nth-child(3)&gt; was present after 11 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Testing if element &lt;#workflow-meta&gt; contains text: &quot;accepted&quot;.">
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-resolution-meta h3&gt; contains text: &quot;Solution&quot;.">
         
         
       </testcase>
     
-      <testcase name="Testing if element &lt;#body&gt; is not present.">
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-comment&gt; contains text: &quot;Test resolution&quot;.">
         
         
       </testcase>
     
-      <testcase name="Testing if element &lt;#submit-comment&gt; is not present.">
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(3) .squeak-motion-resolution-meta h3&gt; contains text: &quot;duplicate&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(3) .squeak-motion-comment&gt; contains text: &quot;Test rejection&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#show-all-motions&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion-discussion-row:nth-child(2) .squeak-motion-discussion-toggle&gt; contains text: &quot;(0)&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion-discussion-row:nth-child(4) .squeak-motion-discussion-toggle&gt; contains text: &quot;(0)&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-motion-discussion-modal&gt; was visible after 548 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#proposal-comment-submit-input&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motion-discussion-title&gt; contains text: &quot;Solution from&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.modal-body .comment-text:nth-child(1)&gt; was present after 11 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.modal-body .comment-text:nth-child(1)&gt; contains text: &quot;Test comment on solution&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-motion-discussion-modal&gt; was visible after 539 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#proposal-comment-submit-input&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motion-discussion-title&gt; contains text: &quot;Proposal to close as duplicate&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.modal-body .comment-text:nth-child(1)&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.modal-body .comment-text:nth-child(1)&gt; was present after 12 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.modal-body .comment-text:nth-child(1)&gt; contains text: &quot;Test comment on rejection&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 26 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 19 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 25 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 12 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was present after 16 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion-discussion-row:nth-child(2) .squeak-motion-discussion-toggle&gt; contains text: &quot;(1)&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion-discussion-row:nth-child(4) .squeak-motion-discussion-toggle&gt; contains text: &quot;(1)&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-motion-discussion-modal&gt; was visible after 47 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#proposal-comment-submit-input&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.modal-body .comment-text:nth-child(1)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion-discussion-row:nth-child(2) .squeak-motion-discussion-toggle&gt; contains text: &quot;(1)&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion-discussion-row:nth-child(4) .squeak-motion-discussion-toggle&gt; contains text: &quot;(2)&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(3) .downvote-motion-button&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(3) .upvote-motion-button&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(1) .downvote-motion-button&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(1) .upvote-motion-button&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Assertion passed: undefined">
+        
+        
+      </testcase>
+    
+      <testcase name="Assertion passed: undefined">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(1) .reject-motion-button&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(1) .accept-motion-button&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(3) .reject-motion-button&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(3) .accept-motion-button&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 23 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 152 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 25 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 9 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was present after 18 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(1) .reject-motion-button&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(1) .accept-motion-button&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(3) .reject-motion-button&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(3) .accept-motion-button&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 29 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 19 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 25 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 10 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was present after 13 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(1) .reject-motion-button&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(1) .accept-motion-button&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(3) .reject-motion-button&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motions .squeak-motion:nth-child(3) .accept-motion-button&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#show-all-motions&gt; was visible after 17 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#rejected-motions .squeak-motion:nth-child(1)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#rejected-motions .squeak-motion:nth-child(1)&gt; is hidden.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#rejected-motions&gt; was visible after 20 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#rejected-motions .squeak-motion:nth-child(1)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#rejected-motions .squeak-motion:nth-child(1) .squeak-motion-title&gt; contains text: &quot;Proposal to close as duplicate&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#rejected-motions .squeak-motion:nth-child(1) .squeak-motion-title .glyphicon-remove&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-motion-discussion-modal&gt; was visible after 48 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#proposal-comment-submit-input&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 24 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 16 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 19 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 7 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was present after 12 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#edit-squeak-button&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-motions .squeak-motion:nth-child(1) .squeak-motion-title .glyphicon-ok&gt; was present after 10 milliseconds.">
         
         
       </testcase>
@@ -479,52 +569,212 @@
         
       </testcase>
     
-      <testcase name="Testing if element &lt;.vote-button&gt; has css class: &quot;disabled&quot;.">
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 24 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Testing if element &lt;#axle-input&gt; is not present.">
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 17 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Testing if element &lt;.resolution-accepted&gt; is present.">
+      <testcase name="Element &lt;#login-username&gt; was visible after 19 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Testing if element &lt;.resolution-accepted&gt; contains text: &quot;This time I believe&quot;.">
+      <testcase name="Element &lt;.welcome&gt; was present after 7 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Testing if element &lt;.resolution-accepted span&gt; has css class: &quot;glyphicon-ok&quot;.">
+      <testcase name="Element &lt;#squeak-info&gt; was present after 13 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Element &lt;.activity-entry&gt; was visible after 103 milliseconds.">
+      <testcase name="Testing if element &lt;#propose-workflow-motion&gt; is present.">
         
         
       </testcase>
     
-      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(3)&gt; contains text: &quot;from &#39;Under inspection&#39; to &#39;Greased&#39; with reason &#39;Passed inspection&#39;&quot;.">
+      <testcase name="Element &lt;#squeak-motion-modal-select&gt; was present after 24 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(4)&gt; contains text: &quot;from &#39;In the shop&#39; to &#39;Under inspection&#39; with proposed solution&quot;.">
+      <testcase name="Testing if element &lt;#squeak-motion-modal-select option[value=Greased]&gt; is not present.">
         
         
       </testcase>
     
-      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(4) div.state-change-proposed-solution&gt; contains text: &quot;This time I believe&quot;.">
+      <testcase name="Testing if element &lt;#squeak-motion-modal-select option[value=Withdrawn]&gt; is not present.">
         
         
       </testcase>
     
-      <testcase name="Testing if element &lt;#activity-list div.entry:nth-child(5)&gt; contains text: &quot;You commented on&quot;.">
+      <testcase name="Testing if element &lt;#squeak-motion-modal-select option[value=Squeaky]&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#rejected-motions .squeak-motion:nth-child(1)&gt; is hidden.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#rejected-motions .squeak-motion:nth-child(1) .squeak-motion-title&gt; contains text: &quot;Proposal to re-open&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#rejected-motions .squeak-motion:nth-child(1) .squeak-motion-title .glyphicon-ok&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 22 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 16 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#login-username&gt; was visible after 19 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.welcome&gt; was present after 7 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#activity-list .entry:nth-child(3)&gt; was present after 12 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(3) .activity-label&gt; contains text: &quot;from Greased to Squeaky was accepted&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(3) .activity-label&gt; contains text: &quot;Nightwatch Test Squeak&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(3) .squeak-motion&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(3) .squeak-motion .squeak-motion-title&gt; contains text: &quot;Proposal to re-open&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(4)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(4) .activity-label&gt; contains text: &quot;from Greased to Squeaky&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(4) .activity-label&gt; contains text: &quot;Nightwatch Test Squeak&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(4) .activity-label&gt; contains text: &quot;proposed that workflow state of&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(4) .squeak-motion&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(4) .squeak-motion .squeak-motion-title&gt; contains text: &quot;Proposal to re-open&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(7)&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(7) .activity-label&gt; contains text: &quot;to Rejected&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(7) .activity-label&gt; contains text: &quot;Nightwatch Test Squeak&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(7) .activity-label&gt; contains text: &quot;commented on&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(7) .activity-label&gt; contains text: &quot;proposal to change&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(7) .comment-text&gt; is present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#activity-list .entry:nth-child(7) .comment-text .comment&gt; contains text: &quot;Test comment&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-motion-discussion-modal&gt; was visible after 24 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motion-discussion-modal .comment-text:nth-child(1)&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#squeak-motion-discussion-modal .comment-text:nth-child(1) .comment&gt; contains text: &quot;Test comment&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#proposal-comment-submit-input&gt; is not present.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-info&gt; was present after 11 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;.squeak-edit-input&gt; was visible after 14 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#squeak-list&gt; was visible after 159 milliseconds.">
         
         
       </testcase>

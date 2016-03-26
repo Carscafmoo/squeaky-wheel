@@ -2,14 +2,14 @@
 <testsuites name="create-account-page"
              errors="0"
              failures="0"
-             tests="22">
+             tests="24">
   
   <testsuite errors="0" failures="0" hostname="" id=""
     name="Create Account Page" package="create-account-page" skipped="0"
-    tests="22" time="" timestamp="">
+    tests="24" time="" timestamp="">
     
     
-      <testcase name="Element &lt;body&gt; was visible after 2386 milliseconds.">
+      <testcase name="Element &lt;body&gt; was visible after 80 milliseconds.">
         
         
       </testcase>
@@ -29,7 +29,7 @@
         
       </testcase>
     
-      <testcase name="Element &lt;#login-username&gt; was visible after 118 milliseconds.">
+      <testcase name="Element &lt;#login-username&gt; was visible after 29 milliseconds.">
         
         
       </testcase>
@@ -44,7 +44,7 @@
         
       </testcase>
     
-      <testcase name="Element &lt;#new-username&gt; was visible after 38 milliseconds.">
+      <testcase name="Element &lt;#new-username&gt; was visible after 41 milliseconds.">
         
         
       </testcase>
@@ -64,7 +64,7 @@
         
       </testcase>
     
-      <testcase name="Element &lt;div.has-error&gt; was present after 28 milliseconds.">
+      <testcase name="Element &lt;div.has-error&gt; was present after 30 milliseconds.">
         
         
       </testcase>
@@ -109,12 +109,22 @@
         
       </testcase>
     
-      <testcase name="Element &lt;#tutorial-header&gt; was visible after 1188 milliseconds.">
+      <testcase name="Element &lt;#tutorial-header&gt; was visible after 914 milliseconds.">
         
         
       </testcase>
     
       <testcase name="Testing if element &lt;#login-dropdown-toggle&gt; contains text: &quot;Nightwatch Test User&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#activity-list&gt; was visible after 23 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;.entry-content label&gt; contains text: &quot;You joined&quot;.">
         
         
       </testcase>

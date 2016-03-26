@@ -153,7 +153,11 @@ addViscosityEvent = function addViscosityEvent(users, type) {
     }
 
     event.timestamp = timestamp;
-    Meteor.users.update({_id: user._id}, {$push: {viscosityEvents: event}, $set: update});
+    if (_.isEmpty(update)) { // as of Meteor 1.0.4, the mongo driver disallows empty objects
+      Meteor.users.update({_id: user._id}, {$push: {viscosityEvents: event}});
+    } else { 
+      Meteor.users.update({_id: user._id}, {$push: {viscosityEvents: event}, $set: update});
+    }
   });
 
   return true;

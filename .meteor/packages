@@ -4,15 +4,32 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
 iron:router
 less
 accounts-password
 sacha:spin
 underscore
 ajduke:bootstrap-tagsinput
-mizzao:bootstrap-3
 momentjs:moment
 matteodem:easy-search
 mrt:bootstrap3-typeahead
 joshowens:inflectionizer
+browser-policy
+spiderable
+gadicohen:sitemaps
+manuelschoebel:ms-seo
+mystor:device-detection
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check

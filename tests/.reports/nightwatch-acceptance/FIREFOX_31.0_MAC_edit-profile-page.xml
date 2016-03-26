@@ -9,7 +9,7 @@
     tests="28" time="" timestamp="">
     
     
-      <testcase name="Element &lt;body&gt; was visible after 126 milliseconds.">
+      <testcase name="Element &lt;body&gt; was visible after 77 milliseconds.">
         
         
       </testcase>
@@ -19,7 +19,7 @@
         
       </testcase>
     
-      <testcase name="Element &lt;#login-username&gt; was visible after 33 milliseconds.">
+      <testcase name="Element &lt;#login-username&gt; was visible after 35 milliseconds.">
         
         
       </testcase>
@@ -29,7 +29,7 @@
         
       </testcase>
     
-      <testcase name="Element &lt;div.has-error&gt; was present after 1105 milliseconds.">
+      <testcase name="Element &lt;div.has-error&gt; was present after 11 milliseconds.">
         
         
       </testcase>
@@ -39,7 +39,7 @@
         
       </testcase>
     
-      <testcase name="Element &lt;#squeak-list&gt; was present after 1214 milliseconds.">
+      <testcase name="Element &lt;#squeak-list&gt; was present after 1027 milliseconds.">
         
         
       </testcase>
@@ -49,12 +49,12 @@
         
       </testcase>
     
-      <testcase name="Element &lt;#login-buttons-edit-profile&gt; was visible after 33 milliseconds.">
+      <testcase name="Element &lt;#login-buttons-edit-profile&gt; was visible after 24 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Element &lt;#user-update-form&gt; was visible after 42 milliseconds.">
+      <testcase name="Element &lt;#user-update-form&gt; was visible after 24 milliseconds.">
         
         
       </testcase>
@@ -104,12 +104,12 @@
         
       </testcase>
     
-      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 32 milliseconds.">
+      <testcase name="Element &lt;#login-buttons-logout&gt; was visible after 53 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Element &lt;#welcome-text&gt; was visible after 33 milliseconds.">
+      <testcase name="Element &lt;#welcome-text&gt; was visible after 27 milliseconds.">
         
         
       </testcase>
@@ -129,17 +129,17 @@
         
       </testcase>
     
-      <testcase name="Element &lt;#login-username&gt; was visible after 31 milliseconds.">
+      <testcase name="Element &lt;#login-username&gt; was visible after 17 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Element &lt;#login-buttons-edit-profile&gt; was visible after 60 milliseconds.">
+      <testcase name="Element &lt;#login-buttons-edit-profile&gt; was visible after 19 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Element &lt;#user-update-form&gt; was visible after 31 milliseconds.">
+      <testcase name="Element &lt;#user-update-form&gt; was visible after 17 milliseconds.">
         
         
       </testcase>

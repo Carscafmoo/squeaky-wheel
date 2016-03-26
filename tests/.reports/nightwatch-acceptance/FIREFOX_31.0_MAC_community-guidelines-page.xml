@@ -9,7 +9,7 @@
     tests="9" time="" timestamp="">
     
     
-      <testcase name="Element &lt;body&gt; was visible after 119 milliseconds.">
+      <testcase name="Element &lt;body&gt; was visible after 85 milliseconds.">
         
         
       </testcase>
@@ -19,22 +19,22 @@
         
       </testcase>
     
-      <testcase name="Element &lt;#guidelines-header&gt; was present after 15 milliseconds.">
+      <testcase name="Element &lt;#guidelines-header&gt; was present after 17 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Element &lt;h1.welcome&gt; was visible after 49 milliseconds.">
+      <testcase name="Element &lt;h1.welcome&gt; was visible after 28 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Element &lt;#login-username&gt; was visible after 59 milliseconds.">
+      <testcase name="Element &lt;#login-username&gt; was visible after 35 milliseconds.">
         
         
       </testcase>
     
-      <testcase name="Element &lt;.welcome&gt; was present after 52 milliseconds.">
+      <testcase name="Element &lt;.welcome&gt; was present after 15 milliseconds.">
         
         
       </testcase>

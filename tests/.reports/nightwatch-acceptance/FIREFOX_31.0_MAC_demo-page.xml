@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="demo-page"
+             errors="0"
+             failures="0"
+             tests="9">
+  
+  <testsuite errors="0" failures="0" hostname="" id=""
+    name="Demo Page" package="demo-page" skipped="0"
+    tests="9" time="" timestamp="">
+    
+    
+      <testcase name="Element &lt;body&gt; was visible after 81 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#header-meta-demo&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#header-meta-demo&gt; contains text: &quot;Demo&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Element &lt;#demo-page&gt; was visible after 32 milliseconds.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#demo-page-why p:nth-child(2) a:nth-child(1)&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if attribute href of &lt;#demo-page-why p:nth-child(2) a:nth-child(1)&gt; equals &quot;http://www.carscafmoo.com/&quot;.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#demo-page-instability&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#demo-page-data-transience&gt; is visible.">
+        
+        
+      </testcase>
+    
+      <testcase name="Testing if element &lt;#demo-page-feature-poverty&gt; is visible.">
+        
+        
+      </testcase>
+    
+    
+    </testsuite>
+  
+</testsuites>

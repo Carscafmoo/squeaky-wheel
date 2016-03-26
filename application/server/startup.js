@@ -2,6 +2,7 @@
  * Perform various operations on startup:
  *   - Create necessary Mongo indices
  * @author  moore
+ * @TODO un-comment disallowInlineStyles -- needed for sacha:spinner
  */
 Meteor.startup(function() {
   Squeaks._ensureIndex({title: 1}, {unique: true}); // title is unique
@@ -18,4 +19,20 @@ Meteor.startup(function() {
 
   // Activities should have an index on the user in question to help with looking up a particular user's notifications
   Activities._ensureIndex({'users._id': 1});
+
+  BrowserPolicy.content.disallowInlineScripts(); // Don't allow script injections
+  //BrowserPolicy.content.disallowInlineStyles(); // Don't allow inline styling -- actually, we have to, for sacha:spinner
+  if (process.env.IS_MIRROR && process.env.NODE_ENV !== 'production') { // for mocha testing we have to allow framing
+      console.log('testing');
+
+      var localUrl = 'http://localhost:3000';
+      var mirrorUrl = 'http://localhost:5000';
+
+      console.log("In development mode. Allowing all framing so that mocha-web can run for tests.");
+      BrowserPolicy.content.allowOriginForAll("localhost:*");
+      BrowserPolicy.content.allowConnectOrigin("ws://localhost:5000");
+      BrowserPolicy.content.allowConnectOrigin("ws://localhost:3000");
+      BrowserPolicy.content.allowFrameOrigin(mirrorUrl);
+      BrowserPolicy.framing.allowAll();
+    }
 });

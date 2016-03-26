@@ -6,7 +6,11 @@ Template.footer.helpers({
    * Divide the links in the template
    * @return {String} The character used to divide the links in the footer
    */
-  divider: function() { return '|'; }
+  divider: function() { return '|'; },
+  /**
+   * What is the current year?
+   */
+  year: function() { return new Date().getFullYear(); }
 });
 /**
  * Event handlers
